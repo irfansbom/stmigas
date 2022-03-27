@@ -11,9 +11,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">ST MIGAS</a>
+            <a class="navbar-brand" href="{{url('/')}}">ST MIGAS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -21,17 +21,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                 </ul>
-                <ul>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Logged User</a>
-                    </li>
-                </ul>
+                <div class="navbar-nav">
+                    <a class="nav-link" href="{{url('profile')}}"> Profile</a>
+                    <form action="{{url('logout')}}" method="post" id="logout" class="m-0">
+                        @csrf
+                        <a class="nav-link" href="javascript:{}"
+                            onclick="document.getElementById('logout').submit();">Log Out</a>
+                    </form>
+
+
+                </div>
             </div>
         </div>
     </nav>
-
-    @yield('content')
+    <div class="container px-5">
+        <div class="container ">
+            <div class="container">
+                @yield('content')
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SurveyController;
+use App\Models\Survey;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +18,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
+
+Route::middleware(['auth'])->group(function () {
+    //
+    Route::get('/', [HomeController::class, 'index']);
+
+    Route::get('/profile', [ProfileController::class, 'index']);
+    Route::post('/profile/store', [ProfileController::class, 'store']);
+
+
+    Route::get('/form', [SurveyController::class, 'create']);
+    Route::post('/storeform', [SurveyController::class, 'store']);
+
+    Route::get('/form-edit/{id}', [SurveyController::class, 'show']);
+    Route::post('/updateform/{id}', [SurveyController::class, 'update']);
+
+
+});
+
+require __DIR__.'/auth.php';
