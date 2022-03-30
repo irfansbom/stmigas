@@ -205,6 +205,8 @@ class CreateSurveyTable extends Migration
             $table->string('pengawas_jabatan')->nullable();
             $table->string('pengawas_no_hp')->nullable();
             $table->string('pengawas_tanggal')->nullable();
+
+            $table->string('catatan_petugas')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();

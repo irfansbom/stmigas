@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('nama_perusahaan');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('kabupaten');
+            $table->string('kd_kab')->nullable();
+            $table->string('level')->nullable();
             $table->string('kd_kec')->nullable();
             $table->string('kec')->nullable();
             $table->string('kd_desa')->nullable();

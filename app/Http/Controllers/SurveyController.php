@@ -15,7 +15,6 @@ class SurveyController extends Controller
 
 
     public function index(){
-
         return 'ok';
     }
 
@@ -227,6 +226,7 @@ class SurveyController extends Controller
                 'pengawas_jabatan' => $request->pengawas_jabatan,
                 'pengawas_no_hp' => $request->pengawas_no_hp,
                 'pengawas_tanggal' => $request->pengawas_tanggal,
+                'catatan_petugas' => $request->catatan_petugas,
                 'created_by' => $request->updated_by,
             ]);
         if ($survey) {
@@ -436,6 +436,7 @@ class SurveyController extends Controller
                     'pengawas_jabatan' => $request->pengawas_jabatan,
                     'pengawas_no_hp' => $request->pengawas_no_hp,
                     'pengawas_tanggal' => $request->pengawas_tanggal,
+                    'catatan_petugas' => $request->catatan_petugas,
                     'updated_by' => $request->updated_by
                 ]);
 

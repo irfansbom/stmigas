@@ -2,6 +2,35 @@
 
 @section('content')
 <br>
+<div class="mb-1 row">
+    <div class="col-sm-2 d-flex  align-items-center">
+        <table class="table text-center table-bordered border-dark">
+            <tr>
+                <td>RAHASIA</td>
+            </tr>
+            <tr>
+                <td class="table-dark">CONFIDENTIAL</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-8 text-center">
+        <img src="{{url('/images/pancasila.png')}}" class="" alt="..." width="70px">
+        <br>
+        <span style="font-size:13px; font-family: 'Arial'">
+            <strong>
+                REPUBLIK INDONESIA <br>
+                BADAN PUSAT STATISTIK</strong>
+        </span>
+    </div>
+    <div class="col-sm-2 d-flex  align-items-center">
+        <table class="table text-center table-borderless">
+            <tr>
+                <th rowspan="2" class="bg-danger text-light" style="font-size: 20px">MIGAS</th>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
 <h4 class="text-center">SURVEI TAHUNAN PERUSAHAAN PERTAMBANGAN MIGAS
     <br> <span class="fst-italic">ANNUAL SURVEY OF OIL AND GAS MINING COMPANY</span>
     <br> TAHUN {{$tahun}}

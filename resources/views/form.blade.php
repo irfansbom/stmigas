@@ -2,13 +2,18 @@
     <input type="text" id="tahun" name="tahun" value="{{$tahun}}" hidden>
     <input type="text" id="email" name="email" value="{{$user->email}}" hidden>
     <div class="mb-1 row ">
-        <label for="kip" class="col-sm-2 col-form-label">KIP</label>
+        <label for="kip" class="col-sm-1 col-form-label">KIP</label>
         <div class="col-sm-4">
             <input type="text" class="form-control form-control-sm" id="kip" name="kip"
                 value="{{old('kip',  $survey->kip)}}">
         </div>
+        <div class="col-sm-2 d-flex align-items-center">
+            <span style="font-size: 8px">Diisi Oleh BPS <br>
+                <Span class="fst-italic">Filled in By BPS</Span>
+            </span>
+        </div>
     </div>
-    <table class="table table-bordered border-dark mb-1">
+    <table class="table table-bordered border-dark mb-0">
         <tr>
             <td class="px-5 py-3">
                 <div class=" mb-1 row">
@@ -147,18 +152,72 @@
         </tr>
 
     </table>
-    <table style="font-size: 10px" class="table table-sm table-borderless ">
+    <table style="font-size: 12px" class="table table-sm table-borderless ">
         <tr>
-            <td>
+            <td style="font-size:10px" class="py-0">
                 <span>*) Coret yang tidak sesuai/</span><span class="fst-italic">Cross out if not valid</span>
             </td>
         </tr>
-        <tr>
+        {{-- <tr>
             <th>
                 Tujuan Turvei
             </th>
             <td>:</td>
             <td>Memperoleh data Statistik pertambangan Migas untuk perencanaan dan evaluasi pembangunan nasional</td>
+        </tr> --}}
+        <tr>
+            <td>
+                <div class="row mb-1">
+                    <div class="col-sm-3"><strong>Tujuan Survei</strong></div>
+                    <div class="col-sm-1 text-end"><strong>:</strong></div>
+                    <div class="col-sm-8">Memperoleh data Statistik pertambangan Migas untuk perencanaan dan evaluasi
+                        pembangunan nasional</div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-sm-3 fst-italic"><strong>Objective of the Survey</strong></div>
+                    <div class="col-sm-1 text-end"><strong>:</strong></div>
+                    <div class="col-sm-8 fst-italic">To obtain of oil and gas mining data for national developmennt
+                        planning and evaluation</div>
+                </div>
+                <br>
+                <div class="row mb-1">
+                    <div class="col-sm-3"><strong>Jaminan Kerahasiaan Data</strong></div>
+                    <div class="col-sm-1 text-end"><strong>:</strong></div>
+                    <div class="col-sm-8">Identitas dan seluruh informasi perusahaan akan tetap dirahasiakan dan tidak
+                        akan dipublikasikan secara individu sesuai UU No. 16 tahun 1997 Tentang Statistik.</div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-sm-3 fst-italic"><strong>Data Confidentiality Guarantee</strong></div>
+                    <div class="col-sm-1 text-end"><strong>:</strong></div>
+                    <div class="col-sm-8 fst-italic">Identity and all company information will remain secret and will
+                        not be published individually based on Law No. 16 of 1997 on Statistics.</div>
+                </div>
+                <br>
+                <div class="row mb-1">
+                    <div class="col-sm-3"><strong>Biaya Survei</strong></div>
+                    <div class="col-sm-1 text-end"><strong>:</strong></div>
+                    <div class="col-sm-8">Survei ini tidak memungut biaya apapun dan tidak ada kaitannya dengan pajak.
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-sm-3 fst-italic"><strong>Charge of the Survey
+                        </strong></div>
+                    <div class="col-sm-1 text-end"><strong>:</strong></div>
+                    <div class="col-sm-8 fst-italic">The survey is free of charge and has no related with taxes.</div>
+                </div><br>
+                <div class="row mb-1">
+                    <div class="col-sm-3"><strong>Pengembalian Dokumen</strong></div>
+                    <div class="col-sm-1 text-end"><strong>:</strong></div>
+                    <div class="col-sm-8">Dikirim ke BPS selambat-lambatnya pada tanggal 1 Agustus 2022.
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-sm-3 fst-italic"><strong>Date of Document Return
+                        </strong></div>
+                    <div class="col-sm-1 text-end"><strong>:</strong></div>
+                    <div class="col-sm-8 fst-italic">Please send this document to BPS before August 1st 2022.</div>
+                </div>
+            </td>
         </tr>
     </table>
 
@@ -167,14 +226,20 @@
             <th class="text-center  border-top border-bottom border-dark" colspan="2">Keterangan Lebih </th>
         </tr>
         <tr>
-            <th>Koo</th>
-            <th class="text-end fst-italic">Koor</th>
+            <th>Koordinator Fungsi Statistik Pertambangan dan Energi</th>
+            <th class="text-end fst-italic">Function Coordinator of Mining and Energy Statistics</th>
         </tr>
         <tr class="border-bottom border-dark">
-            <td></td>
+            <td> Badan Pusat Statistik, Jl. Dr. Sutomo No. 6-8, Jakarta 10710<br>
+                Telp. (021) 3841195, 3842508, 3810291-4, Pesawat 5330-5333 <br>
+                Fax (021) 3863816 <br>
+                E-mail: pe@bps.go.id</td>
             <td class="text-end fst-italic">
-                BPS-Statistic Indonesia, Jl. Dr. Sutomo No. 6-8, Jakarta 10710 <br>
-                Pho
+
+                BPS - Statistics Indonesia, Jl. Dr. Sutomo No. 6-8, Jakarta 10710 <br>
+                Phone (021) 3841195, 3842508, 3810291-4, Ext 5330-5333<br>
+                Fax (021) 3863816 <br>
+                E-mail: pe@bps.go.id
             </td>
         </tr>
     </table>
@@ -275,9 +340,9 @@
                     </div>
                     {{-- <div class="col-sm-1">%</div> --}}
                     %
-                    <div class="col-sm-4" style="font-size: 12px">&rarr; (Jika terisi lanjut ke R103 / <span
-                            class="fst-italic">If filled, continue
-                            to R 103</span>)</div>
+                    <div class="col-sm-4" style="font-size: 12px">&rarr; <strong> (Jika terisi lanjut ke R103 / <span
+                                class="fst-italic">If filled, continue
+                                to R 103</span>)</strong></div>
 
                 </div>
                 <div class="mb-3 row d-flex align-items-center">
@@ -295,10 +360,11 @@
                         <strong>103. Informasi Pemegang Saham Asing Tahun 2021/
                             <span class="fst-italic">foreign shareholder information in 2021</span></strong>
                     </label>
-                    <span style="font-size: 12px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(Urutkan dari pemegang saham
+                    <span style="font-size: 12px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Urutkan dari pemegang saham
                         terbesar / Sort by largest shareholder)</span>
                     <div class="ps-5 pe-0">
-                        <table class="table table-sm table-bordered border-dark text-center">
+                        <table class="table table-sm table-bordered border-dark text-center align-middle"
+                            style="font-size:14px">
                             <tr>
                                 <td>No</td>
                                 <td>Nama/Name</td>
@@ -429,17 +495,17 @@
                             Sex</span>
                     </label>
                     <div class="ps-5 pe-0">
-                        <table class="table table-sm table-bordered border-dark ">
+                        <table class="table table-sm table-bordered border-dark " style="font-size: 14px">
                             <tr class="text-center">
-                                <td>Jenis Kelamin/Sex</td>
-                                <td>Orang/Person</td>
+                                <th>Jenis Kelamin/<span class="fst-italic">Sex</span></th>
+                                <th>Orang/<span class="fst-italic">Person</span></th>
                             </tr>
                             <tr style="font-size:10px" class="text-center">
                                 <td>(1)</td>
                                 <td>(2)</td>
                             </tr>
                             <tr>
-                                <td>a. Laki-laki/Male
+                                <td>a. Laki-laki/<span class="fst-italic">Male</span>
                                 </td>
                                 <td>
                                     <input type="text" class="form-control form-control-sm" id="pekerja_lakilaki"
@@ -449,7 +515,7 @@
 
                             </tr>
                             <tr>
-                                <td>b. Perempuan/Female
+                                <td>b. Perempuan/<span class="fst-italic">Female</span>
                                 </td>
                                 <td>
                                     <input type="text" class="form-control form-control-sm" id="pekerja_perempuan"
@@ -458,7 +524,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td> <strong> c. Jumlah/Total</strong>
+                                <td> <strong> c. Jumlah/<span class="fst-italic">Total</span></strong>
                                 </td>
                                 <td>
                                     <input type="text" class="form-control form-control-sm"
@@ -483,8 +549,8 @@
                     <div class="ps-5 pe-0">
                         <table class="table table-sm table-bordered border-dark align-middle" style="font-size: 14px">
                             <tr class=" text-center">
-                                <td>Jenjang Pendidikan/Education</td>
-                                <td>Orang/Person</td>
+                                <th>Jenjang Pendidikan/<span class="fst-italic">Education</span></th>
+                                <th>Orang/<span class="fst-italic">Person</span></th>
                             </tr>
                             <tr style="font-size:10px" class="text-center">
                                 <td>(1)</td>
@@ -492,7 +558,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                    a. SLTP dan Sederajat atau lebih rendah / Junior High School and Equal or lower
+                                    a. SLTP dan Sederajat atau lebih rendah /<span class="fst-italic">Junior High School
+                                        and Equal or lower</span>
                                 </td>
                                 <td>
                                     <input type="text" class="form-control form-control-sm" id="pekerja_sltp"
@@ -501,7 +568,7 @@
 
                             </tr>
                             <tr>
-                                <td>b. Sampai dengan SLTA/High School and lower
+                                <td>b. Sampai dengan SLTA/<span class="fst-italic">High School and lower</span>
                                 </td>
                                 <td>
                                     <input type="text" class="form-control form-control-sm" id="pekerja_slta"
@@ -518,7 +585,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td> d. Sarjana dan Diploma IV/Undergraduate
+                                <td> d. Sarjana dan Diploma IV/<span class="fst-italic">Undergraduate</span>
                                 </td>
                                 <td>
                                     <input type="text" class="form-control form-control-sm" id="pekerja_sarjana"
@@ -527,7 +594,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td> e. Pasca Sarjana/Post Graduate
+                                <td> e. Pasca Sarjana/<span class="fst-italic">Post Graduate</span>
                                 </td>
                                 <td>
                                     <input type="text" class="form-control form-control-sm" id="pekerja_pascasarjana"
@@ -536,7 +603,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td> <strong> f. Jumlah/Total</strong>
+                                <td> <strong> f. Jumlah/<span class="fst-italic">Total</span></strong>
                                 </td>
                                 <td>
                                     <input type="text" class="form-control form-control-sm"
@@ -556,31 +623,57 @@
                         <input type="text" class="form-control form-control-sm" id="pekerja_asing" name="pekerja_asing"
                             value="{{old('pekerja_asing',  $survey->pekerja_asing)}}">
                     </div>
-                    Orang/Person
+                    <div class="col-sm-2">
+                        Orang/<span class="fst-italic">Person</span>
+                    </div>
                 </div>
                 <div class="mb-1 row d-flex align-items-center">
                     <label for="bentuk_kerjasama" class="col-sm-8 col-form-label">
                         <strong>204. Jumlah Pekerja Outsourcing/
-                            <span class="fst-italic">Number of Outsourcing Workes</span></strong>
+                            <span class="fst-italic">Number of Outsourcing Workers</span></strong>
                     </label>
                     <div class="col-sm-2 d-flex align-items-center">
                         <input type="text" class="form-control form-control-sm" id="pekerja_outsourcing"
                             name="pekerja_outsourcing"
                             value="{{old('pekerja_outsourcing',  $survey->pekerja_outsourcing)}}">
                     </div>
-                    Orang/Person
-                </div>
-                <div class="mb-1 row ms-4">
-                    <div class="col-sm-11" style="font-size: 12px">
-                        <strong>Pekerja Tetap</strong>
+                    <div class="col-sm-2">
+                        Orang/<span class="fst-italic">Person</span>
                     </div>
+                </div>
+                <br>
+                <div class="mb-1 row ms-4">
+                    <div class="col-sm-12" style="font-size: 12px">
+                        <strong>Pekerja Tetap</strong> adalah pekerja formal perusahaan dan memiliki kesempatan dalam
+                        jejang karir sesuai aturan perusahaan.
+                    </div>
+                    <div class="col-sm-12 fst-italic mb-2" style="font-size: 12px">
+                        <strong>Permanent employees</strong> are formal employees of the company and have opportunities
+                        in career paths in accordance with company regulations.
+                    </div>
+                    <div class="col-sm-12" style="font-size: 12px">
+                        <strong>Pekerja kontrak</strong> adalah pekerja yang dipekerjakan oleh perusahaan untuk jangka
+                        waktu terbatas dan tidak memiliki kesempatan dalam jejang karir sesuai aturan perusahaan.
+                    </div>
+                    <div class="col-sm-12 fst-italic mb-2" style="font-size: 12px">
+                        <strong>Contract workers</strong> are workers who are employed by the company for a limited
+                        period of time and do not have career opportunities according to company regulations.
+                    </div>
+                    <div class="col-sm-12" style="font-size: 12px">
+                        <strong>Pekerja outsourcing </strong> adalah pekerja yang direkrut dari perusahaan penyalur
+                        tenaga kerja untuk jangka waktu pendek dan menangani pekerjaan khusus baik produksi maupun non
+                        produksi.
+                    </div>
+                    <div class="col-sm-12 fst-italic mb-2" style="font-size: 12px">
+                        <strong>Outsourced workers</strong> are workers who are recruited from labor supply companies
+                        for a short time and handle special jobs, both production and non- production.
+                    </div>
+
                 </div>
             </td>
         </tr>
     </table>
 
-    <br>
-    <br>
     <br>
     <table class="table table-borderless">
         <tr>
@@ -593,8 +686,8 @@
             <td>
                 <div class="mb-1 row d-flex align-items-center">
                     <label for="gaji_pk_tetap" class="col-sm-8 col-form-label">
-                        <strong>301. Jumlah Pekerja Outsourcing/
-                            <span class="fst-italic">Number of Outsourcing Workes</span></strong>
+                        <strong>301. Balas Jasa Pekerja Tetap dan Kontrak Termasuk Asing/
+                            <span class="fst-italic">Compensation</span></strong>
                     </label>
                 </div>
                 <div class=" mb-1 row  pe-0">
@@ -750,7 +843,6 @@
                             <th>Nilai <span class="fst-italic">/Value</span>
                                 <br>(Rupiah)
                             </th>
-
                         </tr>
                         <tr class="text-center" style="font-size: 10px">
                             <td>(1)</td>
@@ -765,7 +857,6 @@
                                     name="biaya_pengurasan"
                                     value="{{old('biaya_pengurasan',  $survey->biaya_pengurasan)}}">
                             </td>
-
                         </tr>
                         <tr>
                             <td>b. Biaya angkutan migas ke penampungan utama di lokasi penambangan<br>
@@ -818,12 +909,37 @@
                         penyeimpanan migas di lapangan
                     </div>
                 </div>
+                <div class="mb-1 row ">
+                    <div class="col-sm-12 ps-0 fst-italic" style="font-size: 12px">
+                        <strong>Depletion, collection and separation cost</strong>
+                        include the cost of underground drainage and oil and gas field storage facilities process
+                    </div>
+                </div>
                 <br>
                 <div class="mb-1 row ">
                     <div class="col-sm-12 ps-0" style="font-size: 12px">
-                        <strong>Biaya pengurasan, penngumpulan, dan pemisahan</strong>
-                        mulai dari proses pengurasan di bawah tanah sampai dengan pengoperasian fasilitas tempat
-                        penyeimpanan migas di lapangan
+                        <strong>Biaya angkutan </strong>
+                        mencakup pengiriman migas dari lapangan migas ke penyimpanan utama sebelum penjualan atau
+                        pengolahan lebih lanjut
+                    </div>
+                </div>
+                <div class="mb-1 row ">
+                    <div class="col-sm-12 ps-0 fst-italic" style="font-size: 12px">
+                        <strong>Transportation cost</strong>
+                        include delivery of oil and gas from oil and gas field to the main storage before sale or
+                        further processing
+                    </div>
+                </div> <br>
+                <div class="mb-1 row ">
+                    <div class="col-sm-12 ps-0" style="font-size: 12px">
+                        <strong>Biaya penyimpanan </strong>
+                        mencakup biaya penyimpanan migas di tempat penyimpanan utama
+                    </div>
+                </div>
+                <div class="mb-1 row ">
+                    <div class="col-sm-12 ps-0 fst-italic" style="font-size: 12px">
+                        <strong>Storage costs </strong>
+                        include the cost of oil and gas storage in the main storage
                     </div>
                 </div>
             </td>
@@ -1091,14 +1207,915 @@
                                     value="{{old('pengeluaran_sukucadang',  $survey->pengeluaran_sukucadang)}}">
                             </td>
                         </tr>
+                        <tr>
+                            <td>b. Alat tulis kantor dan perlengkapan kantor <br>
+                                <span class="fst-italic">&nbsp; &nbsp; Stationaries and computer supplies</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_atk"
+                                    name="pengeluaran_atk"
+                                    value="{{old('pengeluaran_atk',  $survey->pengeluaran_atk)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>c. Pembelian peralatan dan perlengkapan pertambangan yang penggunaannya kurang dari satu
+                                tahun<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Equipments purcashing which the period utility is
+                                    less than one year</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm"
+                                    id="pengeluaran_peralatan_setahun" name="pengeluaran_peralatan_setahun"
+                                    value="{{old('pengeluaran_peralatan_setahun',  $survey->pengeluaran_peralatan_setahun)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>d. Sewa kendaraan, mesin dan peralatan lainnya<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Rent expenditures for vehicles, machinery and
+                                    other equipments</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_sewa_kendaraan"
+                                    name="pengeluaran_sewa_kendaraan"
+                                    value="{{old('pengeluaran_sewa_kendaraan',  $survey->pengeluaran_sewa_kendaraan)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>e. Sewa tanah dan gedung kantor<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Land-fare and Rent expenditure for
+                                    building</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_sewa_tanah"
+                                    name="pengeluaran_sewa_tanah"
+                                    value="{{old('pengeluaran_sewa_tanah',  $survey->pengeluaran_sewa_tanah)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>f. Biaya jasa pertambangan yang dikerjakan pihak lain<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Cost of service carried out by other</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_jasa_lain"
+                                    name="pengeluaran_jasa_lain"
+                                    value="{{old('pengeluaran_jasa_lain',  $survey->pengeluaran_jasa_lain)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>g. Asuransi barang modal<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Capital goods insurance</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_asuransi"
+                                    name="pengeluaran_asuransi"
+                                    value="{{old('pengeluaran_asuransi',  $survey->pengeluaran_asuransi)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>h. Angkutan<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Transportation</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_angkutan"
+                                    name="pengeluaran_angkutan"
+                                    value="{{old('pengeluaran_angkutan',  $survey->pengeluaran_angkutan)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>i. Pergudangan<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Warehousing</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_pergudangan"
+                                    name="pengeluaran_pergudangan"
+                                    value="{{old('pengeluaran_pergudangan',  $survey->pengeluaran_pergudangan)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>j. Biaya pos dan telekomunikasi<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Post and telecommunication</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_pos"
+                                    name="pengeluaran_pos"
+                                    value="{{old('pengeluaran_pos',  $survey->pengeluaran_pos)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>k. Perjalanan dinas<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Supervision</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_perjalanan"
+                                    name="pengeluaran_perjalanan"
+                                    value="{{old('pengeluaran_perjalanan',  $survey->pengeluaran_perjalanan)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>l. Bunga pinjaman<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Loan Interest</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_bunga_pinjaman"
+                                    name="pengeluaran_bunga_pinjaman"
+                                    value="{{old('pengeluaran_bunga_pinjaman',  $survey->pengeluaran_bunga_pinjaman)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>m. Pajak Pertanmbahan Nilai Barang dan Jasa(PPN)<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Goods and service Tax</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_ppn"
+                                    name="pengeluaran_ppn"
+                                    value="{{old('pengeluaran_ppn',  $survey->pengeluaran_ppn)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>n. Pajak Penghasilan<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Income Tax</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_pph"
+                                    name="pengeluaran_pph"
+                                    value="{{old('pengeluaran_pph',  $survey->pengeluaran_pph)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>o. Pajak dann Retribusi Lainnya<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Other Tax and Retribution</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_pajak_lain"
+                                    name="pengeluaran_pajak_lain"
+                                    value="{{old('pengeluaran_pajak_lain',  $survey->pengeluaran_pajak_lain)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>p. Penyusutan dan amortisasi<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Deprecation and amortization</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_penyusutan"
+                                    name="pengeluaran_penyusutan"
+                                    value="{{old('pengeluaran_penyusutan',  $survey->pengeluaran_penyusutan)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>q. Jasa akuntan, penasehat hukum dan sejenisnya<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Accountance, legal advisor and others
+                                    services</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_jasa_akuntan"
+                                    name="pengeluaran_jasa_akuntan"
+                                    value="{{old('pengeluaran_jasa_akuntan',  $survey->pengeluaran_jasa_akuntan)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>r. Pendidikan dan Pelatihan Sumber Daya Manusia<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Education and Training of Human Resources</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_pendidikan"
+                                    name="pengeluaran_pendidikan"
+                                    value="{{old('pengeluaran_pendidikan',  $survey->pengeluaran_pendidikan)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>s. Lainnya, seperti : iklan, riset pemasaran kehumasan dan sejenisnya<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Other, i.o : promotion, market research, charity,
+                                    etc</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_lainnya"
+                                    name="pengeluaran_lainnya"
+                                    value="{{old('pengeluaran_lainnya',  $survey->pengeluaran_lainnya)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>t. Jumlah<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Total</span>
+                            </th>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengeluaran_jumlah"
+                                    name="pengeluaran_jumlah"
+                                    value="{{old('pengeluaran_jumlah',  $survey->pengeluaran_jumlah)}}">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="mb-1 row d-flex align-items-center">
+                    <label for="biaya_pengurasan" class="col-sm-9 col-form-label">
+                        <strong>307. Pengeluaran Terkait Investasi Lainnya/
+                            <span class="fst-italic">Other investment</span></strong>
+                    </label>
+                </div>
+                <div class="mb-1 row d-flex align-items-center" style="font-size:14px">
+                    <div class="col-sm-9">&nbsp; &nbsp; a. Pengeluaran ekplorasi <br>
+                        <span class="fst-italic">&nbsp; &nbsp; &nbsp; &nbsp; Exploration expenditures</span>
+                    </div>
+                    <div class="col-sm-1 text-end">Rp</div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control form-control-sm" id="pengeluaran_eksplorasi"
+                            name="pengeluaran_eksplorasi"
+                            value="{{old('pengeluaran_eksplorasi',  $survey->pengeluaran_eksplorasi)}}">
+                    </div>
+
+                </div>
+                <div class="mb-1 row d-flex align-items-center" style="font-size:14px">
+                    <div class="col-sm-9">&nbsp; &nbsp; b. Pengeluaran pemulihan tata lingkungan <br>
+                        <span class="fst-italic">&nbsp; &nbsp; &nbsp; &nbsp; Land Recovery</span>
+                    </div>
+                    <div class="col-sm-1 text-end">Rp</div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control form-control-sm" id="pengeluaran_pemulihan"
+                            name="pengeluaran_pemulihan"
+                            value="{{old('pengeluaran_pemulihan',  $survey->pengeluaran_pemulihan)}}">
+                    </div>
+                </div>
+                <div class="mb-1 row d-flex align-items-center" style="font-size:14px">
+                    <div class="col-sm-9">&nbsp; &nbsp; c. Penelitian dan pengembangan <br>
+                        <span class="fst-italic">&nbsp; &nbsp; &nbsp; &nbsp; Research and development</span>
+                    </div>
+                    <div class="col-sm-1 text-end">Rp</div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control form-control-sm" id="pengeluaran_penelitian"
+                            name="pengeluaran_penelitian"
+                            value="{{old('pengeluaran_penelitian',  $survey->pengeluaran_penelitian)}}">
+                    </div>
+                </div>
+                <br>
+                <div class="mb-1 row ">
+                    <div class="col-sm-12 ps-4" style="font-size: 12px">
+                        <strong> Pengeluaran eksplorasi</strong>
+                        meliputi biaya penyelidikan topografi, geologi, geofisika, pengeboran sumur eksplorasi, pemboran
+                        sumur uji stratigrafi, pengembangan cadangan terbukti minyak dan gas bumi sampai siap
+                        berproduksi
+                    </div>
+                    <div class="col-sm-12 ps-4 fst-italic" style="font-size: 12px">
+                        <strong> Exploration expenditures</strong>
+                        include the cost of the investigation topography, geology, geophysics, drilling exploration
+                        wells, drilling of stratigraphic test wells, development of proven reserves of oil and gas until
+                        ready for production
+                    </div>
+                    <div class="col-sm-12 ps-4" style="font-size: 12px">
+                        <strong> Pengeluaran pemulihan</strong>
+                        tata lingkungan adalah mengembalikan lahan rusak karena eksploitasi minyak
+                        dan gas bumi, kembali ke posisi dan fungsi semula
+                    </div>
+                    <div class="col-sm-12 ps-4 fst-italic" style="font-size: 12px">
+                        <strong> Land recovery</strong>
+                        is kind of expenditure to restore land damaged caused by the exploitation of oil
+                        and gas, back to the original function
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="table table-borderless">
+        <tr>
+            <th class="border-dark border text-center">
+                IV. KETENAGALISTRIKAN SELAMA TAHUN 2021 <br>
+                <span class="fst-italic">ELECTRICITY DURING 2021</span>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <div class="mb-1 row d-flex align-items-center">
+                    <label for="gaji_pk_tetap" class="col-sm-8 col-form-label">
+                        <strong>401. Tenaga Listrik yang Diproduksi, Dibeli dan Dijual <br>
+                            <span class="fst-italic">Electricity Produced, Purcased and Sold</span></strong>
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="mb-1 row pe-0">
+                    <table class="table table-bordered border-dark align-middle table-sm" style="font-size: 14px">
+                        <tr class="text-center">
+                            <th>Uraian/ <span class="fst-italic">/Description</span> </th>
+                            <th>Volume <span class="fst-italic"></span>
+                                <br>Volume
+                            </th>
+                            <th>Nilai <span class="fst-italic">/Value</span>
+                                <br>(Rupiah)
+                            </th>
+                        </tr>
+                        <tr class="text-center" style="font-size: 10px">
+                            <td>(1)</td>
+                            <td>(2)</td>
+                            <td>(3)</td>
+                        </tr>
+                        <tr>
+                            <td>1. Kapasitas mesin pembangkit listrik (KW) <br>
+                                <span class="fst-italic">&nbsp; &nbsp; Capacity of engine power plant</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm"
+                                    id="kapasitas_pembangkit_listrik_volume" name="kapasitas_pembangkit_listrik_volume"
+                                    value="{{old('kapasitas_pembangkit_listrik_volume',  $survey->kapasitas_pembangkit_listrik_volume)}}">
+                            </td>
+                            <td class="bg-secondary"></td>
+                        </tr>
+                        <tr>
+                            <td>2. Tenaga listrik yang diproduksi sendiri (KWh) <br>
+                                <span class="fst-italic">&nbsp; &nbsp; Own electricity generated</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="produksi_listrik_volume"
+                                    name="produksi_listrik_volume"
+                                    value="{{old('produksi_listrik_volume',  $survey->produksi_listrik_volume)}}">
+                            </td>
+                            <td><input type="text" class="form-control form-control-sm" id="produksi_listrik_nilai"
+                                    name="produksi_listrik_nilai"
+                                    value="{{old('produksi_listrik_nilai',  $survey->produksi_listrik_nilai)}}">
+                            </td>
+                        </tr>
+                        <tr class="border-bottom-0">
+                            <td colspan="3">3. Bahan Bakar yang digunakan/<span class="fst-italic">Fuel
+                                    used</span>
+                            </td>
+                        </tr>
+                        <tr class="border-0">
+                            <td class="border-end-0"> &nbsp; &nbsp; a. Minyak Solar dan Minyak Diesel/
+                                <span class="fst-italic">Diesel Oil</span>(Liter)
+                            </td>
+                            <td class="border-start-0 border-end-0">
+                                <input type="text" class="form-control form-control-sm" id="bb_listrik_solar_volume"
+                                    name="bb_listrik_solar_volume"
+                                    value="{{old('bb_listrik_solar_volume',  $survey->bb_listrik_solar_volume)}}">
+                            </td>
+                            <td class="border-start-0">
+                                <input type="text" class="form-control form-control-sm" id="bb_listrik_solar_nilai"
+                                    name="bb_listrik_solar_nilai"
+                                    value="{{old('bb_listrik_solar_nilai',  $survey->bb_listrik_solar_nilai)}}">
+                            </td>
+                        </tr>
+                        <tr class="border-0">
+                            <td class="border-end-0"> &nbsp; &nbsp; b. Batubara/
+                                <span class="fst-italic">Coal</span>(Ton)
+                            </td>
+                            <td class="border-start-0 border-end-0">
+                                <input type="text" class="form-control form-control-sm" id="bb_listrik_batubara_volume"
+                                    name="bb_listrik_batubara_volume"
+                                    value="{{old('bb_listrik_batubara_volume',  $survey->bb_listrik_batubara_volume)}}">
+                            </td>
+                            <td class="border-start-0">
+                                <input type="text" class="form-control form-control-sm" id="bb_listrik_batubara_nilai"
+                                    name="bb_listrik_batubara_nilai"
+                                    value="{{old('bb_listrik_batubara_nilai',  $survey->bb_listrik_batubara_nilai)}}">
+                            </td>
+                        </tr>
+                        <tr class="border-0">
+                            <td class="border-end-0"> &nbsp; &nbsp; c. Gas Alam/
+                                <span class="fst-italic">Natural Gas</span>(MMSCF)
+                            </td>
+                            <td class="border-start-0 border-end-0">
+                                <input type="text" class="form-control form-control-sm" id="bb_listrik_gasalam_volume"
+                                    name="bb_listrik_gasalam_volume"
+                                    value="{{old('bb_listrik_gasalam_volume',  $survey->bb_listrik_gasalam_volume)}}">
+                            </td>
+                            <td class="border-start-0">
+                                <input type="text" class="form-control form-control-sm" id="bb_listrik_gasalam_nilai"
+                                    name="bb_listrik_gasalam_nilai"
+                                    value="{{old('bb_listrik_gasalam_nilai',  $survey->bb_listrik_gasalam_nilai)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4. Tenaga listrik yang<strong> DIBELI</strong>(KWh)<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Electricity purchased</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="listrik_dibeli_volume"
+                                    name="listrik_dibeli_volume"
+                                    value="{{old('listrik_dibeli_volume',  $survey->listrik_dibeli_volume)}}">
+                            </td>
+                            <td><input type="text" class="form-control form-control-sm" id="listrik_dibeli_nilai"
+                                    name="listrik_dibeli_nilai"
+                                    value="{{old('listrik_dibeli_nilai',  $survey->listrik_dibeli_nilai)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5. Tenaga listrik yang<strong> DIJUAL</strong> kepada pihak lain (KWh)<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Electricity sold to other</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="listrik_dijual_volume"
+                                    name="listrik_dijual_volume"
+                                    value="{{old('listrik_dijual_volume',  $survey->listrik_dijual_volume)}}">
+                            </td>
+                            <td><input type="text" class="form-control form-control-sm" id="listrik_dijual_nilai"
+                                    name="listrik_dijual_nilai"
+                                    value="{{old('listrik_dijual_nilai',  $survey->listrik_dijual_nilai)}}">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="table table-borderless">
+        <tr>
+            <td class="py-0">
+                <div class="mb-0 row ">
+                    <table class="table table-bordered border-dark align-middle">
+                        <tr>
+                            <th class="border-dark border text-center">
+                                V. STOK, PRODUKSI, PEMAKAIAN DAN PENJUALAN PADA TAHUN 2021 <br>
+                                <span class="fst-italic">STOCK, PRODUCTIONN, USAGE AND SALES IN 2021</span>
+                            </th>
+                        </tr>
                     </table>
                 </div>
             </td>
         </tr>
 
+        <tr>
+            <td>
+                <div class="mb-1 row ">
+                    <table class="table table-bordered border-dark align-middle table-sm" style="font-size: 14px">
+                        <tr class="text-center">
+                            <th>Uraian/<span class="fst-italic">Description</span></th>
+                            <th>Minyak Mentah <br> <span class="fst-italic">Crude Oil</span> <br>(Barrel)</th>
+                            <th>Konsendat <br> <span class="fst-italic">Condensate</span> <br>(Barrel)</th>
+                            <th>Gas Bumi <br> <span class="fst-italic">Natural Gas</span> <br>(MMSCF)</th>
+                        </tr>
+                        <tr class="text-center" style="font-size: 10px">
+                            <td>(1)</td>
+                            <td>(2)</td>
+                            <td>(3)</td>
+                            <td>(4)</td>
+                        </tr>
+                        <tr>
+                            <td>1. Volume Stok Awal<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Begining Stock</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="minyak_mentah_stok_awal"
+                                    name="minyak_mentah_stok_awal"
+                                    value="{{old('minyak_mentah_stok_awal',  $survey->minyak_mentah_stok_awal)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="kondensat_stok_awal"
+                                    name="kondensat_stok_awal"
+                                    value="{{old('kondensat_stok_awal',  $survey->kondensat_stok_awal)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="gas_bumi_stok_awal"
+                                    name="gas_bumi_stok_awal"
+                                    value="{{old('gas_bumi_stok_awal',  $survey->gas_bumi_stok_awal)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2. Volume Produksi<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Production</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="minyak_mentah_stok_awal"
+                                    name="minyak_mentah_stok_awal"
+                                    value="{{old('minyak_mentah_stok_awal',  $survey->minyak_mentah_stok_awal)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="kondensat_stok_awal"
+                                    name="kondensat_stok_awal"
+                                    value="{{old('kondensat_stok_awal',  $survey->kondensat_stok_awal)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="gas_bumi_stok_awal"
+                                    name="gas_bumi_stok_awal"
+                                    value="{{old('gas_bumi_stok_awal',  $survey->gas_bumi_stok_awal)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3. Volume Penjualan<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Sales</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="minyak_mentah_penjualan"
+                                    name="minyak_mentah_penjualan"
+                                    value="{{old('minyak_mentah_penjualan',  $survey->minyak_mentah_penjualan)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="kondensat_penjualan"
+                                    name="kondensat_penjualan"
+                                    value="{{old('kondensat_penjualan',  $survey->kondensat_penjualan)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="gas_bumi_penjualan"
+                                    name="gas_bumi_penjualan"
+                                    value="{{old('gas_bumi_penjualan',  $survey->gas_bumi_penjualan)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4. Hilang/Susut<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Loss</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="minyak_mentah_hilang"
+                                    name="minyak_mentah_hilang"
+                                    value="{{old('minyak_mentah_hilang',  $survey->minyak_mentah_hilang)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="kondensat_hilang"
+                                    name="kondensat_hilang"
+                                    value="{{old('kondensat_hilang',  $survey->kondensat_hilang)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="gas_bumi_hilang"
+                                    name="gas_bumi_hilang"
+                                    value="{{old('gas_bumi_hilang',  $survey->gas_bumi_hilang)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5. Stock Akhir<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Final Stock</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="minyak_mentah_stok_akhir"
+                                    name="minyak_mentah_stok_akhir"
+                                    value="{{old('minyak_mentah_stok_akhir',  $survey->minyak_mentah_stok_akhir)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="kondensat_stok_akhir"
+                                    name="kondensat_stok_akhir"
+                                    value="{{old('kondensat_stok_akhir',  $survey->kondensat_stok_akhir)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="gas_bumi_stok_akhir"
+                                    name="gas_bumi_stok_akhir"
+                                    value="{{old('gas_bumi_stok_akhir',  $survey->gas_bumi_stok_akhir)}}">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
     </table>
+    <br>
+    <table class="table table-borderless">
+        <tr>
+            <td class="py-0">
+                <div class="mb-0 row ">
+                    <table class="table table-bordered border-dark align-middle">
+                        <tr>
+                            <th class="border-dark border text-center">
+                                VI. PENDAPATAN LAIN SELAMA TAHUN 2021 <br>
+                                <span class="fst-italic">OTHER REVENUE DURING 2021</span>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
 
+        <tr>
+            <td>
+                <div class="mb-1 row ">
+                    <table class="table table-bordered border-dark align-middle table-sm" style="font-size: 14px">
+                        <tr class="text-center">
+                            <th>Jenis Pendapatan/<span class="fst-italic">Kind Of Revenue</span></th>
+                            <th>Nilai/<span class="fst-italic">Value</span> <br>(Rupiah)</th>
+                        </tr>
+                        <tr class="text-center" style="font-size: 10px">
+                            <td>(1)</td>
+                            <td>(2)</td>
+                        </tr>
+                        <tr class="border-bottom-0">
+                            <td>1. Pendapatan dari jasa/<span class="fst-italic">Income from services</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr class="border-0">
+                            <td> &nbsp; &nbsp; a. Jasa penambangan pihak lain
+                                <span class="fst-italic">Mining service carried out of other</span>
+                            </td>
+                            <td class="border-start-0">
+                                <input type="text" class="form-control form-control-sm" id="pendapatan_jasa_penambangan"
+                                    name="pendapatan_jasa_penambangan"
+                                    value="{{old('pendapatan_jasa_penambangan',  $survey->pendapatan_jasa_penambangan)}}">
+                            </td>
 
+                        </tr>
+                        <tr class="border-0">
+                            <td class=""> &nbsp; &nbsp; b. Transportasi penjualan hasil tambang/
+                                <span class="fst-italic">Delivery changes</span>
+                            </td>
+                            <td class="border-start-0">
+                                <input type="text" class="form-control form-control-sm"
+                                    id="pendapatan_jasa_transportasi" name="pendapatan_jasa_transportasi"
+                                    value="{{old('pendapatan_jasa_transportasi',  $survey->pendapatan_jasa_transportasi)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2. Pendapatan dari penyewaan tanah, mesin dan peralatan, gedung dan bangunan<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Income from rent of land, machine and equipment,
+                                    building, and ifrastucture</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pendapatan_penyewaan"
+                                    name="pendapatan_penyewaan"
+                                    value="{{old('pendapatan_penyewaan',  $survey->pendapatan_penyewaan)}}">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>3. Lainnya, seperti penjualan baranng<br>
+                                <span class="fst-italic">&nbsp; &nbsp; Other income, i.e. goods sold</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pendapatan_lainnya"
+                                    name="pendapatan_lainnya"
+                                    value="{{old('pendapatan_lainnya',  $survey->pendapatan_lainnya)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>4. JUMLAH/<span class="fst-italic">TOTAL</span>
+                            </th>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pendapatan_jumlah"
+                                    name="pendapatan_jumlah"
+                                    value="{{old('pendapatan_jumlah',  $survey->pendapatan_jumlah)}}">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="table table-borderless">
+        <tr>
+            <td class="py-0">
+                <div class="mb-0 row ">
+                    <table class="table table-bordered border-dark align-middle">
+                        <tr>
+                            <th class="border-dark border text-center">
+                                LEGALISASI PENGISIAN DOKUMEN<br>
+                                <span class="fst-italic">Questionare Legality</span>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="mb-1 row ">
+                    <table class="table table-bordered border-dark align-middle table-sm" style="font-size: 14px">
+                        <tr class="">
+                            <td class="px-5">
+                                <div class="mb-2 row">
+                                    <div class="col-sm-12">Data dalam daftar isian ini diisi dengan sebenarnya dan
+                                        menurut keadaan yang
+                                        sesungguhnya: <br>
+                                        <span class="fst-italic">
+                                            Data started in this form has been filled out truthfully and
+                                            accurately:</span>
+                                    </div>
+                                </div>
+                                <div class="mb-1 row">
+                                    <div class="col-sm-12">
+                                        1. Penanggung Jawab Isian Dokumen
+                                        <br>
+                                        <span class="fst-italic">
+                                            &nbsp; &nbsp; Person in Charge of Document Content</span>
+                                    </div>
+                                </div>
+                                <div class="mb-1 row d-flex align-items-center">
+                                    <div class="col-sm-4  ">
+                                        &nbsp; &nbsp; Nama/<span class="fst-italic">Name</span>
+                                    </div>
+                                    <div class="col-sm-1  text-end">
+                                        :
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control form-control-sm" id="pj_dokumen_nama"
+                                            name="pj_dokumen_nama"
+                                            value="{{old('pj_dokumen_nama',  $survey->pj_dokumen_nama)}}">
+                                    </div>
+                                </div>
+                                <div class="mb-1 row d-flex align-items-center">
+                                    <div class="col-sm-4  ">
+                                        &nbsp; &nbsp; Jabatan/<span class="fst-italic">Positionn</span>
+                                    </div>
+                                    <div class="col-sm-1  text-end">
+                                        :
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control form-control-sm" id="pj_dokumen_jabatan"
+                                            name="pj_dokumen_jabatan"
+                                            value="{{old('pj_dokumen_jabatan',  $survey->pj_dokumen_jabatan)}}">
+                                    </div>
+                                </div>
+                                <div class="mb-1 row d-flex align-items-center">
+                                    <div class="col-sm-4  ">
+                                        &nbsp; &nbsp;<span class="fst-italic">E-mail</span>
+                                    </div>
+                                    <div class="col-sm-1  text-end">
+                                        :
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control form-control-sm" id="pj_dokumen_email"
+                                            name="pj_dokumen_email"
+                                            value="{{old('pj_dokumen_email',  $survey->pj_dokumen_email)}}">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="mb-1 row">
+                                    <div class="col-sm-12">
+                                        2. Pemberi Keterangan
+                                        <br>
+                                        <span class="fst-italic">
+                                            &nbsp; &nbsp; Contact Person</span>
+                                    </div>
+                                </div>
+                                <div class="mb-1 row d-flex align-items-center">
+                                    <div class="col-sm-4  ">
+                                        &nbsp; &nbsp; Nama/<span class="fst-italic">Name</span>
+                                    </div>
+                                    <div class="col-sm-1  text-end">
+                                        :
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control form-control-sm"
+                                            id="pemberi_keterangan_nama" name="pemberi_keterangan_nama"
+                                            value="{{old('pemberi_keterangan_nama',  $survey->pemberi_keterangan_nama)}}">
+                                    </div>
+                                </div>
+
+                                <div class="mb-1 row d-flex align-items-center">
+                                    <div class="col-sm-4  ">
+                                        &nbsp; &nbsp; Jabatan/<span class="fst-italic">Position</span>
+                                    </div>
+                                    <div class="col-sm-1  text-end">
+                                        :
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control form-control-sm"
+                                            id="pemberi_keterangan_jabatan" name="pemberi_keterangan_jabatan"
+                                            value="{{old('pemberi_keterangan_jabatan',  $survey->pemberi_keterangan_jabatan)}}">
+                                    </div>
+                                </div>
+                                <div class="mb-1 row d-flex align-items-center">
+                                    <div class="col-sm-4  ">
+                                        &nbsp; &nbsp; Telepon/<span class="fst-italic">Phone Number</span>
+                                    </div>
+                                    <div class="col-sm-1  text-end">
+                                        :
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control form-control-sm"
+                                            id="pemberi_keterangan_telp" name="pemberi_keterangan_telp"
+                                            value="{{old('pemberi_keterangan_telp',  $survey->pemberi_keterangan_telp)}}">
+                                    </div>
+                                    <div class="col-sm-1  d-flex align-items-center text-end">
+                                        Fax:
+                                    </div>
+                                    <div class="col-sm-3  text-end">
+                                        <input type="text" class="form-control form-control-sm"
+                                            id="pemberi_keterangan_fax" name="pemberi_keterangan_fax"
+                                            value="{{old('pemberi_keterangan_fax',  $survey->pemberi_keterangan_fax)}}">
+                                    </div>
+                                </div>
+                                <div class="mb-1 row d-flex align-items-center">
+                                    <div class="col-sm-4  ">
+                                        &nbsp; &nbsp;<span class="fst-italic">E-mail</span>
+                                    </div>
+                                    <div class="col-sm-1  text-end">
+                                        :
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control form-control-sm"
+                                            id="pemberi_keterangan_email" name="pemberi_keterangan_email"
+                                            value="{{old('pemberi_keterangan_email',  $survey->pemberi_keterangan_email)}}">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="table table-borderless">
+        <tr>
+            <td class="py-0">
+                <div class="mb-0 row ">
+                    <table class="table table-bordered border-dark align-middle">
+                        <tr>
+                            <th class="border-dark border text-center">
+                                BAGIAN INI HANYA DIISI OLEH PETUGAS BPS<br>
+                                <span class="fst-italic">For BPS Enumerator's Use Only</span>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="mb-1 row ">
+                    <table class="table table-bordered border-dark align-middle table-sm" style="font-size: 14px">
+                        <tr class="text-center">
+                            <th class="bg-secondary"></th>
+                            <th>Pencacah <br> <span class="fst-italic">Enumerator</span>
+                            </th>
+                            <th>Pemeriksa/Pengwas <br> <span class="fst-italic">Supervisor/investigator</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>1. Nama/<span class="fst-italic">Name</span></td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pencacah_nama"
+                                    name="pencacah_nama" value="{{old('pencacah_nama',  $survey->pencacah_nama)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengawas_nama"
+                                    name="pengawas_nama" value="{{old('pengawas_nama',  $survey->pengawas_nama)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2. Jabatan/<span class="fst-italic">Occupation</span></td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pencacah_jabatan"
+                                    name="pencacah_jabatan"
+                                    value="{{old('pencacah_jabatan',  $survey->pencacah_jabatan)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengawas_jabatan"
+                                    name="pengawas_jabatan"
+                                    value="{{old('pengawas_jabatan',  $survey->pengawas_jabatan)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3. No. HP/<span class="fst-italic">Phone Number</span></td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pencacah_no_hp"
+                                    name="pencacah_no_hp" value="{{old('pencacah_no_hp',  $survey->pencacah_no_hp)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengawas_no_hp"
+                                    name="pengawas_no_hp" value="{{old('pengawas_no_hp',  $survey->pengawas_no_hp)}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4. Tanggal/<span class="fst-italic">Date</span></td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pencacah_tanggal"
+                                    name="pencacah_tanggal"
+                                    value="{{old('pencacah_tanggal',  $survey->pencacah_tanggal)}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" id="pengawas_tanggal"
+                                    name="pengawas_tanggal"
+                                    value="{{old('pengawas_tanggal',  $survey->pengawas_tanggal)}}">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="table table-borderless">
+        <tr>
+            <td class="py-0">
+                <div class="mb-0 row ">
+                    <table class="table table-bordered border-dark align-middle">
+                        <tr>
+                            <th class="border-dark border text-center">
+                                CATATAN PETUGAS
+                                <span class="fst-italic">Enumerator's Notes</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Catatan" id="catatan_petugas"
+                                        name="catatan_petugas">{{old('catatan_petugas',  $survey->catatan_petugas)}}</textarea>
+                                    <label for="catatan_petugas">Catatan</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+
+        </tr>
+    </table>
     <br>
     <div class="mb-1 row float-end">
         <button type="submit" class="btn btn-primary ">Submit</button>

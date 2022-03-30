@@ -24,7 +24,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     //
     Route::get('/', [HomeController::class, 'index']);
-
+    Route::get('dashboard', [HomeController::class, 'index']);
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::post('/profile/store', [ProfileController::class, 'store']);
 

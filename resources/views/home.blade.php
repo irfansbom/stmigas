@@ -13,11 +13,17 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Tahun</th>
-                        <th>Pengupdate</th>
-                        <th>Update</th>
-                        <th>Aksi</th>
+                        <th rowspan="2">No</th>
+                        <th rowspan="2">Tahun</th>
+                        <th colspan="2">Dibuat</th>
+                        <th colspan="2">Diupdate</th>
+                        <th rowspan="2">Aksi</th>
+                    </tr>
+                    <tr>
+                        <th>Oleh</th>
+                        <th>Tanggal</th>
+                        <th>Oleh</th>
+                        <th>Tanggal</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,7 +31,9 @@
                     <tr>
                         <td>{{++$key}}</td>
                         <td>{{$sur->tahun}}</td>
-                        <td>{{$sur->email}}</td>
+                        <td>{{$sur->created_by}}</td>
+                        <td>{{$sur->created_at}}</td>
+                        <td>{{$sur->updated_by}}</td>
                         <td>{{$sur->updated_at}}</td>
                         <td><a class="btn btn-warning"
                                 href="{{url('form-edit/' .  \Crypt::encryptString($sur->id) )}}">Edit</a>
