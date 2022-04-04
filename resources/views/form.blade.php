@@ -3,9 +3,9 @@
     <input type="text" id="email" name="email" value="{{$user->email}}" hidden>
     <div class="mb-1 row ">
         <label for="kip" class="col-sm-1 col-form-label">KIP</label>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <input type="text" class="form-control form-control-sm" id="kip" name="kip"
-                value="{{old('kip',  $survey->kip)}}">
+                value="{{old('kip',  $survey->kip)}}" maxlength="8">
         </div>
         <div class="col-sm-2 d-flex align-items-center">
             <span style="font-size: 8px">Diisi Oleh BPS <br>
@@ -17,50 +17,84 @@
         <tr>
             <td class="px-5 py-3">
                 <div class=" mb-1 row">
-                    <label for="provinsi" class="col-sm-3 col-form-label">
+                    <label for="provinsi" class="col-sm-4 col-form-label">
                         <strong>1. Provinsi </strong> <br>
                         <span class="fst-italic">&nbsp; &nbsp; Province</span>
                     </label>
-                    <div class="col-sm-9 d-flex align-items-center">
+                    <div class="col-sm-8 d-flex align-items-center">
                         <select class="form-select " aria-label="Default select" id="provinsi" name="provinsi">
                             <option value="16" selected>[16]Sumatera Selatan</option>
                         </select>
                     </div>
                 </div>
                 <div class="mb-1 row d-flex align-items-center">
-                    <label for="kabkot" class="col-sm-3 col-form-label">
+                    <label for="kabkot" class="col-sm-4 col-form-label">
                         <strong>2. Kabupaten/Kota*)</strong> <br>
                         <span class="fst-italic">&nbsp; &nbsp; Regency/ Municipality</span>
                     </label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" id="kabkot" name="kabkot"
                             value="{{old('kabkot',  $survey->kabkot)}}">
                     </div>
                 </div>
                 <div class="mb-1 row d-flex align-items-center">
-                    <label for="kecamatan" class="col-sm-3 col-form-label">
+                    <label for="kecamatan" class="col-sm-4 col-form-label">
                         <strong>3. Kecamatan</strong> <br>
                         <span class="fst-italic">&nbsp; &nbsp; Sub-district</span>
                     </label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" id="kecamatan" name="kecamatan"
                             value="{{old('kecamatan',  $survey->kecamatan)}}">
                     </div>
                 </div>
                 <div class="mb-1 row d-flex align-items-center">
-                    <label for="kelurahan" class="col-sm-3 col-form-label">
+                    <label for="kelurahan" class="col-sm-4 col-form-label">
                         <strong>4. Kelurahan</strong> <br>
                         <span class="fst-italic">&nbsp; &nbsp; Village</span>
                     </label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" id="kelurahan" name="kelurahan"
                             value="{{old('kelurahan',  $survey->kelurahan)}}">
                     </div>
                 </div>
             </td>
+            <td class="px-2 py-0" style="width:15%">
+                <div class="mb-1 row text-center">
+                    <span style="font-size: 8px">Diisi oleh BPS <br>
+                        <span class="fst-italic">Filled by
+                            BPS</span>
+                    </span>
+                </div>
+                <div class=" mb-4 row">
+                    <div class="col-sm-12 d-flex align-items-center">
+                        <input type="number" class="form-control" name="kd_prov" id="kd_prov" maxlength="2"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+
+                    </div>
+                </div>
+                <div class=" mb-4 row">
+                    <div class="col-sm-12 d-flex align-items-center">
+                        <input type="number" class="form-control" name="kd_kab" id="kd_kab" maxlength="2"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    </div>
+                </div>
+                <div class=" mb-4 row">
+                    <div class="col-sm-12 d-flex align-items-center">
+                        <input type="number" class="form-control" name="kd_kec" id="kd_kec" maxlength="3"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    </div>
+                </div>
+                <div class=" mb-4 row">
+                    <div class="col-sm-12 d-flex align-items-center">
+                        <input type="number" class="form-control" name="kd_desa" id="kd_desa" maxlength="3"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    </div>
+                </div>
+
+            </td>
         </tr>
         <tr>
-            <td class="px-5 py-3">
+            <td class="px-5 py-3" colspan="2">
                 <div class="mb-1 row">
                     <label for="nama_perusahaan" class="col-sm-3 col-form-label">
                         <strong>5. Nama perusahaan</strong> <br>
@@ -88,8 +122,11 @@
                         E-mail :<br>
                     </label>
                     <div class="col-sm-4 d-flex align-items-center">
-                        <input type="text" class="form-control" id="email_perusahaan" name="email_perusahaan"
+                        <input type="email" class="form-control" id="email_perusahaan" name="email_perusahaan"
                             value="{{old('email_perusahaan',  $survey->email_perusahaan)}}">
+                        <div class="invalid-tooltip">
+                            Email Salah
+                        </div>
                     </div>
                 </div>
                 <div class="mb-1 row">
@@ -98,7 +135,7 @@
                         Phone :<br>
                     </label>
                     <div class="col-sm-4 d-flex align-items-center">
-                        <input type="text" class="form-control" id="phone_perusahaan" name="phone_perusahaan"
+                        <input type="tel" class="form-control" id="phone_perusahaan" name="phone_perusahaan"
                             value="{{old('phone_perusahaan',  $survey->phone_perusahaan)}}">
                     </div>
                     <label for="fax_perusahaan" class="col-sm-1 col-form-label">
@@ -126,7 +163,7 @@
                         E-mail :<br>
                     </label>
                     <div class="col-sm-4 d-flex align-items-center">
-                        <input type="text" class="form-control" id="email_pusat" name="email_pusat"
+                        <input type="email" class="form-control" id="email_pusat" name="email_pusat"
                             value="{{old('email_pusat',  $survey->email_pusat)}}">
                     </div>
                 </div>
@@ -158,13 +195,6 @@
                 <span>*) Coret yang tidak sesuai/</span><span class="fst-italic">Cross out if not valid</span>
             </td>
         </tr>
-        {{-- <tr>
-            <th>
-                Tujuan Turvei
-            </th>
-            <td>:</td>
-            <td>Memperoleh data Statistik pertambangan Migas untuk perencanaan dan evaluasi pembangunan nasional</td>
-        </tr> --}}
         <tr>
             <td>
                 <div class="row mb-1">
@@ -261,7 +291,7 @@
                     <div class="col-sm-9"></div>
                     <div class="col-sm-3 d-flex align-items-center">
                         <input type="text" class="form-control form-control-sm" id="kbli" name="kbli"
-                            value="{{old('kbli', $survey->kbli)}}">
+                            value="{{old('kbli', $survey->kbli)}}" maxlength="5">
                     </div>
                 </div>
             </td>
@@ -284,12 +314,13 @@
                     <div class="col-sm-2">
                         TAC-3
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         Lainnya -4
                     </div>
-                    <div class="col-sm-1 d-flex align-items-center">
-                        <input type="text" class="form-control" id="bentuk_kerjasama" name="bentuk_kerjasama"
-                            value="{{old('bentuk_kerjasama',  $survey->bentuk_kerjasama)}}">
+                    <div class="col-sm-2 d-flex align-items-center">
+                        <input type="number" class="form-control" id="bentuk_kerjasama" name="bentuk_kerjasama" max="4"
+                            min="1" value="{{old('bentuk_kerjasama',  $survey->bentuk_kerjasama)}}" maxlength="1"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                     </div>
                 </div>
                 <div class="mb-1 row">
@@ -299,44 +330,50 @@
                     </label>
                 </div>
                 <div class="mb-1 row d-flex align-items-center">
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                         a. Pemerintah Pusat/ <span class="fst-italic">Central Goverment</span>
                     </div>
-                    <div class="col-sm-1">
-                        <input type="text" class="form-control form-control-sm" id="pemodalan_pem_pusat"
-                            name="pemodalan_pem_pusat"
-                            value="{{old('pemodalan_pem_pusat',  $survey->pemodalan_pem_pusat)}}">
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control form-control-sm" id="pemodalan_pem_pusat"
+                            name="pemodalan_pem_pusat" min="1" max="100"
+                            value="{{old('pemodalan_pem_pusat',  $survey->pemodalan_pem_pusat)}}" maxlength="3"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                     </div>
                     %
                 </div>
                 <div class="mb-1 row d-flex align-items-center">
-                    <div class=" col-sm-6">
+                    <div class=" col-sm-5">
                         b. Pemerintah Daerah/ <span class="fst-italic">Local Goverment</span>
                     </div>
-                    <div class="col-sm-1">
-                        <input type="text" class="form-control form-control-sm" id="pemodalan_pem_daerah"
-                            name="pemodalan_pem_daerah"
-                            value="{{old('pemodalan_pem_daerah',  $survey->pemodalan_pem_daerah)}}">
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control form-control-sm" id="pemodalan_pem_daerah"
+                            name="pemodalan_pem_daerah" min="1" max="100"
+                            value="{{old('pemodalan_pem_daerah',  $survey->pemodalan_pem_daerah)}}" maxlength="3"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                     </div>
                     %
                 </div>
                 <div class="mb-1 row d-flex align-items-center">
-                    <div class=" col-sm-6">
+                    <div class=" col-sm-5">
                         c. Swasta/ <span class="fst-italic">Private</span>
                     </div>
-                    <div class="col-sm-1">
-                        <input type="text" class="form-control form-control-sm" id="pemodalan_swasta"
-                            name="pemodalan_swasta" value="{{old('pemodalan_swasta',  $survey->pemodalan_swasta)}}">
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control form-control-sm" id="pemodalan_swasta"
+                            name="pemodalan_swasta" value="{{old('pemodalan_swasta',  $survey->pemodalan_swasta)}}"
+                            maxlength="3" min="1" max="100"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                     </div>
                     %
                 </div>
                 <div class="mb-1 row d-flex align-items-center">
-                    <div class=" col-sm-6">
+                    <div class=" col-sm-5">
                         d. Asing/ <span class="fst-italic">Foreign</span>
                     </div>
-                    <div class="col-sm-1">
-                        <input type="text" class="form-control form-control-sm" id="pemodalan_asing"
-                            name="pemodalan_asing" value="{{old('pemodalan_asing',  $survey->pemodalan_asing)}}">
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control form-control-sm" id="pemodalan_asing"
+                            name="pemodalan_asing" value="{{old('pemodalan_asing',  $survey->pemodalan_asing)}}"
+                            maxlength="3" min="1" max="100"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                     </div>
                     {{-- <div class="col-sm-1">%</div> --}}
                     %
@@ -346,10 +383,10 @@
 
                 </div>
                 <div class="mb-3 row d-flex align-items-center">
-                    <div class=" col-sm-6">
+                    <div class=" col-sm-5">
                         e. jumlah/ <span class="fst-italic">Total</span>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <input type="text" class="form-control form-control-sm" id="pemodalan_jumlah"
                             name="pemodalan_jumlah" value="100" disabled>
                     </div>
@@ -390,9 +427,11 @@
                                         value="{{old('pemegang_saham_1_negara',  $survey->pemegang_saham_1_negara)}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pemegang_saham_1_share"
-                                        name="pemegang_saham_1_share"
-                                        value="{{old('pemegang_saham_1_share',  $survey->pemegang_saham_1_share)}}">
+                                    <input type="number" class="form-control form-control-sm"
+                                        id="pemegang_saham_1_share" name="pemegang_saham_1_share"
+                                        value="{{old('pemegang_saham_1_share',  $survey->pemegang_saham_1_share)}}"
+                                        maxlength="3" min="1" max="100"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </td>
                             </tr>
                             <tr>
@@ -408,9 +447,11 @@
                                         value="{{old('pemegang_saham_2_negara',  $survey->pemegang_saham_2_negara)}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pemegang_saham_2_share"
-                                        name="pemegang_saham_2_share"
-                                        value="{{old('pemegang_saham_2_share',  $survey->pemegang_saham_2_share)}}">
+                                    <input type="number" class="form-control form-control-sm"
+                                        id="pemegang_saham_2_share" name="pemegang_saham_2_share"
+                                        value="{{old('pemegang_saham_2_share',  $survey->pemegang_saham_2_share)}}"
+                                        maxlength="3" min="1" max="100"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </td>
                             </tr>
                             <tr>
@@ -426,9 +467,11 @@
                                         value="{{old('pemegang_saham_3_negara',  $survey->pemegang_saham_3_negara)}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pemegang_saham_3_share"
-                                        name="pemegang_saham_3_share"
-                                        value="{{old('pemegang_saham_3_share',  $survey->pemegang_saham_3_share)}}">
+                                    <input type="number" class="form-control form-control-sm"
+                                        id="pemegang_saham_3_share" name="pemegang_saham_3_share"
+                                        value="{{old('pemegang_saham_3_share',  $survey->pemegang_saham_3_share)}}"
+                                        maxlength="3" min="1" max="100"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </td>
                             </tr>
                             <tr>
@@ -444,9 +487,11 @@
                                         value="{{old('pemegang_saham_4_negara',  $survey->pemegang_saham_4_negara)}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pemegang_saham_4_share"
-                                        name="pemegang_saham_4_share"
-                                        value="{{old('pemegang_saham_4_share',  $survey->pemegang_saham_4_share)}}">
+                                    <input type="number" class="form-control form-control-sm"
+                                        id="pemegang_saham_4_share" name="pemegang_saham_4_share"
+                                        value="{{old('pemegang_saham_4_share',  $survey->pemegang_saham_4_share)}}"
+                                        maxlength="3" min="1" max="100"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </td>
                             </tr>
                             <tr>
@@ -462,9 +507,11 @@
                                         value="{{old('pemegang_saham_5_negara',  $survey->pemegang_saham_5_negara)}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pemegang_saham_5_share"
-                                        name="pemegang_saham_5_share"
-                                        value="{{old('pemegang_saham_5_share',  $survey->pemegang_saham_5_share)}}">
+                                    <input type="number" class="form-control form-control-sm"
+                                        id="pemegang_saham_5_share" name="pemegang_saham_5_share"
+                                        value="{{old('pemegang_saham_5_share',  $survey->pemegang_saham_5_share)}}"
+                                        maxlength="3" min="1" max="100"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </td>
                             </tr>
                         </table>
@@ -508,8 +555,8 @@
                                 <td>a. Laki-laki/<span class="fst-italic">Male</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pekerja_lakilaki"
-                                        name="pekerja_lakilaki"
+                                    <input type="number" class="form-control form-control-sm" id="pekerja_lakilaki"
+                                        name="pekerja_lakilaki" min="1"
                                         value="{{old('pekerja_lakilaki',  $survey->pekerja_lakilaki)}}">
                                 </td>
 
@@ -518,8 +565,8 @@
                                 <td>b. Perempuan/<span class="fst-italic">Female</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pekerja_perempuan"
-                                        name="pekerja_perempuan"
+                                    <input type="number" class="form-control form-control-sm" id="pekerja_perempuan"
+                                        name="pekerja_perempuan" min="1"
                                         value="{{old('pekerja_perempuan',  $survey->pekerja_perempuan)}}">
                                 </td>
                             </tr>
@@ -527,8 +574,8 @@
                                 <td> <strong> c. Jumlah/<span class="fst-italic">Total</span></strong>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm"
-                                        id="pekerja_jenis_kelamin_jumlah" name="pekerja_jenis_kelamin_jumlah"
+                                    <input type="number" class="form-control form-control-sm"
+                                        id="pekerja_jenis_kelamin_jumlah" name="pekerja_jenis_kelamin_jumlah" min="1"
                                         value="{{old('pekerja_jenis_kelamin_jumlah',  $survey->pekerja_jenis_kelamin_jumlah)}}">
                                 </td>
                             </tr>
@@ -562,7 +609,7 @@
                                         and Equal or lower</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pekerja_sltp"
+                                    <input type="number" class="form-control form-control-sm" id="pekerja_sltp" min="1"
                                         name="pekerja_sltp" value="{{old('pekerja_sltp',  $survey->pekerja_sltp)}}">
                                 </td>
 
@@ -571,7 +618,7 @@
                                 <td>b. Sampai dengan SLTA/<span class="fst-italic">High School and lower</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pekerja_slta"
+                                    <input type="number" class="form-control form-control-sm" id="pekerja_slta" min="1"
                                         name="pekerja_slta" value="{{old('pekerja_slta',  $survey->pekerja_slta)}}">
                                 </td>
                             </tr>
@@ -579,8 +626,8 @@
                                 <td> c. Diploma I/II/III
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pekerja_diploma"
-                                        name="pekerja_diploma"
+                                    <input type="number" class="form-control form-control-sm" id="pekerja_diploma"
+                                        name="pekerja_diploma" min="1"
                                         value="{{old('pekerja_diploma',  $survey->pekerja_diploma)}}">
                                 </td>
                             </tr>
@@ -588,8 +635,8 @@
                                 <td> d. Sarjana dan Diploma IV/<span class="fst-italic">Undergraduate</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pekerja_sarjana"
-                                        name="pekerja_sarjana"
+                                    <input type="number" class="form-control form-control-sm" id="pekerja_sarjana"
+                                        name="pekerja_sarjana" min="1"
                                         value="{{old('pekerja_sarjana',  $survey->pekerja_sarjana)}}">
                                 </td>
                             </tr>
@@ -597,8 +644,8 @@
                                 <td> e. Pasca Sarjana/<span class="fst-italic">Post Graduate</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="pekerja_pascasarjana"
-                                        name="pekerja_pascasarjana"
+                                    <input type="number" class="form-control form-control-sm" id="pekerja_pascasarjana"
+                                        name="pekerja_pascasarjana" min="1"
                                         value="{{old('pekerja_pascasarjana',  $survey->pekerja_pascasarjana)}}">
                                 </td>
                             </tr>
@@ -606,8 +653,8 @@
                                 <td> <strong> f. Jumlah/<span class="fst-italic">Total</span></strong>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm"
-                                        id="pekerja_pendidikan_jumlah" name="pekerja_pendidikan_jumlah"
+                                    <input type="number" class="form-control form-control-sm"
+                                        id="pekerja_pendidikan_jumlah" name="pekerja_pendidikan_jumlah" min="1"
                                         value="{{old('pekerja_pendidikan_jumlah',  $survey->pekerja_pendidikan_jumlah)}}">
                                 </td>
                             </tr>
@@ -620,8 +667,8 @@
                             <span class="fst-italic">Number of Foreign Workes</span></strong>
                     </label>
                     <div class="col-sm-2 d-flex align-items-center">
-                        <input type="text" class="form-control form-control-sm" id="pekerja_asing" name="pekerja_asing"
-                            value="{{old('pekerja_asing',  $survey->pekerja_asing)}}">
+                        <input type="number" class="form-control form-control-sm" id="pekerja_asing"
+                            name="pekerja_asing" min="1" value="{{old('pekerja_asing',  $survey->pekerja_asing)}}">
                     </div>
                     <div class="col-sm-2">
                         Orang/<span class="fst-italic">Person</span>
@@ -633,8 +680,8 @@
                             <span class="fst-italic">Number of Outsourcing Workers</span></strong>
                     </label>
                     <div class="col-sm-2 d-flex align-items-center">
-                        <input type="text" class="form-control form-control-sm" id="pekerja_outsourcing"
-                            name="pekerja_outsourcing"
+                        <input type="number" class="form-control form-control-sm" id="pekerja_outsourcing"
+                            name="pekerja_outsourcing" min="1"
                             value="{{old('pekerja_outsourcing',  $survey->pekerja_outsourcing)}}">
                     </div>
                     <div class="col-sm-2">
@@ -709,11 +756,11 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Salaries and Regular Allowance</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="gaji_pk_tetap"
+                                <input type="number" class="form-control form-control-sm" id="gaji_pk_tetap"
                                     name="gaji_pk_tetap" value="{{old('gaji_pk_tetap',  $survey->gaji_pk_tetap)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="gaji_pk_kontrak"
+                                <input type="number" class="form-control form-control-sm" id="gaji_pk_kontrak"
                                     name="gaji_pk_kontrak"
                                     value="{{old('gaji_pk_kontrak',  $survey->gaji_pk_kontrak)}}">
                             </td>
@@ -723,12 +770,12 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Overtime</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="lembur_pk_tetap"
+                                <input type="number" class="form-control form-control-sm" id="lembur_pk_tetap"
                                     name="lembur_pk_tetap"
                                     value="{{old('lembur_pk_tetap',  $survey->lembur_pk_tetap)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="lembur_pk_kontrak"
+                                <input type="number" class="form-control form-control-sm" id="lembur_pk_kontrak"
                                     name="lembur_pk_kontrak"
                                     value="{{old('lembur_pk_kontrak',  $survey->lembur_pk_kontrak)}}">
                             </td>
@@ -738,12 +785,12 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Transportation and Meal</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="transport_pk_tetap"
+                                <input type="number" class="form-control form-control-sm" id="transport_pk_tetap"
                                     name="transport_pk_tetap"
                                     value="{{old('transport_pk_tetap',  $survey->transport_pk_tetap)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="transport_pk_kontrak"
+                                <input type="number" class="form-control form-control-sm" id="transport_pk_kontrak"
                                     name="transport_pk_kontrak"
                                     value="{{old('transport_pk_kontrak',  $survey->transport_pk_kontrak)}}">
                             </td>
@@ -753,11 +800,11 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Reward, Bonus, etc</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bonus_pk_tetap"
+                                <input type="number" class="form-control form-control-sm" id="bonus_pk_tetap"
                                     name="bonus_pk_tetap" value="{{old('bonus_pk_tetap',  $survey->bonus_pk_tetap)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bonus_pk_kontrak"
+                                <input type="number" class="form-control form-control-sm" id="bonus_pk_kontrak"
                                     name="bonus_pk_kontrak"
                                     value="{{old('bonus_pk_kontrak',  $survey->bonus_pk_kontrak)}}">
                             </td>
@@ -767,12 +814,12 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Pension Contribution and Sosial Allowance</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pensiun_pk_tetap"
+                                <input type="number" class="form-control form-control-sm" id="pensiun_pk_tetap"
                                     name="pensiun_pk_tetap"
                                     value="{{old('pensiun_pk_tetap',  $survey->pensiun_pk_tetap)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pensiun_pk_kontrak"
+                                <input type="number" class="form-control form-control-sm" id="pensiun_pk_kontrak"
                                     name="pensiun_pk_kontrak"
                                     value="{{old('pensiun_pk_kontrak',  $survey->pensiun_pk_kontrak)}}">
                             </td>
@@ -782,12 +829,12 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Labout Insurance</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="asuransi_pk_tetap"
+                                <input type="number" class="form-control form-control-sm" id="asuransi_pk_tetap"
                                     name="asuransi_pk_tetap"
                                     value="{{old('asuransi_pk_tetap',  $survey->asuransi_pk_tetap)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="asuransi_pk_kontrak"
+                                <input type="number" class="form-control form-control-sm" id="asuransi_pk_kontrak"
                                     name="asuransi_pk_kontrak"
                                     value="{{old('asuransi_pk_kontrak',  $survey->asuransi_pk_kontrak)}}">
                             </td>
@@ -797,12 +844,12 @@
                                 <span class="fst-italic">TOTAL</span>
                             </th>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="jumlah_balas_jasa_pk_tetap"
-                                    name="jumlah_balas_jasa_pk_tetap"
+                                <input type="number" class="form-control form-control-sm"
+                                    id="jumlah_balas_jasa_pk_tetap" name="jumlah_balas_jasa_pk_tetap"
                                     value="{{old('jumlah_balas_jasa_pk_tetap',  $survey->jumlah_balas_jasa_pk_tetap)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm"
+                                <input type="number" class="form-control form-control-sm"
                                     id="jumlah_balas_jasa_pk_kontrak" name="jumlah_balas_jasa_pk_kontrak"
                                     value="{{old('jumlah_balas_jasa_pk_kontrak',  $survey->jumlah_balas_jasa_pk_kontrak)}}">
                             </td>
@@ -822,7 +869,7 @@
                         Rp
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control form-control-sm" id="biaya_outsourcing"
+                        <input type="number" class="form-control form-control-sm" id="biaya_outsourcing"
                             name="biaya_outsourcing" value="{{old('biaya_outsourcing',  $survey->biaya_outsourcing)}}">
                     </div>
                 </div>
@@ -853,7 +900,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Depletion, collection and separation cost</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="biaya_pengurasan"
+                                <input type="number" class="form-control form-control-sm" id="biaya_pengurasan"
                                     name="biaya_pengurasan"
                                     value="{{old('biaya_pengurasan',  $survey->biaya_pengurasan)}}">
                             </td>
@@ -864,7 +911,7 @@
                                     to the main storage</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="biaya_angkutan"
+                                <input type="number" class="form-control form-control-sm" id="biaya_angkutan"
                                     name="biaya_angkutan" value="{{old('biaya_angkutan',  $survey->biaya_angkutan)}}">
                             </td>
                         </tr>
@@ -873,7 +920,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Storage cost</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="biaya_penyimpanan"
+                                <input type="number" class="form-control form-control-sm" id="biaya_penyimpanan"
                                     name="biaya_penyimpanan"
                                     value="{{old('biaya_penyimpanan',  $survey->biaya_penyimpanan)}}">
                             </td>
@@ -884,7 +931,7 @@
                                     other</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="biaya_subkontrak"
+                                <input type="number" class="form-control form-control-sm" id="biaya_subkontrak"
                                     name="biaya_subkontrak"
                                     value="{{old('biaya_subkontrak',  $survey->biaya_subkontrak)}}">
                             </td>
@@ -894,7 +941,7 @@
                                 <span class="fst-italic">TOTAL</span>
                             </th>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="biaya_jumlah_produksi"
+                                <input type="number" class="form-control form-control-sm" id="biaya_jumlah_produksi"
                                     name="biaya_jumlah_produksi"
                                     value="{{old('biaya_jumlah_produksi',  $survey->biaya_jumlah_produksi)}}">
                             </td>
@@ -979,12 +1026,12 @@
                             <td>a. Avgas/<span class="fst-italic">Avgas</span></td>
                             <td class="text-center">Liter</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_avgas_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_avgas_volume"
                                     name="bb_avgas_volume"
                                     value="{{old('bb_avgas_volume',  $survey->bb_avgas_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_avgas_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_avgas_nilai"
                                     name="bb_avgas_nilai" value="{{old('bb_avgas_nilai',  $survey->bb_avgas_nilai)}}">
                             </td>
                         </tr>
@@ -992,12 +1039,12 @@
                             <td>b. Avtur/<span class="fst-italic">Avtur</span></td>
                             <td class="text-center">Liter</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_avtur_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_avtur_volume"
                                     name="bb_avtur_volume"
                                     value="{{old('bb_avtur_volume',  $survey->bb_avtur_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_avtur_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_avtur_nilai"
                                     name="bb_avtur_nilai" value="{{old('bb_avtur_nilai',  $survey->bb_avtur_nilai)}}">
                             </td>
                         </tr>
@@ -1005,12 +1052,12 @@
                             <td>c. Bensin/<span class="fst-italic">gasolin</span></td>
                             <td class="text-center">Liter</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_bensin_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_bensin_volume"
                                     name="bb_bensin_volume"
                                     value="{{old('bb_bensin_volume',  $survey->bb_bensin_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_bensin_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_bensin_nilai"
                                     name="bb_bensin_nilai"
                                     value="{{old('bb_bensin_nilai',  $survey->bb_bensin_nilai)}}">
                             </td>
@@ -1019,12 +1066,12 @@
                             <td>d. Minyak Solar/Gas Oil/<span class="fst-italic">Automotive Diesel Oil</span></td>
                             <td class="text-center">Liter</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_solar_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_solar_volume"
                                     name="bb_solar_volume"
                                     value="{{old('bb_solar_volume',  $survey->bb_solar_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_solar_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_solar_nilai"
                                     name="bb_solar_nilai" value="{{old('bb_solar_nilai',  $survey->bb_solar_nilai)}}">
                             </td>
                         </tr>
@@ -1032,12 +1079,12 @@
                             <td>e. Minyak Diesel/<span class="fst-italic">Diesel Oil</span></td>
                             <td class="text-center">Liter</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_diesel_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_diesel_volume"
                                     name="bb_diesel_volume"
                                     value="{{old('bb_diesel_volume',  $survey->bb_diesel_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_diesel_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_diesel_nilai"
                                     name="bb_diesel_nilai"
                                     value="{{old('bb_diesel_nilai',  $survey->bb_diesel_nilai)}}">
                             </td>
@@ -1046,12 +1093,12 @@
                             <td>f. Minyak Tanah/<span class="fst-italic">Kerosene</span></td>
                             <td class="text-center">Liter</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_minyaktanah_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_minyaktanah_volume"
                                     name="bb_minyaktanah_volume"
                                     value="{{old('bb_minyaktanah_volume',  $survey->bb_minyaktanah_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_minyaktanah_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_minyaktanah_nilai"
                                     name="bb_minyaktanah_nilai"
                                     value="{{old('bb_minyaktanah_nilai',  $survey->bb_minyaktanah_nilai)}}">
                             </td>
@@ -1060,12 +1107,12 @@
                             <td>g. Elpiji/<span class="fst-italic">LPG</span></td>
                             <td class="text-center">Kg</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_elpiji_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_elpiji_volume"
                                     name="bb_elpiji_volume"
                                     value="{{old('bb_elpiji_volume',  $survey->bb_elpiji_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_elpiji_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_elpiji_nilai"
                                     name="bb_elpiji_nilai"
                                     value="{{old('bb_elpiji_nilai',  $survey->bb_elpiji_nilai)}}">
                             </td>
@@ -1074,12 +1121,12 @@
                             <td>h. Gas Alam/<span class="fst-italic">Natural Gas</span></td>
                             <td class="text-center">MMSCF</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_gasalam_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_gasalam_volume"
                                     name="bb_gasalam_volume"
                                     value="{{old('bb_gasalam_volume',  $survey->bb_gasalam_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_gasalam_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_gasalam_nilai"
                                     name="bb_gasalam_nilai"
                                     value="{{old('bb_gasalam_nilai',  $survey->bb_gasalam_nilai)}}">
                             </td>
@@ -1088,12 +1135,12 @@
                             <td>i. Minyak Bakar/<span class="fst-italic">Mini Fuel Oil</span></td>
                             <td class="text-center">Liter</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_minyakbakar_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_minyakbakar_volume"
                                     name="bb_minyakbakar_volume"
                                     value="{{old('bb_minyakbakar_volume',  $survey->bb_minyakbakar_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_minyakbakar_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_minyakbakar_nilai"
                                     name="bb_minyakbakar_nilai"
                                     value="{{old('bb_minyakbakar_nilai',  $survey->bb_minyakbakar_nilai)}}">
                             </td>
@@ -1102,12 +1149,12 @@
                             <td>j. Batubara/<span class="fst-italic">Coal</span></td>
                             <td class="text-center">Ton</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_batubara_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_batubara_volume"
                                     name="bb_batubara_volume"
                                     value="{{old('bb_batubara_volume',  $survey->bb_batubara_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_batubara_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_batubara_nilai"
                                     name="bb_batubara_nilai"
                                     value="{{old('bb_batubara_nilai',  $survey->bb_batubara_nilai)}}">
                             </td>
@@ -1118,7 +1165,7 @@
                             <td class="bg-secondary">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_lainnnya_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_lainnnya_nilai"
                                     name="bb_lainnnya_nilai"
                                     value="{{old('bb_lainnnya_nilai',  $survey->bb_lainnnya_nilai)}}">
                             </td>
@@ -1127,12 +1174,12 @@
                             <td>l. Pelumas/<span class="fst-italic">Lubricant</span></td>
                             <td class="text-center">Liter</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_pelumas_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_pelumas_volume"
                                     name="bb_pelumas_volume"
                                     value="{{old('bb_pelumas_volume',  $survey->bb_pelumas_volume)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_pelumas_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_pelumas_nilai"
                                     name="bb_pelumas_nilai"
                                     value="{{old('bb_pelumas_nilai',  $survey->bb_pelumas_nilai)}}">
                             </td>
@@ -1142,7 +1189,7 @@
                                 <span class="fst-italic">TOTAL</span>
                             </th>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="bb_jumlah_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_jumlah_nilai"
                                     name="bb_jumlah_nilai"
                                     value="{{old('bb_jumlah_nilai',  $survey->bb_jumlah_nilai)}}">
                             </td>
@@ -1159,7 +1206,7 @@
                             <span class="fst-italic">Volume of salt use</span></strong>
                     </label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control form-control-sm" id="garam_volume" name="garam_volume"
+                        <input type="number" class="form-control form-control-sm" id="garam_volume" name="garam_volume"
                             value="{{old('garam_volume',  $survey->garam_volume)}}">
                     </div>
                     <div class="col-sm-1 text-start">Ton</div>
@@ -1171,7 +1218,7 @@
                     </label>
                     <div class="col-sm-1 text-end">Rp</div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control form-control-sm" id="garam_volume" name="garam_volume"
+                        <input type="number" class="form-control form-control-sm" id="garam_volume" name="garam_volume"
                             value="{{old('garam_volume',  $survey->garam_volume)}}">
                     </div>
 
@@ -1202,7 +1249,7 @@
                                     Repairs</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_sukucadang"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_sukucadang"
                                     name="pengeluaran_sukucadang"
                                     value="{{old('pengeluaran_sukucadang',  $survey->pengeluaran_sukucadang)}}">
                             </td>
@@ -1212,7 +1259,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Stationaries and computer supplies</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_atk"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_atk"
                                     name="pengeluaran_atk"
                                     value="{{old('pengeluaran_atk',  $survey->pengeluaran_atk)}}">
                             </td>
@@ -1224,7 +1271,7 @@
                                     less than one year</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm"
+                                <input type="number" class="form-control form-control-sm"
                                     id="pengeluaran_peralatan_setahun" name="pengeluaran_peralatan_setahun"
                                     value="{{old('pengeluaran_peralatan_setahun',  $survey->pengeluaran_peralatan_setahun)}}">
                             </td>
@@ -1235,8 +1282,8 @@
                                     other equipments</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_sewa_kendaraan"
-                                    name="pengeluaran_sewa_kendaraan"
+                                <input type="number" class="form-control form-control-sm"
+                                    id="pengeluaran_sewa_kendaraan" name="pengeluaran_sewa_kendaraan"
                                     value="{{old('pengeluaran_sewa_kendaraan',  $survey->pengeluaran_sewa_kendaraan)}}">
                             </td>
                         </tr>
@@ -1246,7 +1293,7 @@
                                     building</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_sewa_tanah"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_sewa_tanah"
                                     name="pengeluaran_sewa_tanah"
                                     value="{{old('pengeluaran_sewa_tanah',  $survey->pengeluaran_sewa_tanah)}}">
                             </td>
@@ -1256,7 +1303,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Cost of service carried out by other</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_jasa_lain"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_jasa_lain"
                                     name="pengeluaran_jasa_lain"
                                     value="{{old('pengeluaran_jasa_lain',  $survey->pengeluaran_jasa_lain)}}">
                             </td>
@@ -1266,7 +1313,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Capital goods insurance</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_asuransi"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_asuransi"
                                     name="pengeluaran_asuransi"
                                     value="{{old('pengeluaran_asuransi',  $survey->pengeluaran_asuransi)}}">
                             </td>
@@ -1276,7 +1323,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Transportation</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_angkutan"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_angkutan"
                                     name="pengeluaran_angkutan"
                                     value="{{old('pengeluaran_angkutan',  $survey->pengeluaran_angkutan)}}">
                             </td>
@@ -1286,7 +1333,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Warehousing</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_pergudangan"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_pergudangan"
                                     name="pengeluaran_pergudangan"
                                     value="{{old('pengeluaran_pergudangan',  $survey->pengeluaran_pergudangan)}}">
                             </td>
@@ -1296,7 +1343,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Post and telecommunication</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_pos"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_pos"
                                     name="pengeluaran_pos"
                                     value="{{old('pengeluaran_pos',  $survey->pengeluaran_pos)}}">
                             </td>
@@ -1306,7 +1353,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Supervision</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_perjalanan"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_perjalanan"
                                     name="pengeluaran_perjalanan"
                                     value="{{old('pengeluaran_perjalanan',  $survey->pengeluaran_perjalanan)}}">
                             </td>
@@ -1316,8 +1363,8 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Loan Interest</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_bunga_pinjaman"
-                                    name="pengeluaran_bunga_pinjaman"
+                                <input type="number" class="form-control form-control-sm"
+                                    id="pengeluaran_bunga_pinjaman" name="pengeluaran_bunga_pinjaman"
                                     value="{{old('pengeluaran_bunga_pinjaman',  $survey->pengeluaran_bunga_pinjaman)}}">
                             </td>
                         </tr>
@@ -1326,7 +1373,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Goods and service Tax</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_ppn"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_ppn"
                                     name="pengeluaran_ppn"
                                     value="{{old('pengeluaran_ppn',  $survey->pengeluaran_ppn)}}">
                             </td>
@@ -1336,7 +1383,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Income Tax</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_pph"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_pph"
                                     name="pengeluaran_pph"
                                     value="{{old('pengeluaran_pph',  $survey->pengeluaran_pph)}}">
                             </td>
@@ -1346,7 +1393,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Other Tax and Retribution</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_pajak_lain"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_pajak_lain"
                                     name="pengeluaran_pajak_lain"
                                     value="{{old('pengeluaran_pajak_lain',  $survey->pengeluaran_pajak_lain)}}">
                             </td>
@@ -1356,7 +1403,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Deprecation and amortization</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_penyusutan"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_penyusutan"
                                     name="pengeluaran_penyusutan"
                                     value="{{old('pengeluaran_penyusutan',  $survey->pengeluaran_penyusutan)}}">
                             </td>
@@ -1367,7 +1414,7 @@
                                     services</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_jasa_akuntan"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_jasa_akuntan"
                                     name="pengeluaran_jasa_akuntan"
                                     value="{{old('pengeluaran_jasa_akuntan',  $survey->pengeluaran_jasa_akuntan)}}">
                             </td>
@@ -1377,7 +1424,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Education and Training of Human Resources</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_pendidikan"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_pendidikan"
                                     name="pengeluaran_pendidikan"
                                     value="{{old('pengeluaran_pendidikan',  $survey->pengeluaran_pendidikan)}}">
                             </td>
@@ -1388,7 +1435,7 @@
                                     etc</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_lainnya"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_lainnya"
                                     name="pengeluaran_lainnya"
                                     value="{{old('pengeluaran_lainnya',  $survey->pengeluaran_lainnya)}}">
                             </td>
@@ -1398,7 +1445,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Total</span>
                             </th>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pengeluaran_jumlah"
+                                <input type="number" class="form-control form-control-sm" id="pengeluaran_jumlah"
                                     name="pengeluaran_jumlah"
                                     value="{{old('pengeluaran_jumlah',  $survey->pengeluaran_jumlah)}}">
                             </td>
@@ -1421,7 +1468,7 @@
                     </div>
                     <div class="col-sm-1 text-end">Rp</div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control form-control-sm" id="pengeluaran_eksplorasi"
+                        <input type="number" class="form-control form-control-sm" id="pengeluaran_eksplorasi"
                             name="pengeluaran_eksplorasi"
                             value="{{old('pengeluaran_eksplorasi',  $survey->pengeluaran_eksplorasi)}}">
                     </div>
@@ -1433,7 +1480,7 @@
                     </div>
                     <div class="col-sm-1 text-end">Rp</div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control form-control-sm" id="pengeluaran_pemulihan"
+                        <input type="number" class="form-control form-control-sm" id="pengeluaran_pemulihan"
                             name="pengeluaran_pemulihan"
                             value="{{old('pengeluaran_pemulihan',  $survey->pengeluaran_pemulihan)}}">
                     </div>
@@ -1444,7 +1491,7 @@
                     </div>
                     <div class="col-sm-1 text-end">Rp</div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control form-control-sm" id="pengeluaran_penelitian"
+                        <input type="number" class="form-control form-control-sm" id="pengeluaran_penelitian"
                             name="pengeluaran_penelitian"
                             value="{{old('pengeluaran_penelitian',  $survey->pengeluaran_penelitian)}}">
                     </div>
@@ -1518,7 +1565,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Capacity of engine power plant</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm"
+                                <input type="number" class="form-control form-control-sm"
                                     id="kapasitas_pembangkit_listrik_volume" name="kapasitas_pembangkit_listrik_volume"
                                     value="{{old('kapasitas_pembangkit_listrik_volume',  $survey->kapasitas_pembangkit_listrik_volume)}}">
                             </td>
@@ -1529,11 +1576,11 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Own electricity generated</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="produksi_listrik_volume"
+                                <input type="number" class="form-control form-control-sm" id="produksi_listrik_volume"
                                     name="produksi_listrik_volume"
                                     value="{{old('produksi_listrik_volume',  $survey->produksi_listrik_volume)}}">
                             </td>
-                            <td><input type="text" class="form-control form-control-sm" id="produksi_listrik_nilai"
+                            <td><input type="number" class="form-control form-control-sm" id="produksi_listrik_nilai"
                                     name="produksi_listrik_nilai"
                                     value="{{old('produksi_listrik_nilai',  $survey->produksi_listrik_nilai)}}">
                             </td>
@@ -1548,12 +1595,12 @@
                                 <span class="fst-italic">Diesel Oil</span>(Liter)
                             </td>
                             <td class="border-start-0 border-end-0">
-                                <input type="text" class="form-control form-control-sm" id="bb_listrik_solar_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_listrik_solar_volume"
                                     name="bb_listrik_solar_volume"
                                     value="{{old('bb_listrik_solar_volume',  $survey->bb_listrik_solar_volume)}}">
                             </td>
                             <td class="border-start-0">
-                                <input type="text" class="form-control form-control-sm" id="bb_listrik_solar_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_listrik_solar_nilai"
                                     name="bb_listrik_solar_nilai"
                                     value="{{old('bb_listrik_solar_nilai',  $survey->bb_listrik_solar_nilai)}}">
                             </td>
@@ -1563,12 +1610,12 @@
                                 <span class="fst-italic">Coal</span>(Ton)
                             </td>
                             <td class="border-start-0 border-end-0">
-                                <input type="text" class="form-control form-control-sm" id="bb_listrik_batubara_volume"
-                                    name="bb_listrik_batubara_volume"
+                                <input type="number" class="form-control form-control-sm"
+                                    id="bb_listrik_batubara_volume" name="bb_listrik_batubara_volume"
                                     value="{{old('bb_listrik_batubara_volume',  $survey->bb_listrik_batubara_volume)}}">
                             </td>
                             <td class="border-start-0">
-                                <input type="text" class="form-control form-control-sm" id="bb_listrik_batubara_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_listrik_batubara_nilai"
                                     name="bb_listrik_batubara_nilai"
                                     value="{{old('bb_listrik_batubara_nilai',  $survey->bb_listrik_batubara_nilai)}}">
                             </td>
@@ -1578,12 +1625,12 @@
                                 <span class="fst-italic">Natural Gas</span>(MMSCF)
                             </td>
                             <td class="border-start-0 border-end-0">
-                                <input type="text" class="form-control form-control-sm" id="bb_listrik_gasalam_volume"
+                                <input type="number" class="form-control form-control-sm" id="bb_listrik_gasalam_volume"
                                     name="bb_listrik_gasalam_volume"
                                     value="{{old('bb_listrik_gasalam_volume',  $survey->bb_listrik_gasalam_volume)}}">
                             </td>
                             <td class="border-start-0">
-                                <input type="text" class="form-control form-control-sm" id="bb_listrik_gasalam_nilai"
+                                <input type="number" class="form-control form-control-sm" id="bb_listrik_gasalam_nilai"
                                     name="bb_listrik_gasalam_nilai"
                                     value="{{old('bb_listrik_gasalam_nilai',  $survey->bb_listrik_gasalam_nilai)}}">
                             </td>
@@ -1593,11 +1640,11 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Electricity purchased</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="listrik_dibeli_volume"
+                                <input type="number" class="form-control form-control-sm" id="listrik_dibeli_volume"
                                     name="listrik_dibeli_volume"
                                     value="{{old('listrik_dibeli_volume',  $survey->listrik_dibeli_volume)}}">
                             </td>
-                            <td><input type="text" class="form-control form-control-sm" id="listrik_dibeli_nilai"
+                            <td><input type="number" class="form-control form-control-sm" id="listrik_dibeli_nilai"
                                     name="listrik_dibeli_nilai"
                                     value="{{old('listrik_dibeli_nilai',  $survey->listrik_dibeli_nilai)}}">
                             </td>
@@ -1607,11 +1654,11 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Electricity sold to other</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="listrik_dijual_volume"
+                                <input type="number" class="form-control form-control-sm" id="listrik_dijual_volume"
                                     name="listrik_dijual_volume"
                                     value="{{old('listrik_dijual_volume',  $survey->listrik_dijual_volume)}}">
                             </td>
-                            <td><input type="text" class="form-control form-control-sm" id="listrik_dijual_nilai"
+                            <td><input type="number" class="form-control form-control-sm" id="listrik_dijual_nilai"
                                     name="listrik_dijual_nilai"
                                     value="{{old('listrik_dijual_nilai',  $survey->listrik_dijual_nilai)}}">
                             </td>
@@ -1659,17 +1706,17 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Begining Stock</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="minyak_mentah_stok_awal"
+                                <input type="number" class="form-control form-control-sm" id="minyak_mentah_stok_awal"
                                     name="minyak_mentah_stok_awal"
                                     value="{{old('minyak_mentah_stok_awal',  $survey->minyak_mentah_stok_awal)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="kondensat_stok_awal"
+                                <input type="number" class="form-control form-control-sm" id="kondensat_stok_awal"
                                     name="kondensat_stok_awal"
                                     value="{{old('kondensat_stok_awal',  $survey->kondensat_stok_awal)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="gas_bumi_stok_awal"
+                                <input type="number" class="form-control form-control-sm" id="gas_bumi_stok_awal"
                                     name="gas_bumi_stok_awal"
                                     value="{{old('gas_bumi_stok_awal',  $survey->gas_bumi_stok_awal)}}">
                             </td>
@@ -1679,17 +1726,17 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Production</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="minyak_mentah_stok_awal"
+                                <input type="number" class="form-control form-control-sm" id="minyak_mentah_stok_awal"
                                     name="minyak_mentah_stok_awal"
                                     value="{{old('minyak_mentah_stok_awal',  $survey->minyak_mentah_stok_awal)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="kondensat_stok_awal"
+                                <input type="number" class="form-control form-control-sm" id="kondensat_stok_awal"
                                     name="kondensat_stok_awal"
                                     value="{{old('kondensat_stok_awal',  $survey->kondensat_stok_awal)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="gas_bumi_stok_awal"
+                                <input type="number" class="form-control form-control-sm" id="gas_bumi_stok_awal"
                                     name="gas_bumi_stok_awal"
                                     value="{{old('gas_bumi_stok_awal',  $survey->gas_bumi_stok_awal)}}">
                             </td>
@@ -1699,17 +1746,17 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Sales</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="minyak_mentah_penjualan"
+                                <input type="number" class="form-control form-control-sm" id="minyak_mentah_penjualan"
                                     name="minyak_mentah_penjualan"
                                     value="{{old('minyak_mentah_penjualan',  $survey->minyak_mentah_penjualan)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="kondensat_penjualan"
+                                <input type="number" class="form-control form-control-sm" id="kondensat_penjualan"
                                     name="kondensat_penjualan"
                                     value="{{old('kondensat_penjualan',  $survey->kondensat_penjualan)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="gas_bumi_penjualan"
+                                <input type="number" class="form-control form-control-sm" id="gas_bumi_penjualan"
                                     name="gas_bumi_penjualan"
                                     value="{{old('gas_bumi_penjualan',  $survey->gas_bumi_penjualan)}}">
                             </td>
@@ -1719,17 +1766,17 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Loss</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="minyak_mentah_hilang"
+                                <input type="number" class="form-control form-control-sm" id="minyak_mentah_hilang"
                                     name="minyak_mentah_hilang"
                                     value="{{old('minyak_mentah_hilang',  $survey->minyak_mentah_hilang)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="kondensat_hilang"
+                                <input type="number" class="form-control form-control-sm" id="kondensat_hilang"
                                     name="kondensat_hilang"
                                     value="{{old('kondensat_hilang',  $survey->kondensat_hilang)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="gas_bumi_hilang"
+                                <input type="number" class="form-control form-control-sm" id="gas_bumi_hilang"
                                     name="gas_bumi_hilang"
                                     value="{{old('gas_bumi_hilang',  $survey->gas_bumi_hilang)}}">
                             </td>
@@ -1739,17 +1786,17 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Final Stock</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="minyak_mentah_stok_akhir"
+                                <input type="number" class="form-control form-control-sm" id="minyak_mentah_stok_akhir"
                                     name="minyak_mentah_stok_akhir"
                                     value="{{old('minyak_mentah_stok_akhir',  $survey->minyak_mentah_stok_akhir)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="kondensat_stok_akhir"
+                                <input type="number" class="form-control form-control-sm" id="kondensat_stok_akhir"
                                     name="kondensat_stok_akhir"
                                     value="{{old('kondensat_stok_akhir',  $survey->kondensat_stok_akhir)}}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="gas_bumi_stok_akhir"
+                                <input type="number" class="form-control form-control-sm" id="gas_bumi_stok_akhir"
                                     name="gas_bumi_stok_akhir"
                                     value="{{old('gas_bumi_stok_akhir',  $survey->gas_bumi_stok_akhir)}}">
                             </td>
@@ -1798,8 +1845,8 @@
                                 <span class="fst-italic">Mining service carried out of other</span>
                             </td>
                             <td class="border-start-0">
-                                <input type="text" class="form-control form-control-sm" id="pendapatan_jasa_penambangan"
-                                    name="pendapatan_jasa_penambangan"
+                                <input type="number" class="form-control form-control-sm"
+                                    id="pendapatan_jasa_penambangan" name="pendapatan_jasa_penambangan"
                                     value="{{old('pendapatan_jasa_penambangan',  $survey->pendapatan_jasa_penambangan)}}">
                             </td>
 
@@ -1809,7 +1856,7 @@
                                 <span class="fst-italic">Delivery changes</span>
                             </td>
                             <td class="border-start-0">
-                                <input type="text" class="form-control form-control-sm"
+                                <input type="number" class="form-control form-control-sm"
                                     id="pendapatan_jasa_transportasi" name="pendapatan_jasa_transportasi"
                                     value="{{old('pendapatan_jasa_transportasi',  $survey->pendapatan_jasa_transportasi)}}">
                             </td>
@@ -1820,7 +1867,7 @@
                                     building, and ifrastucture</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pendapatan_penyewaan"
+                                <input type="number" class="form-control form-control-sm" id="pendapatan_penyewaan"
                                     name="pendapatan_penyewaan"
                                     value="{{old('pendapatan_penyewaan',  $survey->pendapatan_penyewaan)}}">
                             </td>
@@ -1831,7 +1878,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Other income, i.e. goods sold</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pendapatan_lainnya"
+                                <input type="number" class="form-control form-control-sm" id="pendapatan_lainnya"
                                     name="pendapatan_lainnya"
                                     value="{{old('pendapatan_lainnya',  $survey->pendapatan_lainnya)}}">
                             </td>
@@ -1840,7 +1887,7 @@
                             <th>4. JUMLAH/<span class="fst-italic">TOTAL</span>
                             </th>
                             <td>
-                                <input type="text" class="form-control form-control-sm" id="pendapatan_jumlah"
+                                <input type="number" class="form-control form-control-sm" id="pendapatan_jumlah"
                                     name="pendapatan_jumlah"
                                     value="{{old('pendapatan_jumlah',  $survey->pendapatan_jumlah)}}">
                             </td>
@@ -1924,7 +1971,7 @@
                                         :
                                     </div>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control form-control-sm" id="pj_dokumen_email"
+                                        <input type="email" class="form-control form-control-sm" id="pj_dokumen_email"
                                             name="pj_dokumen_email"
                                             value="{{old('pj_dokumen_email',  $survey->pj_dokumen_email)}}">
                                     </div>
@@ -1994,7 +2041,7 @@
                                         :
                                     </div>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control form-control-sm"
+                                        <input type="email" class="form-control form-control-sm"
                                             id="pemberi_keterangan_email" name="pemberi_keterangan_email"
                                             value="{{old('pemberi_keterangan_email',  $survey->pemberi_keterangan_email)}}">
                                     </div>

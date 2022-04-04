@@ -1,6 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
+            <title>Survei Tahunan Migas</title>
             <a href="{{url('/')}}">
                 <h1>Survei Tahunan Migas</h1>
             </a>

@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'index']);
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::post('/profile/store', [ProfileController::class, 'store']);
+    Route::post('/profile/ubahpassword', [ProfileController::class, 'ubahpassword']);
 
 
     Route::get('/form', [SurveyController::class, 'create']);
@@ -34,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/form-edit/{id}', [SurveyController::class, 'show']);
     Route::post('/updateform/{id}', [SurveyController::class, 'update']);
+    Route::post('/hapusform', [SurveyController::class, 'destroy']);
 
 
 });

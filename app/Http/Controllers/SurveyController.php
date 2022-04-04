@@ -23,7 +23,7 @@ class SurveyController extends Controller
         $user = Auth::user();
         $sur= Survey::where('tahun',$tahun)->where('email',$user->email )->first();
         if($sur){
-            return redirect()->back()->with('error', 'Sudah Pernah Mengisi');
+            return redirect()->back()->with('error', 'Sudah Pernah Mengisi untuk tahun '.$tahun);
         }
 
 
@@ -32,6 +32,8 @@ class SurveyController extends Controller
     }
 
     public function store(Request $request){
+        $user = Auth::user();
+        date_default_timezone_set("Asia/Jakarta");
         $survey = Survey::insert(
             [
                 'tahun' => $request->tahun,
@@ -227,7 +229,8 @@ class SurveyController extends Controller
                 'pengawas_no_hp' => $request->pengawas_no_hp,
                 'pengawas_tanggal' => $request->pengawas_tanggal,
                 'catatan_petugas' => $request->catatan_petugas,
-                'created_by' => $request->updated_by,
+                'created_by' => $user->email,
+                'created_at' => date("Y-m-d H:i:s"),
             ]);
         if ($survey) {
             return redirect('/')->with('message', 'Berhasil Disimpan');
@@ -244,6 +247,8 @@ class SurveyController extends Controller
 
     public function update(Request $request, $id){
         // dd($request->all());
+        $user = Auth::user();
+        date_default_timezone_set("Asia/Jakarta");
         $id_decrip = Crypt::decryptString($id);
         $survey = Survey::where('id', $id_decrip)
                 ->update(
@@ -437,11 +442,16 @@ class SurveyController extends Controller
                     'pengawas_no_hp' => $request->pengawas_no_hp,
                     'pengawas_tanggal' => $request->pengawas_tanggal,
                     'catatan_petugas' => $request->catatan_petugas,
-                    'updated_by' => $request->updated_by
+                    'updated_by' => $user->email,
                 ]);
 
         if ($survey) {
             return redirect('form-edit/'.$id)->with('message', 'Berhasil Disimpan');
         }
+    }
+
+    public function destroy(Request $request){
+        Survey::where('id',$request->id)->delete();
+        return redirect()->back()->with('message', 'Berhasil Dihapus');
     }
 }
