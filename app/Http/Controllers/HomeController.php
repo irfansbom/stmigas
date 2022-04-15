@@ -11,6 +11,7 @@ class HomeController extends Controller
     //
     public function index(){
         $user = Auth::user();
+
         // dd($user->level == 'admin');
         if($user->level == 'admin'){
             $survey = Survey::all();

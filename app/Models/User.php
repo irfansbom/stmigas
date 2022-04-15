@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Survey::class, 'email', 'email');
     }
+
+    public function kabs()
+    {
+        return $this->hasMany(Kabs::class, 'kd_kab', 'kd_kab');
+    }
 }

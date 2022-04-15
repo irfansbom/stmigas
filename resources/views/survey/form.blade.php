@@ -23,7 +23,7 @@
                     </label>
                     <div class="col-sm-8 d-flex align-items-center">
                         <select class="form-select " aria-label="Default select" id="provinsi" name="provinsi">
-                            <option value="16" selected>[16]Sumatera Selatan</option>
+                            <option value="16" selected>Sumatera Selatan</option>
                         </select>
                     </div>
                 </div>

@@ -47,7 +47,11 @@
                                 data-bs-target="#modalhapus" data-id="{{$sur->id}}">
                                 Hapus
                             </button>
+
                             @endif
+                            <a class="btn btn-success btn-sm"
+                                href="{{url('form-print/' .  \Crypt::encryptString($sur->id) )}}" target="_blank"><i
+                                    class="bi bi-eye"></i> </a>
                         </td>
                     </tr>
                     @endforeach

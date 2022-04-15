@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use phpDocumentor\Reflection\Types\Boolean;
+use PDF;
+use Dompdf\Dompdf;
 
 class SurveyController extends Controller
 {
-
-
     public function index(){
         return 'ok';
     }
@@ -23,12 +23,10 @@ class SurveyController extends Controller
         $user = Auth::user();
         $sur= Survey::where('tahun',$tahun)->where('email',$user->email )->first();
         if($sur){
-            return redirect()->back()->with('error', 'Sudah Pernah Mengisi untuk tahun '.$tahun);
+            return redirect()->back()->with('error', ' Sudah pernah mengisi form untuk tahun '.$tahun);
         }
-
-
         $survey = new Survey();
-        return view('create',compact('tahun', 'survey', 'user'));
+        return view('survey.create',compact('tahun', 'survey', 'user'));
     }
 
     public function store(Request $request){
@@ -242,7 +240,7 @@ class SurveyController extends Controller
         $survey= Survey::where('id', $id)->first();
         $user = Auth::user();
         $tahun = $survey->tahun;
-        return view('edit',compact('tahun', 'survey', 'user', 'id'));
+        return view('survey.edit',compact('tahun', 'survey', 'user', 'id'));
     }
 
     public function update(Request $request, $id){
@@ -443,11 +441,21 @@ class SurveyController extends Controller
                     'pengawas_tanggal' => $request->pengawas_tanggal,
                     'catatan_petugas' => $request->catatan_petugas,
                     'updated_by' => $user->email,
+                    'updated_at' => date("Y-m-d H:i:s"),
                 ]);
 
         if ($survey) {
             return redirect('form-edit/'.$id)->with('message', 'Berhasil Disimpan');
         }
+    }
+
+    public function print(Request $request, $id){
+        ini_set('max_execution_time', 100);
+        $id = Crypt::decryptString($id);
+        $survey= Survey::where('id', $id)->first();
+        $user = Auth::user();
+        $tahun = $survey->tahun;
+        return view('survey.print',compact('tahun', 'survey', 'user', 'id'));
     }
 
     public function destroy(Request $request){
