@@ -38,7 +38,7 @@
 <br>
 @include(' alert')
 <form action="{{url('updateform/' .  \Crypt::encryptString($id)) }}" method="POST" class="needs-validation" novalidate>
-    @include('form')
+    @include('survey/form')
 </form>
 
 <script>

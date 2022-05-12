@@ -3,7 +3,8 @@
         <x-slot name="logo">
             <title>Survei Tahunan Migas</title>
             <a href="{{url('/')}}">
-                <h1>Survei Tahunan Migas</h1>
+                {{-- <h1>Survei Tahunan Migas</h1> --}}
+                <img src="{{url('images/logo.png')}}" alt="Survei Tahunan Migas" width="200px">
             </a>
         </x-slot>
 

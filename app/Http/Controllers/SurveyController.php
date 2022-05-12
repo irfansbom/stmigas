@@ -227,6 +227,8 @@ class SurveyController extends Controller
                 'pengawas_no_hp' => $request->pengawas_no_hp,
                 'pengawas_tanggal' => $request->pengawas_tanggal,
                 'catatan_petugas' => $request->catatan_petugas,
+                'updated_at' => $user->email,
+                'updated_by' => date("Y-m-d H:i:s"),
                 'created_by' => $user->email,
                 'created_at' => date("Y-m-d H:i:s"),
             ]);
@@ -237,6 +239,7 @@ class SurveyController extends Controller
 
     public function show(Request $request, $id){
         $id = Crypt::decryptString($id);
+        // echo $id;
         $survey= Survey::where('id', $id)->first();
         $user = Auth::user();
         $tahun = $survey->tahun;

@@ -74,7 +74,8 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             @endif
-                            <a class="navbar-brand" href="{{url('/')}}">Survei Tahunan MIGAS</a>
+                            <a class="navbar-brand p-0" href="{{url('/')}}"><img
+                                    src="{{url('images/logowhitelong.png')}}" height="30px"></a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
