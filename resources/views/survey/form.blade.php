@@ -34,7 +34,7 @@
                     </label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="kabkot" name="kabkot"
-                            value="{{old('kabkot',  $survey->kabkot)}}">
+                            value="{{old('kabkot',  $survey->kabkot)}}" required>
                     </div>
                 </div>
                 <div class="mb-1 row d-flex align-items-center">
@@ -44,7 +44,7 @@
                     </label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="kecamatan" name="kecamatan"
-                            value="{{old('kecamatan',  $survey->kecamatan)}}">
+                            value="{{old('kecamatan',  $survey->kecamatan)}}" required>
                     </div>
                 </div>
                 <div class="mb-1 row d-flex align-items-center">
@@ -54,7 +54,7 @@
                     </label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="kelurahan" name="kelurahan"
-                            value="{{old('kelurahan',  $survey->kelurahan)}}">
+                            value="{{old('kelurahan',  $survey->kelurahan)}}" required>
                     </div>
                 </div>
             </td>
@@ -102,7 +102,7 @@
                     </label>
                     <div class="col-sm-9 d-flex align-items-center">
                         <input type="text" class="form-control" id="nama_perusahaan" name="nama_perusahaan"
-                            value="{{old('nama_perusahaan',  $survey->nama_perusahaan)}}">
+                            value="{{old('nama_perusahaan',  $survey->nama_perusahaan)}}" required>
                     </div>
                 </div>
                 <div class="mb-1 row">
@@ -112,7 +112,7 @@
                     </label>
                     <div class="col-sm-9 d-flex align-items-center">
                         <textarea type="text" class="form-control" id="alamat_perusahaan"
-                            name="alamat_perusahaan">{{old('alamat_perusahaan', $survey->alamat_perusahaan)}}</textarea>
+                            name="alamat_perusahaan" required>{{old('alamat_perusahaan', $survey->alamat_perusahaan)}}</textarea>
                     </div>
                 </div>
 

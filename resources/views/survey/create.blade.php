@@ -38,7 +38,7 @@
 <br>
 @include('alert')
 <form action="{{url('storeform')}}" method="POST" class="needs-validation" novalidate>
-    @include('form')
+    @include('survey/form')
 </form>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -56,6 +56,7 @@
           console.log(form);
             form.addEventListener('invalid', (e)=>{
                 console.log('invalid')
+                $('.form-control:invalid').filter(":first").focus()
             },true)
         }
         form.classList.add('was-validated');
