@@ -20,33 +20,32 @@
         <header class="wrapper bg-soft-primary">
             <nav class="navbar navbar-expand-lg center-nav transparent position-absolute navbar-dark">
                 <div class="container flex-lg-row flex-nowrap align-items-center">
-                    <div class="navbar-brand w-100">
-                        <a href="./index.html">
-                            {{-- <img class="logo-dark" src="./assets/img/logo.png" srcset="./assets/img/logo@2x.png 2x" alt="" />
-              <img class="logo-light" src="./assets/img/logo-light.png" srcset="./assets/img/logo-light@2x.png 2x" alt="" /> --}}
+                    <div class="navbar-brand w-100 d-flex justify-content-between   ">
+                        <a href="{{ url('/') }}">
                             <img class="logo-dark" src="{{ url('images/logolong.png') }}"
-                                srcset="./assets/img/logo@2x.png 2x" alt="" />
+                                srcset="{{ url('images/logolong.png') }}" alt="" />
                             <img class="logo-light" src="{{ url('images/logowhitelong.png') }}"
-                                srcset="./assets/img/logo-light@2x.png 2x" alt="" />
+                                srcset="{{ url('images/logowhitelong.png') }}" alt="" />
                         </a>
+                        <div class="d-flex align-items-center">
+                            <a href="{{ url('login') }}" class="btn btn-sm btn-white rounded-pill py-0 px-2 ">Login</a>
+                        </div>
                     </div>
-                    <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+                    <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start" style="width: 0">
 
 
                         <!-- /.offcanvas-body -->
                     </div>
                     <!-- /.navbar-collapse -->
-                    <div class="navbar-other w-100 d-flex ms-auto">
+                    {{-- <div class="navbar-other w-100 d-flex ms-auto">
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-
                             <li class="nav-item d-none d-md-block">
                                 <a href="{{ url('login') }}"
                                     class="btn btn-sm btn-white rounded-pill py-0 px-2">Login</a>
                             </li>
-
                         </ul>
                         <!-- /.navbar-nav -->
-                    </div>
+                    </div> --}}
                     <!-- /.navbar-other -->
                 </div>
                 <!-- /.container -->
@@ -285,38 +284,42 @@
                                                 </ol>
                                                 </p>
                                                 <h2>Metodologi</h2>
-                                                <table class="table table-sm table-bordered">
-                                                    <tr>
-                                                        <th>item</th>
-                                                        <th>Migas</th>
-                                                        <th>Non Migas</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td rowspan="2">sumber data</td>
-                                                        <td>1.survei tahunan</td>
-                                                        <td>1.survei tahunan</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2. Departemen Pertambangan dan Energi</td>
-                                                        <td>2. Departemen Pertambangan dan Energi</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td rowspan="2">Metode Penarikan Sampel</td>
-                                                        <td>1. Pencacahan Lengkap</td>
-                                                        <td>1. Pencacahan Lengkap</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2. Catatan Administrasi</td>
-                                                        <td>2. Catatan Administrasi</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ruang Lingkup</td>
-                                                        <td>Semua unit eksplorasi/eksploitasi, pengilangan, distribusi
-                                                        </td>
-                                                        <td>Semua unit eksplorasi/eksploitasi, pengilangan, distribusi
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                <div class="table-responsive">
+                                                    <table class="table table-sm table-bordered  ">
+                                                        <tr>
+                                                            <th>item</th>
+                                                            <th>Migas</th>
+                                                            <th>Non Migas</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="2">sumber data</td>
+                                                            <td>1.survei tahunan</td>
+                                                            <td>1.survei tahunan</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2. Departemen Pertambangan dan Energi</td>
+                                                            <td>2. Departemen Pertambangan dan Energi</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="2">Metode Penarikan Sampel</td>
+                                                            <td>1. Pencacahan Lengkap</td>
+                                                            <td>1. Pencacahan Lengkap</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2. Catatan Administrasi</td>
+                                                            <td>2. Catatan Administrasi</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Ruang Lingkup</td>
+                                                            <td>Semua unit eksplorasi/eksploitasi, pengilangan,
+                                                                distribusi
+                                                            </td>
+                                                            <td>Semua unit eksplorasi/eksploitasi, pengilangan,
+                                                                distribusi
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
                                             <!-- /.post-content -->
                                             <div
