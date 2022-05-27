@@ -19,10 +19,32 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body>
+<body class="bg-opacity-25">
     <div class="font-sans text-gray-900 antialiased">
-        {{ $slot }}
+        <div style="opacity: 100%">
+            {{ $slot }}
+        </div>
     </div>
 </body>
+
+<style>
+    body {
+        background: black
+    }
+
+    body:before {
+        background-size: 100%;
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: url('images/bglogin.jpg') center center;
+        opacity: .3;
+    }
+
+</style>
 
 </html>

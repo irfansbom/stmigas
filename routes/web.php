@@ -20,12 +20,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $date = date('d F y');
+    return view('cover', compact('date'));
 });
 
 Route::middleware(['auth'])->group(function () {
     //
-    Route::get('/', [HomeController::class, 'index']);
+    // Route::get('/', [HomeController::class, 'index']);
     Route::get('dashboard', [HomeController::class, 'index']);
 
     Route::get('/profile', [ProfileController::class, 'index']);

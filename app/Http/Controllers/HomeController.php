@@ -11,7 +11,6 @@ class HomeController extends Controller
     //
     public function index(){
         $user = Auth::user();
-
         // dd($user->level == 'admin');
         if($user->level == 'admin'){
             $survey = Survey::all();
@@ -20,7 +19,6 @@ class HomeController extends Controller
         else{
             $survey = Survey::where('email',$user->email)->get();
         }
-
         // return view('dashboard', compact('user', 'survey'));
         return view('home', compact('user', 'survey'));
     }
