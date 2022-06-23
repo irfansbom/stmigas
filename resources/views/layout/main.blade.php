@@ -62,7 +62,7 @@
                                 </a>
                             </li>
                             @if (in_array(
-                                'Manajemen User',
+                                'Monitoring',
                                 $auth->getPermissionsViaRoles()->pluck('name')->toArray(),
                             ))
                                 <li class="mb-1">

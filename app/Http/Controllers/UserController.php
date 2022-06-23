@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kabs;
 use App\Models\Perusahaan;
 use App\Models\User;
 use App\Models\User_Perusahaan;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
@@ -16,16 +18,17 @@ class UserController extends Controller
 {
     public function index()
     {
+        Paginator::useBootstrap();
         $auth = Auth::user();
-        if (in_array('Super Admin', $auth->getRoleNames()->toArray())) {
-            $user = User::all();
+        if (in_array('Semua List', $auth->getPermissionsViaRoles()->pluck('name')->toArray())) {
+            $user = User::orderBy('nama')->paginate(15);
         } else {
             $id_perus = $auth->perusahaan->pluck('id')->toArray();
             $id_user = User_Perusahaan::whereIn('id_perusahaan', $id_perus)
                 ->select('id_user')
                 ->groupby('id_user')
                 ->get();
-            $user = User::whereIn('id', $id_user)->get();
+            $user = User::whereIn('id', $id_user)->orderBy('nama')->paginate(15);
         }
         $data_roles = Role::all();
         $data_perusahaan = Perusahaan::all();
@@ -44,6 +47,7 @@ class UserController extends Controller
                 ->join('perusahaan', 'perusahaan.id', 'id_perusahaan')
                 ->get();
         }
+        
         return view('admin.user.create', compact('data_roles', 'data_perusahaan', 'user', 'auth'));
     }
 
@@ -59,9 +63,6 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'created_by' => $auth->email,
         ]);
-
-        
-
         foreach ($request->perusahaan as $perus) {
             User_perusahaan::create(['id_user' => $user->id, 'id_perusahaan' => $perus]);
         }
@@ -89,6 +90,13 @@ class UserController extends Controller
             ]);
         return redirect()->back()->with('message', 'Berhasil Disimpan');
     }
+
+    public function delete(Request $request)
+    {
+        User::where('id', $request->user_id)->delete();
+        return redirect()->back()->with('message', 'Berhasil Dihapus');
+    }
+
 
     public function ubahpassword(Request $request)
     {
@@ -119,9 +127,12 @@ class UserController extends Controller
     {
         $user = User::find($request->user_id);
         User_Perusahaan::where('id_user', $request->user_id)->delete();
-        foreach ($request->perusahaan as $perus) {
-            User_perusahaan::create(['id_user' => $request->user_id, 'id_perusahaan' => $perus]);
+        if ($request->user_perusahaan) {
+            foreach ($request->perusahaan as $perus) {
+                User_perusahaan::create(['id_user' => $request->user_id, 'id_perusahaan' => $perus]);
+            }
         }
+
         return redirect('user/')->with('message', 'User berhasil diperbaharui.');
     }
 

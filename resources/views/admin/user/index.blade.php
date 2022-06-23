@@ -18,21 +18,23 @@
                 <table class="table table-sm align-middle table-bordered" style="font-size: 12px">
                     <thead>
                         <tr class="text-center align-middle">
+                            <th>No</th>
                             <th style="">Nama</th>
                             <th colspan="2">Perusahaan</th>
                             <th colspan="2">Roles</th>
                             <th>Email</th>
                             <th>No Hp </th>
-                            <th>Aksi</th>
+                            <th style="width: 8%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($user as $usr)
+                        @foreach ($user as $key => $usr)
                             <tr>
+                                <td class="text-center">{{ ++$key }}</td>
                                 <td>
                                     {{ $usr->nama }}
                                 </td>
-                                <td>
+                                <td style="">
                                     <ul class="m-0">
                                         @foreach ($usr->perusahaan->pluck('nama_perusahaan') as $perus)
                                             <li>{{ $perus }}</li>
@@ -51,11 +53,12 @@
                                         <button class="btn btn-outline-secondary"> <i class="bi bi-pencil"></i></button>
                                     @endif
                                 </td>
-                                <td>
-                                    @foreach ($usr->roles->pluck('name') as $role)
-                                        {{ $role }}
-                                        <br>
-                                    @endforeach
+                                <td style="">
+                                    <ul class="m-0">
+                                        @foreach ($usr->roles->pluck('name') as $role)
+                                            <li>{{ $role }}</li>
+                                        @endforeach
+                                    </ul>
                                 </td>
                                 <td class="text-center">
                                     @if (in_array('Super Admin', $auth->getRoleNames()->toArray()))
@@ -68,18 +71,25 @@
                                         <button class="btn btn-outline-secondary"> <i class="bi bi-pencil"></i></button>
                                     @endif
                                 </td>
-                                <td class="text-center">{{ $usr->email }}</td>
+                                <td class="" style="word-break: break-word; overflow-wrap: break-word;">
+                                    {{ $usr->email }}</td>
                                 <td class="text-center">{{ $usr->no_hp }}</td>
                                 <td class="text-center">
                                     <a class="btn btn-outline-primary btn-sm "
                                         href="{{ url('user/' . \Crypt::encryptString($usr->id)) }}">
                                         <i class="bi bi-eye"></i>
                                     </a>
+                                    <button class="btn btn-outline-danger btn-sm btn_hapus" data-id="{{ $usr->id }}"
+                                        data-nama="{{ $usr->nama }}" data-bs-toggle="modal"
+                                        data-bs-target="#modal_hapus">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                {{ $user->links() }}
             </div>
         </div>
     </div>
@@ -177,6 +187,36 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modal_hapus">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Hapus User<span></span></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url('user/delete') }}" method="post" id="form_hapus">
+                        @csrf
+                        <div class="row ">
+                            <input type="text" name="user_id" id="user_id" hidden>
+                            <div class="mb-3 ">
+                                <label for="nama_user" class="form-label">Nama user</label>
+                                <input type="text" class="form-control" id="user_name" name="nama" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" form="form_hapus">Submit</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <script>
         $('.btn_perusahaan').click(function() {
             console.log($(this).data("id"))
@@ -209,6 +249,13 @@
                     $(this).prop('checked', false);
                 }
             });
+        })
+
+        $('.btn_hapus').click(function() {
+            console.log($(this).data("id"))
+            $('#modal_hapus').find('#user_id').val($(this).data("id"));
+            $('#modal_hapus').find('#user_name').val($(this).data("nama"));
+
         })
     </script>
 @endsection
