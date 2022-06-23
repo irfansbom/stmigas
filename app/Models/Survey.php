@@ -14,6 +14,11 @@ class Survey extends Model
 
     public function user()
     {
-        return $this->belongsTo(Survey::class, 'email', 'email');
+        return $this->belongsTo(Survey::class, 'id_user', 'id');
+    }
+
+    public function perusahaan()
+    {
+        return $this->belongsTo(Perusahaan::class, 'id_perusaahan', 'id');
     }
 }

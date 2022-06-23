@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Perusahaan;
 use App\Models\Survey;
 use App\Models\User;
+use App\Models\User_Perusahaan;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,28 +16,52 @@ use Dompdf\Dompdf;
 
 class SurveyController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return 'ok';
     }
 
-    public function create(){
-        $tahun = 2022;
-        $user = Auth::user();
-        $sur= Survey::where('tahun',$tahun)->where('email',$user->email )->first();
-        if($sur){
-            return redirect()->back()->with('error', ' Sudah pernah mengisi form untuk tahun '.$tahun);
+    public function create(Request $request)
+    {
+        $tahun = date("Y");
+        $auth = Auth::user();
+        // dump($auth->id);
+        $duplikasi = Survey::where('id_perusahaan', $request->id_perusahaan)
+            ->where('tahun', $tahun)
+            ->where('id_user', $auth->id)
+            ->where('tipe_form', 'tunggal')
+            ->first();
+
+        if ($duplikasi) {
+            return redirect()->back()->with('error', ' Sudah pernah mengisi form untuk tahun ' . $tahun);
         }
+        // dd($duplikasi);
+
+        // $perusahaan = User_Perusahaan::where('id_user', $auth->id)
+        //     ->join('perusahaan', 'id', 'id_perusahaan')
+        //     ->get();
+
         $survey = new Survey();
-        return view('survey.create',compact('tahun', 'survey', 'user'));
+        $survey->id_perusahaan = $request->id_perusahaan;
+        $survey->id_user = $auth->id;
+        $survey->tahun = $tahun;
+        $survey->tipe_form = "tunggal";
+        $survey->email = $auth->email;
+        return view('survey.create', compact('tahun', 'survey', 'auth'));
     }
 
-    public function store(Request $request){
-        $user = Auth::user();
+    public function store(Request $request)
+    {
+        $auth = Auth::user();
         date_default_timezone_set("Asia/Jakarta");
         $survey = Survey::insert(
             [
+                'id_perusahaan' => $request->id_perusahaan,
+                'id_user' => $request->id_user,
+                'tipe_form' => $request->tipe_form,
                 'tahun' => $request->tahun,
-                'email' => $request->email,
+
+                'email' => $auth->email,
                 'kip' => $request->kip,
 
                 'provinsi' => $request->provinsi,
@@ -227,32 +253,35 @@ class SurveyController extends Controller
                 'pengawas_no_hp' => $request->pengawas_no_hp,
                 'pengawas_tanggal' => $request->pengawas_tanggal,
                 'catatan_petugas' => $request->catatan_petugas,
-                'updated_at' => $user->email,
-                'updated_by' => date("Y-m-d H:i:s"),
-                'created_by' => $user->email,
+                'updated_at' => date("Y-m-d H:i:s"),
+                'updated_by' => $auth->email,
                 'created_at' => date("Y-m-d H:i:s"),
-            ]);
+                'created_by' => $auth->email,
+            ]
+        );
         if ($survey) {
-            return redirect('/')->with('message', 'Berhasil Disimpan');
+            return redirect('dashboard')->with('message', 'Berhasil Disimpan');
         }
     }
 
-    public function show(Request $request, $id){
+    public function show(Request $request, $id)
+    {
         $id = Crypt::decryptString($id);
         // echo $id;
-        $survey= Survey::where('id', $id)->first();
+        $survey = Survey::where('id', $id)->first();
         $user = Auth::user();
         $tahun = $survey->tahun;
-        return view('survey.edit',compact('tahun', 'survey', 'user', 'id'));
+        return view('survey.edit', compact('tahun', 'survey', 'user', 'id'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         // dd($request->all());
-        $user = Auth::user();
+        $auth = Auth::user();
         date_default_timezone_set("Asia/Jakarta");
         $id_decrip = Crypt::decryptString($id);
         $survey = Survey::where('id', $id_decrip)
-                ->update(
+            ->update(
                 [
                     'provinsi' => $request->provinsi,
                     'kabkot' =>  $request->kabkot,
@@ -443,26 +472,29 @@ class SurveyController extends Controller
                     'pengawas_no_hp' => $request->pengawas_no_hp,
                     'pengawas_tanggal' => $request->pengawas_tanggal,
                     'catatan_petugas' => $request->catatan_petugas,
-                    'updated_by' => $user->email,
+                    'updated_by' => $auth->email,
                     'updated_at' => date("Y-m-d H:i:s"),
-                ]);
+                ]
+            );
 
         if ($survey) {
-            return redirect('form-edit/'.$id)->with('message', 'Berhasil Disimpan');
+            return redirect('form-edit/' . $id)->with('message', 'Berhasil Disimpan');
         }
     }
 
-    public function print(Request $request, $id){
+    public function print(Request $request, $id)
+    {
         ini_set('max_execution_time', 100);
         $id = Crypt::decryptString($id);
-        $survey= Survey::where('id', $id)->first();
+        $survey = Survey::where('id', $id)->first();
         $user = Auth::user();
         $tahun = $survey->tahun;
-        return view('survey.print',compact('tahun', 'survey', 'user', 'id'));
+        return view('survey.print', compact('tahun', 'survey', 'user', 'id'));
     }
 
-    public function destroy(Request $request){
-        Survey::where('id',$request->id)->delete();
+    public function destroy(Request $request)
+    {
+        Survey::where('id', $request->id)->delete();
         return redirect()->back()->with('message', 'Berhasil Dihapus');
     }
 }

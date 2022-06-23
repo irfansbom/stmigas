@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Perusahaan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class MonitoringController extends Controller
 {
     //
     public function index(){
-        $user = User::where('level','perusahaan')->get();
+        $user = Perusahaan::all();
         return view('admin.monitoring', compact('user'));
     }
 }
