@@ -25,22 +25,15 @@ class SurveyController extends Controller
     {
         $tahun = date("Y");
         $auth = Auth::user();
-        // dump($auth->id);
         $duplikasi = Survey::where('id_perusahaan', $request->id_perusahaan)
             ->where('tahun', $tahun)
             ->where('id_user', $auth->id)
             ->where('tipe_form', 'tunggal')
             ->first();
-
+        $perusahaan = Perusahaan::find($request->id_perusahaan);
         if ($duplikasi) {
-            return redirect()->back()->with('error', ' Sudah pernah mengisi form untuk tahun ' . $tahun);
+            return redirect()->back()->with('error', ' Anda sudah pernah mengisi form Survei tahun ' . $tahun . ' untuk perusahaan ' . $perusahaan->nama_perusahaan);
         }
-        // dd($duplikasi);
-
-        // $perusahaan = User_Perusahaan::where('id_user', $auth->id)
-        //     ->join('perusahaan', 'id', 'id_perusahaan')
-        //     ->get();
-
         $survey = new Survey();
         $survey->id_perusahaan = $request->id_perusahaan;
         $survey->id_user = $auth->id;
@@ -266,12 +259,12 @@ class SurveyController extends Controller
 
     public function show(Request $request, $id)
     {
+
+        $auth = Auth::user();
         $id = Crypt::decryptString($id);
-        // echo $id;
         $survey = Survey::where('id', $id)->first();
-        $user = Auth::user();
         $tahun = $survey->tahun;
-        return view('survey.edit', compact('tahun', 'survey', 'user', 'id'));
+        return view('survey.edit', compact('tahun', 'survey', 'auth', 'id'));
     }
 
     public function update(Request $request, $id)

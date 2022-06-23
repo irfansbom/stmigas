@@ -17,8 +17,6 @@ class UserController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        // dd($auth);
-        // dd($auth->getPermissionsViaRoles()->pluck('name')->toArray());
         if (in_array('Super Admin', $auth->getRoleNames()->toArray())) {
             $user = User::all();
         } else {
@@ -34,23 +32,26 @@ class UserController extends Controller
         return view('admin.user.index', compact('user', 'data_roles', 'data_perusahaan', 'auth'));
     }
 
-
-
     public function create()
     {
         $auth = Auth::user();
         $user = new User();
         $data_roles = Role::all();
-        $data_perusahaan = Perusahaan::all();
+        if (in_array('Super Admin', $auth->getRoleNames()->toArray())) {
+            $data_perusahaan = Perusahaan::all();
+        } else {
+            $data_perusahaan = User_Perusahaan::where('id_user', $auth->id)
+                ->join('perusahaan', 'perusahaan.id', 'id_perusahaan')
+                ->get();
+        }
         return view('admin.user.create', compact('data_roles', 'data_perusahaan', 'user', 'auth'));
     }
 
 
     public function store(Request $request)
     {
-        // dd($request->all());
         $auth = Auth::user();
-        User::create([
+        $user = User::create([
             'nama' => $request->nama,
             'email' => $request->email,
             'divisi_fungsi' => $request->divisi_fungsi,
@@ -58,14 +59,19 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'created_by' => $auth->email,
         ]);
+
+        
+
+        foreach ($request->perusahaan as $perus) {
+            User_perusahaan::create(['id_user' => $user->id, 'id_perusahaan' => $perus]);
+        }
+
         return redirect('user')->with('message', 'Berhasil Disimpan');
     }
 
     public function show($id)
     {
         $auth = Auth::user();
-        // dd(in_array('Super Admin', $auth->getRoleNames()->toArray()));
-        // dd(array_diff($auth->roles, ['Super Admin']));
         $id = Crypt::decryptString($id);
         $user = User::where('id', $id)->first();
         return view('admin.user.show', compact('user', 'id', 'auth'));
@@ -74,7 +80,6 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $auth = Auth::user();
-        // dd($request);
         User::where('id', $request->id)
             ->update([
                 'nama' => $request->nama,
@@ -87,7 +92,6 @@ class UserController extends Controller
 
     public function ubahpassword(Request $request)
     {
-        // dd($request->all());
         User::where('id', $request->id)
             ->update([
                 'password' => Hash::make($request->password),
@@ -106,7 +110,6 @@ class UserController extends Controller
 
     public function user_roles(Request $request)
     {
-        // dd($request->all());
         $user = User::find($request->user_id);
         $user->syncRoles([$request->roles]);
         return redirect('user/')->with('message', 'User berhasil diperbaharui.');
@@ -114,7 +117,6 @@ class UserController extends Controller
 
     public function user_perusahaan(Request $request)
     {
-        // dd($request->all());
         $user = User::find($request->user_id);
         User_Perusahaan::where('id_user', $request->user_id)->delete();
         foreach ($request->perusahaan as $perus) {
@@ -140,12 +142,8 @@ class UserController extends Controller
             ];
             array_push($data_roles, $data_role);
         }
-
         $data_permission = Permission::all();
-        // dd($roles);
         return view('admin/roles', compact('data_roles', 'data_permission', 'auth'));
-        // return view('admin/roles',compact('roles', 'permission'));
-
     }
 
     public function roles_add(Request $request)
@@ -165,7 +163,6 @@ class UserController extends Controller
 
     public function roles_delete(Request $request)
     {
-        // dd($request->all());
         Role::where('id', $request->id)->delete();
         return redirect()->back()->with('message', 'Berhasil Disimpan');
     }
@@ -174,7 +171,6 @@ class UserController extends Controller
     {
         $auth = Auth::user();
         $permission = Permission::all();
-        // dd($roles);
         return view('admin/permissions', compact('permission', 'auth'));
     }
 

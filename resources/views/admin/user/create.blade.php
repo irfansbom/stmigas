@@ -39,22 +39,6 @@
                                     value="{{ old('password', $user->password) }}" required autocomplete="off">
                             </div>
                         </div>
-                        {{-- <div class="mb-3 row">
-                            <label for="perusahaan" class="col-sm-4 col-form-label">Perusahaan</label>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" id="perusahaan" name="perusahaan"
-                                    value="{{ old('perusahaan', $user->perusahaan) }}" readonly>
-                            </div>
-
-                        </div> --}}
-                        <div class="mb-3 row">
-                            <label for="divisi_fungsi" class="col-sm-4 col-form-label">Divisi/Fungsi</label>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" id="divisi_fungsi" name="divisi_fungsi"
-                                    value="{{ old('divisi_fungsi', $user->divisi_fungsi) }}" autocomplete="off">
-                            </div>
-
-                        </div>
                         <div class="mb-3 row">
                             <label for="no_hp" class="col-sm-4 col-form-label">No Hp</label>
                             <div class="col-sm-6">
@@ -63,8 +47,34 @@
                             </div>
                         </div>
 
+                        <div class="mb-3 row">
+                            <label for="divisi_fungsi" class="col-sm-4 col-form-label">Perusahaan</label>
+                            <div class="col-sm-8">
+                                @foreach ($data_perusahaan as $perus)
+                                    <div class=" col-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input roles" type="checkbox"
+                                                value="{{ $perus->id }}" name="perusahaan[]"
+                                                id="{{ $perus->nama_perusahaan }}" required>
+                                            <label class="form-check-label" for="{{ $perus->nama_perusahaan }}">
+                                                {{ $perus->nama_perusahaan }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="divisi_fungsi" class="col-sm-4 col-form-label">Divisi/Fungsi</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="divisi_fungsi" name="divisi_fungsi"
+                                    value="{{ old('divisi_fungsi', $user->divisi_fungsi) }}" autocomplete="off">
+                            </div>
+                        </div>
+
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary" type="submit">simpan</button>
+                            <button class="btn btn-primary" type="submit" id="simpanbtn">simpan</button>
                         </div>
                     </fieldset>
                 </form>
@@ -95,5 +105,16 @@
         var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
             return new bootstrap.Popover(popoverTriggerEl)
         })
+
+        $(document).ready(function() {
+            var requiredCheckboxes = $('input[type=checkbox]');
+            requiredCheckboxes.change(function() {
+                if (requiredCheckboxes.is(':checked')) {
+                    requiredCheckboxes.removeAttr('required');
+                } else {
+                    requiredCheckboxes.attr('required', 'required');
+                }
+            });
+        });
     </script>
 @endsection

@@ -12,25 +12,28 @@ use Illuminate\Support\Facades\Hash;
 class ProfileController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         // dd(Auth());
-        $user = Auth::user();
+        $auth = Auth::user();
         // dd($user);
-        return view('profile', compact('user'));
+        return view('profile', compact('auth'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request;
         return redirect()->back()->with('message', 'Berhasil Disimpan');
     }
 
-    public function ubahpassword(Request $request){
-        $user = Auth::user();
-        if (Hash::check($request->password_lama, $user->password)) {
-            User::where('email',$user->email)
-            ->update(['password' => Hash::make($request->password)]);
+    public function ubahpassword(Request $request)
+    {
+        $auth = Auth::user();
+        if (Hash::check($request->password_lama, $auth->password)) {
+            User::where('email', $auth->email)
+                ->update(['password' => Hash::make($request->password)]);
             return redirect()->back()->with('message', 'Berhasil Disimpan');
-        }else{
+        } else {
             return redirect()->back()->with('error', 'Password Salah');
         }
     }

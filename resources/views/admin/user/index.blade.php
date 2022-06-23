@@ -182,12 +182,10 @@
             console.log($(this).data("id"))
             $('#modal_edit_perusahaan').find('#user_id').val($(this).data("id"));
             $('#modal_edit_perusahaan').find('#user_name').val($(this).data("nama"));
-            // var permissions = $(this).data("permission");
             var perusahaan = [];
             $(this).data("perusahaan").forEach(element => {
                 perusahaan.push(element['id_perusahaan']);
             });
-            // console.log(perusahaan)
             $('#modal_edit_perusahaan').find('input[name="perusahaan[]"]').each(function() {
                 if (perusahaan.includes(this.value)) {
                     $(this).prop('checked', true);
@@ -200,12 +198,10 @@
             console.log($(this).data("id"))
             $('#modal_edit_roles').find('#user_id').val($(this).data("id"));
             $('#modal_edit_roles').find('#user_name').val($(this).data("nama"));
-            // var permissions = $(this).data("permission");
             var roles = [];
             $(this).data("roles").forEach(element => {
                 roles.push(element['name']);
             });
-            // console.log(roles)
             $('#modal_edit_roles').find('input[name="roles[]"]').each(function() {
                 if (roles.includes(this.value)) {
                     $(this).prop('checked', true);

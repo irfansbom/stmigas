@@ -46,8 +46,7 @@
         <div class="container-fluid">
             <div class="row flex-nowrap">
                 {{-- @if (Auth::user()->level == 'admin') --}}
-                <div class="col-auto col-md-2 col-xl-2 px-sm-2 px-0 bg-dark collapse collapse-horizontal"
-                    id="sidebar">
+                <div class="col-auto col-xl-2 px-sm-2 px-0 bg-dark collapse collapse-horizontal" id="sidebar">
                     <div
                         class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                         <a href="{{ url('/dashboard') }}"
@@ -62,30 +61,46 @@
                                     <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                                 </a>
                             </li>
+                            @if (in_array(
+                                'Manajemen User',
+                                $auth->getPermissionsViaRoles()->pluck('name')->toArray(),
+                            ))
+                                <li class="mb-1">
+                                    <button
+                                        class="btn btn-toggle align-items-left rounded text-white text-start align-middle"
+                                        data-bs-toggle="collapse" data-bs-target="#monitoring-collapse"
+                                        aria-expanded="false">
+
+                                        <div class="row">
+                                            <div class="col">Monitoring</div>
+                                            <div class="col"> <i class="bi bi-file-bar-graph"></i></div>
+                                        </div>
+                                    </button>
+                                    <div class="collapse" id="monitoring-collapse" style="">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li>
+                                                <a href="{{ url('mon_perusahaan') }}"
+                                                    class=" nav-link rounded">Perusahaan</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('mon_user') }}" class=" nav-link rounded">Users</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                            @endif
+
                             <li class="mb-1">
-                                <button
-                                    class="btn btn-toggle align-items-left rounded text-white text-start align-middle"
-                                    data-bs-toggle="collapse" data-bs-target="#monitoring-collapse"
-                                    aria-expanded="false">
-                                    <i class="bi bi-file-bar-graph"></i>Monitoring
-                                </button>
-                                <div class="collapse" id="monitoring-collapse" style="">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="{{ url('mon_perusahaan') }}"
-                                                class=" nav-link rounded">Perusahaan</a>
-                                        </li>
-                                        <li><a href="{{ url('mon_user') }}" class=" nav-link rounded">Users</a></li>
-
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="mb-1">
-
                                 <button class="btn btn-toggle align-items-left rounded text-white text-start"
                                     data-bs-toggle="collapse" data-bs-target="#akun-collapse" aria-expanded="false">
-                                    <i class="bi bi-person-fill"></i>Manajemen Akun
+                                    <div class="row">
+                                        <div class="col">Manajemen Akun</div>
+                                        <div class="col"><i class="bi bi-person-fill"></i></div>
+                                    </div>
+
                                 </button>
+
                                 <div class="collapse" id="akun-collapse" style="">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                         <li><a href="{{ url('user') }}" class=" nav-link rounded">Users</a></li>
@@ -138,7 +153,7 @@
 
                                 <div class="navbar-nav">
                                     <div class="nav-link disabled">{{ $auth->nama }}</div>
-                                    <a class="nav-link" href="{{ url('profile') }}"> Profile</a>
+                                    {{-- <a class="nav-link" href="{{ url('profile') }}"> Profile</a> --}}
                                     <form action="{{ url('logout') }}" method="post" id="logout" class="m-0">
                                         @csrf
                                         <a class="nav-link" href="javascript:{}"
