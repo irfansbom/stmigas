@@ -69,6 +69,8 @@ class PerusahaanController extends Controller
     }
     public function update(Request $request)
     {
+        // dd($id);
+        // dd($request->all());
         $auth = Auth::user();
         $affected_rows = Perusahaan::where('id', $request->id)
             ->update([
@@ -85,7 +87,7 @@ class PerusahaanController extends Controller
                 'updated_at' => date("Y-m-d H:i:s"),
             ]);
         if ($affected_rows) {
-            return redirect()->back()->with('message', 'Berhasil Disimpan');
+            return redirect('perusahaan')->with('message', 'Berhasil Disimpan');
         } else {
             return redirect()->back()->with('error', 'Gagal Disimpan');
         }

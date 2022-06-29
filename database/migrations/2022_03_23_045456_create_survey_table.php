@@ -15,30 +15,38 @@ class CreateSurveyTable extends Migration
     {
         Schema::create('survey', function (Blueprint $table) {
             $table->id();
+            $table->string('id_perusahaan');
+            $table->string('id_user');
+            $table->string('tahun', 5);
+            $table->string('tipe_form');
 
             $table->string('email');
+
             $table->string('kip')->nullable();
 
-            $table->string('tahun',5);
-            $table->string('provinsi',3);
-            $table->string('kabkot',3);
-            $table->string('kecamatan',4);
-            $table->string('kelurahan',4);
+            $table->string('kd_prov', 5);
+            $table->string('provinsi', 30);
+            $table->string('kd_kab', 5);
+            $table->string('kabkot', 50);
+            $table->string('kd_kec', 5);
+            $table->string('kecamatan', 50);
+            $table->string('kd_desa', 5);
+            $table->string('kelurahan', 50);
 
             $table->string('nama_perusahaan')->nullable();
             $table->string('alamat_perusahaan')->nullable();
-            $table->string('kode_pos_perusahaan',6)->nullable();
+            $table->string('kode_pos_perusahaan', 6)->nullable();
             $table->string('email_perusahaan')->nullable();
             $table->string('phone_perusahaan')->nullable();
             $table->string('fax_perusahaan')->nullable();
             $table->string('alamat_pusat')->nullable();
-            $table->string('kode_pos_pusat',6)->nullable();
+            $table->string('kode_pos_pusat', 6)->nullable();
             $table->string('email_pusat')->nullable();
             $table->string('phone_pusat')->nullable();
             $table->string('fax_pusat')->nullable();
 
-            $table->string('kbli',6)->nullable();
-            $table->string('bentuk_kerjasama',2)->nullable();
+            $table->string('kbli', 6)->nullable();
+            $table->string('bentuk_kerjasama', 2)->nullable();
             $table->integer('pemodalan_pem_pusat')->nullable();
             $table->integer('pemodalan_pem_daerah')->nullable();
             $table->integer('pemodalan_swasta')->nullable();

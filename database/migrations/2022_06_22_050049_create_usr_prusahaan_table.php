@@ -21,10 +21,7 @@ class CreateUsrPrusahaanTable extends Migration
             $table->string('updated_by')->nullable();
             $table->timestamps();
         });
-        Schema::table('survey', function (Blueprint $table) {
-            $table->string('id_perusahaan');
-            $table->string('id_user');
-        });
+        
     }
 
     /**

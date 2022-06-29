@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container my-5">
-        <h1>Daftar Perusahaan</h1>
         <div class="row">
             <div class="col">
                 <h1>Daftar Perusahaan</h1>

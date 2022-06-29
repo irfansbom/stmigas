@@ -26,6 +26,9 @@ Route::get('/', function () {
     return view('cover', compact('date'));
 });
 
+Route::get('listkec', [SurveyController::class, 'listkec']);
+Route::get('listdesa', [SurveyController::class, 'listdesa']);
+
 Route::middleware(['auth'])->group(function () {
     //
     // Route::get('/', [HomeController::class, 'index']);
@@ -37,10 +40,38 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/form', [SurveyController::class, 'create']);
     Route::post('/storeform', [SurveyController::class, 'store']);
+    Route::post('/storeblok0', [SurveyController::class, 'storeblok0']);
 
     Route::get('/form-edit/{id}', [SurveyController::class, 'show']);
-    Route::get('/form-print/{id}', [SurveyController::class, 'print']);
     Route::post('/updateform/{id}', [SurveyController::class, 'update']);
+
+    Route::get('/showblok0/{id}', [SurveyController::class, 'showblok0']);
+    Route::post('/updateblok0/{id}', [SurveyController::class, 'updateblok0']);
+
+    Route::get('/showblok1/{id}', [SurveyController::class, 'showblok1']);
+    Route::post('/updateblok1/{id}', [SurveyController::class, 'updateblok1']);
+
+    Route::get('/showblok2/{id}', [SurveyController::class, 'showblok2']);
+    Route::post('/updateblok2/{id}', [SurveyController::class, 'updateblok2']);
+
+
+    Route::get('/showblok3/{id}', [SurveyController::class, 'showblok3']);
+    Route::post('/updateblok3/{id}', [SurveyController::class, 'updateblok3']);
+
+    Route::get('/showblok4/{id}', [SurveyController::class, 'showblok4']);
+    Route::post('/updateblok4/{id}', [SurveyController::class, 'updateblok4']);
+
+    Route::get('/showblok5/{id}', [SurveyController::class, 'showblok5']);
+    Route::post('/updateblok5/{id}', [SurveyController::class, 'updateblok5']);
+
+    // Route::get('/showblok6/{id}', [SurveyController::class, 'showblok6']);
+    // Route::post('/updateblok6/{id}', [SurveyController::class, 'updateblok6']);
+
+    Route::get('/showbloklegalitas/{id}', [SurveyController::class, 'showbloklegalitas']);
+    Route::post('/updatebloklegalitas/{id}', [SurveyController::class, 'updatebloklegalitas']);
+
+
+    Route::get('/form-print/{id}', [SurveyController::class, 'print']);
     Route::post('/hapusform', [SurveyController::class, 'destroy']);
 
     Route::get('monitoring', [MonitoringController::class, 'index']);

@@ -10,6 +10,7 @@
                     @csrf
                     <fieldset class="px-3 py-3">
                         {{-- <h2>Profile Perusahaan</h2> --}}
+                        <input type="text" name="id" id="" value="{{ $perusahaan->id }}" hidden>
                         <div class="row">
                             <div class="col">
                                 <div class="mb-1">

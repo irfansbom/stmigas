@@ -31,10 +31,8 @@ class CreatePerusahaanTable extends Migration
             $table->string('email_pusat')->nullable();
             $table->string('telepon_pusat')->nullabel();
 
-
             $table->string('cp_nama')->nullable();
             $table->string('cp_no_hp')->nullable();
-
 
             $table->string('produksi_utama')->nullable();
 

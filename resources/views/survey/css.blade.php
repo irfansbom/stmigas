@@ -1,12 +1,5 @@
 <style>
     @charset "UTF-8";
-
-    /*!
- * Bootstrap v5.1.3 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
     :root {
         --bs-blue: #0d6efd;
         --bs-indigo: #6610f2;
@@ -476,14 +469,7 @@
         -webkit-appearance: textfield;
     }
 
-    /* rtl:raw:
-[type="tel"],
-[type="url"],
-[type="email"],
-[type="number"] {
-  direction: ltr;
-}
-*/
+
     ::-webkit-search-decoration {
         -webkit-appearance: none;
     }
@@ -6995,6 +6981,7 @@
     "search"  : "prev",
     "replace" : "next"
   } ]
+
 } */
     .carousel-control-prev-icon {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");

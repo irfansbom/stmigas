@@ -47,7 +47,7 @@
                                 <td>{{ $sur->updated_by }}</td>
                                 <td>{{ $sur->updated_at }}</td>
                                 <td><a class="btn btn-warning btn-sm"
-                                        href="{{ url('form-edit/' . \Crypt::encryptString($sur->id)) }}">Edit</a>
+                                        href="{{ url('showblok0/' . \Crypt::encryptString($sur->id)) }}">Edit</a>
                                     @if (in_array('Super Admin', $auth->getRoleNames()->toArray()))
                                         <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                             id="hapus_btn" data-bs-target="#modalhapus" data-id="{{ $sur->id }}">
