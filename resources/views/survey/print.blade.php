@@ -120,7 +120,7 @@
                         </div>
                         <div class=" mb-4 row">
                             <div class="col-sm-12 d-flex align-items-center">
-                                <input type="number" class="form-control text-center" name="kd_prov" id="kd_prov"
+                                <input type="number" class="form-control " name="kd_prov" id="kd_prov"
                                     maxlength="2" value="{{ old('kd_prov', $survey->kd_prov) }}"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 
@@ -128,22 +128,22 @@
                         </div>
                         <div class=" mb-4 row">
                             <div class="col-sm-12 d-flex align-items-center">
-                                <input type="number" class="form-control text-center" name="kd_kab" id="kd_kab"
-                                    maxlength="2" value="{{ old('kd_prov', $survey->kd_prov) }}"
+                                <input type="number" class="form-control " name="kd_kab" id="kd_kab"
+                                    maxlength="2" value="{{ old('kd_kab', $survey->kd_kab) }}"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             </div>
                         </div>
                         <div class=" mb-4 row">
                             <div class="col-sm-12 d-flex align-items-center">
-                                <input type="number" class="form-control text-center" name="kd_kec" id="kd_kec"
-                                    maxlength="3" value="{{ old('kd_prov', $survey->kd_prov) }}"
+                                <input type="number" class="form-control " name="kd_kec" id="kd_kec"
+                                    maxlength="3" value="{{ old('kd_kec', $survey->kd_kec) }}"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             </div>
                         </div>
                         <div class=" mb-4 row">
                             <div class="col-sm-12 d-flex align-items-center">
-                                <input type="number" class="form-control text-center" name="kd_desa" id="kd_desa"
-                                    maxlength="3" value="{{ old('kd_prov', $survey->kd_prov) }}"
+                                <input type="number" class="form-control " name="kd_desa" id="kd_desa"
+                                    maxlength="3" value="{{ old('kd_desa', $survey->kd_desa) }}"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             </div>
                         </div>
@@ -464,7 +464,7 @@
                                 e. jumlah/ <span class="fst-italic">Total</span>
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control form-control-sm" id="pemodalan_jumlah"
+                                <input type="number" class="form-control form-control-sm" id="pemodalan_jumlah"
                                     name="pemodalan_jumlah" value="100" disabled>
                             </div>
                             %
@@ -858,7 +858,7 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Salaries and Regular Allowance</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="gaji_pk_tetap"
+                                        <input type="text" class="form-control form-control-sm" id="gaji_pk_tetap"
                                             name="gaji_pk_tetap"
                                             value="{{ old('gaji_pk_tetap', $survey->gaji_pk_tetap) }}">
                                     </td>
@@ -2367,6 +2367,11 @@
             opacity: 1;
             pointer-events: none;
         }
+
+    }
+
+    .mask {
+        text-align: right;
     }
 </style>
 <script>

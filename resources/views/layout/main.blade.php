@@ -21,6 +21,7 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"
         media="all"></script>
     <script src="{{ url('js/sidebars.js') }}"></script>
+    <script src="{{ url('js/jquery.mask.min.js') }}"></script>
     <link rel="stylesheet" href="{{ url('css/sidebars.css') }}">
 
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-print-css/css/bootstrap-print.min.css">
@@ -38,6 +39,17 @@
         content:
             transition: transform .35s ease;
         transform-origin: 0.5em 50%;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
     }
 </style>
 
@@ -63,8 +75,7 @@
                             </li>
                             @if (in_array(
                                 'Monitoring',
-                                $auth->getPermissionsViaRoles()->pluck('name')->toArray(),
-                            ))
+                                $auth->getPermissionsViaRoles()->pluck('name')->toArray()))
                                 <li class="mb-1">
                                     <button
                                         class="btn btn-toggle align-items-left rounded text-white text-start align-middle"
@@ -79,11 +90,11 @@
                                     <div class="collapse" id="monitoring-collapse" style="">
                                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                             <li>
-                                                <a href="{{ url('mon_perusahaan') }}"
+                                                <a href="{{ url('dashboard') }}"
                                                     class=" nav-link rounded">Perusahaan</a>
                                             </li>
                                             <li>
-                                                <a href="{{ url('mon_user') }}" class=" nav-link rounded">Users</a>
+                                                <a href="{{ url('dashboard') }}" class=" nav-link rounded">Users</a>
                                             </li>
 
                                         </ul>
@@ -106,16 +117,14 @@
                                         <li><a href="{{ url('user') }}" class=" nav-link rounded">Users</a></li>
                                         @if (in_array(
                                             'Manajemen Perusahaan',
-                                            $auth->getPermissionsViaRoles()->pluck('name')->toArray(),
-                                        ))
+                                            $auth->getPermissionsViaRoles()->pluck('name')->toArray()))
                                             <li><a href="{{ url('perusahaan') }}"
                                                     class=" nav-link rounded">Perusahaan</a>
                                             </li>
                                         @endif
                                         @if (in_array(
                                             'Roles & Permissions',
-                                            $auth->getPermissionsViaRoles()->pluck('name')->toArray(),
-                                        ))
+                                            $auth->getPermissionsViaRoles()->pluck('name')->toArray()))
                                             <li>
                                                 <a href="{{ url('roles') }}" class=" nav-link rounded">Roles</a>
                                             </li>

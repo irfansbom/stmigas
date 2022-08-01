@@ -47,7 +47,7 @@ class UserController extends Controller
                 ->join('perusahaan', 'perusahaan.id', 'id_perusahaan')
                 ->get();
         }
-        
+
         return view('admin.user.create', compact('data_roles', 'data_perusahaan', 'user', 'auth'));
     }
 
@@ -127,7 +127,7 @@ class UserController extends Controller
     {
         $user = User::find($request->user_id);
         User_Perusahaan::where('id_user', $request->user_id)->delete();
-        if ($request->user_perusahaan) {
+        if ($request->perusahaan) {
             foreach ($request->perusahaan as $perus) {
                 User_perusahaan::create(['id_user' => $request->user_id, 'id_perusahaan' => $perus]);
             }

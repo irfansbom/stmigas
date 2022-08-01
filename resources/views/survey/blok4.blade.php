@@ -81,7 +81,7 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Capacity of engine power plant</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm  mask"
                                             id="kapasitas_pembangkit_listrik_volume"
                                             name="kapasitas_pembangkit_listrik_volume"
                                             value="{{ old('kapasitas_pembangkit_listrik_volume', $survey->kapasitas_pembangkit_listrik_volume) }}">
@@ -93,11 +93,11 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Own electricity generated</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm  mask"
                                             id="produksi_listrik_volume" name="produksi_listrik_volume"
                                             value="{{ old('produksi_listrik_volume', $survey->produksi_listrik_volume) }}">
                                     </td>
-                                    <td><input type="number" class="form-control form-control-sm"
+                                    <td><input type="text" class="form-control form-control-sm  mask"
                                             id="produksi_listrik_nilai" name="produksi_listrik_nilai"
                                             value="{{ old('produksi_listrik_nilai', $survey->produksi_listrik_nilai) }}">
                                     </td>
@@ -112,12 +112,12 @@
                                         <span class="fst-italic">Diesel Oil</span>(Liter)
                                     </td>
                                     <td class="border-start-0 border-end-0">
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="bb_listrik_solar_volume" name="bb_listrik_solar_volume"
                                             value="{{ old('bb_listrik_solar_volume', $survey->bb_listrik_solar_volume) }}">
                                     </td>
                                     <td class="border-start-0">
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="bb_listrik_solar_nilai" name="bb_listrik_solar_nilai"
                                             value="{{ old('bb_listrik_solar_nilai', $survey->bb_listrik_solar_nilai) }}">
                                     </td>
@@ -127,12 +127,12 @@
                                         <span class="fst-italic">Coal</span>(Ton)
                                     </td>
                                     <td class="border-start-0 border-end-0">
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="bb_listrik_batubara_volume" name="bb_listrik_batubara_volume"
                                             value="{{ old('bb_listrik_batubara_volume', $survey->bb_listrik_batubara_volume) }}">
                                     </td>
                                     <td class="border-start-0">
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="bb_listrik_batubara_nilai" name="bb_listrik_batubara_nilai"
                                             value="{{ old('bb_listrik_batubara_nilai', $survey->bb_listrik_batubara_nilai) }}">
                                     </td>
@@ -142,12 +142,12 @@
                                         <span class="fst-italic">Natural Gas</span>(MMSCF)
                                     </td>
                                     <td class="border-start-0 border-end-0">
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="bb_listrik_gasalam_volume" name="bb_listrik_gasalam_volume"
                                             value="{{ old('bb_listrik_gasalam_volume', $survey->bb_listrik_gasalam_volume) }}">
                                     </td>
                                     <td class="border-start-0">
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="bb_listrik_gasalam_nilai" name="bb_listrik_gasalam_nilai"
                                             value="{{ old('bb_listrik_gasalam_nilai', $survey->bb_listrik_gasalam_nilai) }}">
                                     </td>
@@ -157,11 +157,11 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Electricity purchased</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="listrik_dibeli_volume" name="listrik_dibeli_volume"
                                             value="{{ old('listrik_dibeli_volume', $survey->listrik_dibeli_volume) }}">
                                     </td>
-                                    <td><input type="number" class="form-control form-control-sm"
+                                    <td><input type="text" class="form-control form-control-sm mask"
                                             id="listrik_dibeli_nilai" name="listrik_dibeli_nilai"
                                             value="{{ old('listrik_dibeli_nilai', $survey->listrik_dibeli_nilai) }}">
                                     </td>
@@ -171,11 +171,11 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Electricity sold to other</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="listrik_dijual_volume" name="listrik_dijual_volume"
                                             value="{{ old('listrik_dijual_volume', $survey->listrik_dijual_volume) }}">
                                     </td>
-                                    <td><input type="number" class="form-control form-control-sm"
+                                    <td><input type="text" class="form-control form-control-sm mask"
                                             id="listrik_dijual_nilai" name="listrik_dijual_nilai"
                                             value="{{ old('listrik_dijual_nilai', $survey->listrik_dijual_nilai) }}">
                                     </td>
@@ -210,6 +210,10 @@
         .form-control:focus {
             background-color: rgba(255, 230, 7, 0.767)
         }
+
+        .mask {
+            text-align: right;
+        }
     </style>
 
     <script>
@@ -236,5 +240,10 @@
                 });
             }, false);
         })();
+        $(document).ready(function() {
+            $('.mask').mask('000.000.000.000.000', {
+                reverse: true
+            });
+        });
     </script>
 @endsection

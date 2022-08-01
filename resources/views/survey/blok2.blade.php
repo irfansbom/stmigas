@@ -72,8 +72,8 @@
                                         <td>a. Laki-laki/<span class="fst-italic">Male</span>
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm" id="pekerja_lakilaki"
-                                                name="pekerja_lakilaki" min="1"
+                                            <input type="text" class="form-control form-control-sm mask"
+                                                id="pekerja_lakilaki" name="pekerja_lakilaki" min="1"
                                                 value="{{ old('pekerja_lakilaki', $survey->pekerja_lakilaki) }}">
                                         </td>
 
@@ -82,7 +82,7 @@
                                         <td>b. Perempuan/<span class="fst-italic">Female</span>
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm"
+                                            <input type="text" class="form-control form-control-sm mask"
                                                 id="pekerja_perempuan" name="pekerja_perempuan" min="1"
                                                 value="{{ old('pekerja_perempuan', $survey->pekerja_perempuan) }}">
                                         </td>
@@ -302,5 +302,11 @@
                 });
             }, false);
         })();
+
+        $(document).ready(function() {
+            $('.mask').mask('000.000.000.000.000', {
+                reverse: true
+            });
+        });
     </script>
 @endsection

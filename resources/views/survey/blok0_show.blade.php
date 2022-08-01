@@ -46,13 +46,12 @@
                 value="{{ old('id_perusahaan', $survey->id_perusahaan) }}" hidden>
             <input type="text" id="id_user" name="id_user" value="{{ old('id_user', $survey->id_user) }}" hidden>
             <input type="text" id="tahun" name="tahun" value="{{ old('tahun', $survey->tahun) }}" hidden>
-            <input type="text" id="tipe_form" name="tipe_form" value="{{ old('tipe_form', $survey->tipe_form) }}"
-                hidden>
+            <input type="text" id="tipe_form" name="tipe_form" value="{{ old('tipe_form', $survey->tipe_form) }}" hidden>
             <input type="text" id="email" name="email" value="{{ old('email', $survey->email) }}" hidden>
             <div class="mb-1 row ">
                 <label for="kip" class="col-sm-1 col-form-label">KIP</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control form-control-sm" id="kip" name="kip"
+                    <input type="text" class="form-control form-control-sm text-end" id="kip" name="kip"
                         value="{{ old('kip', $survey->kip) }}" maxlength="8">
                 </div>
                 <div class="col-sm-2 d-flex align-items-center">
@@ -87,8 +86,7 @@
                                     <option value="">Pilih Kabupaten</option>
                                     @foreach ($kabs as $kab)
                                         @if ($survey->kd_kab == $kab->id_kab)
-                                            <option value="{{ $kab->nama_kab }}" data-id="{{ $kab->id_kab }}"
-                                                selected>
+                                            <option value="{{ $kab->nama_kab }}" data-id="{{ $kab->id_kab }}" selected>
                                                 {{ $kab->nama_kab }}
                                             </option>
                                         @else
@@ -132,7 +130,7 @@
                         </div>
                         <div class=" mb-4 row">
                             <div class="col-sm-12 d-flex align-items-center">
-                                <input type="number" class="form-control text-center" name="kd_prov" id="kd_prov"
+                                <input type="number" class="form-control text-end" name="kd_prov" id="kd_prov"
                                     maxlength="2" value="16"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     readonly>
@@ -141,7 +139,7 @@
                         </div>
                         <div class=" mb-4 row">
                             <div class="col-sm-12 d-flex align-items-center">
-                                <input type="number" class="form-control text-center" name="kd_kab" id="kd_kab"
+                                <input type="number" class="form-control text-end" name="kd_kab" id="kd_kab"
                                     maxlength="2"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     readonly>
@@ -149,16 +147,16 @@
                         </div>
                         <div class=" mb-4 row">
                             <div class="col-sm-12 d-flex align-items-center">
-                                <input type="number" class="form-control mt-1 text-center" name="kd_kec"
-                                    id="kd_kec" maxlength="3"
+                                <input type="number" class="form-control mt-1 text-end" name="kd_kec" id="kd_kec"
+                                    maxlength="3"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     readonly>
                             </div>
                         </div>
                         <div class=" mb-4 row">
                             <div class="col-sm-12 d-flex align-items-center">
-                                <input type="number" class="form-control mt-1 text-center" name="kd_desa"
-                                    id="kd_desa" maxlength="3"
+                                <input type="number" class="form-control mt-1 text-end" name="kd_desa" id="kd_desa"
+                                    maxlength="3"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     readonly>
                             </div>

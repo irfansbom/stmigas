@@ -55,8 +55,8 @@
                         <div class="mb-1 row">
                             <div class="col-sm-9"></div>
                             <div class="col-sm-3 d-flex align-items-center">
-                                <input type="text" class="form-control form-control-sm" id="kbli" name="kbli"
-                                    value="{{ old('kbli', $survey->kbli) }}" maxlength="5">
+                                <input type="text" class="form-control form-control-sm text-end" id="kbli"
+                                    name="kbli" value="{{ old('kbli', $survey->kbli) }}" maxlength="5">
                             </div>
                         </div>
                     </td>
@@ -83,8 +83,8 @@
                                 Lainnya -4
                             </div>
                             <div class="col-sm-2 d-flex align-items-center">
-                                <input type="number" class="form-control" id="bentuk_kerjasama" name="bentuk_kerjasama"
-                                    max="4" min="1"
+                                <input type="number" class="form-control text-end" id="bentuk_kerjasama"
+                                    name="bentuk_kerjasama" max="4" min="1"
                                     value="{{ old('bentuk_kerjasama', $survey->bentuk_kerjasama) }}" maxlength="1"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             </div>
@@ -100,7 +100,7 @@
                                 a. Pemerintah Pusat/ <span class="fst-italic">Central Goverment</span>
                             </div>
                             <div class="col-sm-2">
-                                <input type="number" class="form-control form-control-sm" id="pemodalan_pem_pusat"
+                                <input type="number" class="form-control form-control-sm text-end" id="pemodalan_pem_pusat"
                                     name="pemodalan_pem_pusat" min="1" max="100"
                                     value="{{ old('pemodalan_pem_pusat', $survey->pemodalan_pem_pusat) }}" maxlength="3"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
@@ -112,10 +112,9 @@
                                 b. Pemerintah Daerah/ <span class="fst-italic">Local Goverment</span>
                             </div>
                             <div class="col-sm-2">
-                                <input type="number" class="form-control form-control-sm" id="pemodalan_pem_daerah"
-                                    name="pemodalan_pem_daerah" min="1" max="100"
-                                    value="{{ old('pemodalan_pem_daerah', $survey->pemodalan_pem_daerah) }}"
-                                    maxlength="3"
+                                <input type="number" class="form-control form-control-sm text-end"
+                                    id="pemodalan_pem_daerah" name="pemodalan_pem_daerah" min="1" max="100"
+                                    value="{{ old('pemodalan_pem_daerah', $survey->pemodalan_pem_daerah) }}" maxlength="3"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             </div>
                             %
@@ -125,10 +124,9 @@
                                 c. Swasta/ <span class="fst-italic">Private</span>
                             </div>
                             <div class="col-sm-2">
-                                <input type="number" class="form-control form-control-sm" id="pemodalan_swasta"
-                                    name="pemodalan_swasta"
-                                    value="{{ old('pemodalan_swasta', $survey->pemodalan_swasta) }}" maxlength="3"
-                                    min="1" max="100"
+                                <input type="number" class="form-control form-control-sm text-end" id="pemodalan_swasta"
+                                    name="pemodalan_swasta" value="{{ old('pemodalan_swasta', $survey->pemodalan_swasta) }}"
+                                    maxlength="3" min="1" max="100"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             </div>
                             %
@@ -138,10 +136,9 @@
                                 d. Asing/ <span class="fst-italic">Foreign</span>
                             </div>
                             <div class="col-sm-2">
-                                <input type="number" class="form-control form-control-sm" id="pemodalan_asing"
-                                    name="pemodalan_asing"
-                                    value="{{ old('pemodalan_asing', $survey->pemodalan_asing) }}" maxlength="3"
-                                    min="1" max="100"
+                                <input type="number" class="form-control form-control-sm text-end" id="pemodalan_asing"
+                                    name="pemodalan_asing" value="{{ old('pemodalan_asing', $survey->pemodalan_asing) }}"
+                                    maxlength="3" min="1" max="100"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             </div>
                             {{-- <div class="col-sm-1">%</div> --}}
@@ -156,7 +153,7 @@
                                 e. jumlah/ <span class="fst-italic">Total</span>
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control form-control-sm" id="pemodalan_jumlah"
+                                <input type="text" class="form-control form-control-sm text-end" id="pemodalan_jumlah"
                                     name="pemodalan_jumlah" value="100" disabled>
                             </div>
                             %

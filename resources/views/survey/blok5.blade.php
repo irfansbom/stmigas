@@ -78,18 +78,18 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Begining Stock</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="minyak_mentah_stok_awal" name="minyak_mentah_stok_awal"
                                             value="{{ old('minyak_mentah_stok_awal', $survey->minyak_mentah_stok_awal) }}">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="kondensat_stok_awal"
-                                            name="kondensat_stok_awal"
+                                        <input type="text" class="form-control form-control-sm mask"
+                                            id="kondensat_stok_awal" name="kondensat_stok_awal"
                                             value="{{ old('kondensat_stok_awal', $survey->kondensat_stok_awal) }}">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="gas_bumi_stok_awal"
-                                            name="gas_bumi_stok_awal"
+                                        <input type="text" class="form-control form-control-sm mask"
+                                            id="gas_bumi_stok_awal" name="gas_bumi_stok_awal"
                                             value="{{ old('gas_bumi_stok_awal', $survey->gas_bumi_stok_awal) }}">
                                     </td>
                                 </tr>
@@ -98,18 +98,18 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Production</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="minyak_mentah_stok_awal" name="minyak_mentah_stok_awal"
                                             value="{{ old('minyak_mentah_stok_awal', $survey->minyak_mentah_stok_awal) }}">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="kondensat_stok_awal"
-                                            name="kondensat_stok_awal"
+                                        <input type="text" class="form-control form-control-sm mask"
+                                            id="kondensat_stok_awal" name="kondensat_stok_awal"
                                             value="{{ old('kondensat_stok_awal', $survey->kondensat_stok_awal) }}">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="gas_bumi_stok_awal"
-                                            name="gas_bumi_stok_awal"
+                                        <input type="text" class="form-control form-control-sm mask"
+                                            id="gas_bumi_stok_awal" name="gas_bumi_stok_awal"
                                             value="{{ old('gas_bumi_stok_awal', $survey->gas_bumi_stok_awal) }}">
                                     </td>
                                 </tr>
@@ -118,18 +118,18 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Sales</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="minyak_mentah_penjualan" name="minyak_mentah_penjualan"
                                             value="{{ old('minyak_mentah_penjualan', $survey->minyak_mentah_penjualan) }}">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="kondensat_penjualan"
-                                            name="kondensat_penjualan"
+                                        <input type="text" class="form-control form-control-sm mask"
+                                            id="kondensat_penjualan" name="kondensat_penjualan"
                                             value="{{ old('kondensat_penjualan', $survey->kondensat_penjualan) }}">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="gas_bumi_penjualan"
-                                            name="gas_bumi_penjualan"
+                                        <input type="text" class="form-control form-control-sm mask"
+                                            id="gas_bumi_penjualan" name="gas_bumi_penjualan"
                                             value="{{ old('gas_bumi_penjualan', $survey->gas_bumi_penjualan) }}">
                                     </td>
                                 </tr>
@@ -138,17 +138,17 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Loss</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="minyak_mentah_hilang"
-                                            name="minyak_mentah_hilang"
+                                        <input type="text" class="form-control form-control-sm mask"
+                                            id="minyak_mentah_hilang" name="minyak_mentah_hilang"
                                             value="{{ old('minyak_mentah_hilang', $survey->minyak_mentah_hilang) }}">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="kondensat_hilang"
-                                            name="kondensat_hilang"
+                                        <input type="text" class="form-control form-control-sm mask"
+                                            id="kondensat_hilang" name="kondensat_hilang"
                                             value="{{ old('kondensat_hilang', $survey->kondensat_hilang) }}">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="gas_bumi_hilang"
+                                        <input type="text" class="form-control form-control-sm mask" id="gas_bumi_hilang"
                                             name="gas_bumi_hilang"
                                             value="{{ old('gas_bumi_hilang', $survey->gas_bumi_hilang) }}">
                                     </td>
@@ -158,17 +158,17 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Final Stock</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="minyak_mentah_stok_akhir" name="minyak_mentah_stok_akhir"
                                             value="{{ old('minyak_mentah_stok_akhir', $survey->minyak_mentah_stok_akhir) }}">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="kondensat_stok_akhir" name="kondensat_stok_akhir"
                                             value="{{ old('kondensat_stok_akhir', $survey->kondensat_stok_akhir) }}">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="gas_bumi_stok_akhir" name="gas_bumi_stok_akhir"
                                             value="{{ old('gas_bumi_stok_akhir', $survey->gas_bumi_stok_akhir) }}">
                                     </td>
@@ -217,7 +217,7 @@
                                         <span class="fst-italic">Mining service carried out of other</span>
                                     </td>
                                     <td class="border-start-0">
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="pendapatan_jasa_penambangan" name="pendapatan_jasa_penambangan"
                                             value="{{ old('pendapatan_jasa_penambangan', $survey->pendapatan_jasa_penambangan) }}">
                                     </td>
@@ -228,7 +228,7 @@
                                         <span class="fst-italic">Delivery changes</span>
                                     </td>
                                     <td class="border-start-0">
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="pendapatan_jasa_transportasi" name="pendapatan_jasa_transportasi"
                                             value="{{ old('pendapatan_jasa_transportasi', $survey->pendapatan_jasa_transportasi) }}">
                                     </td>
@@ -240,7 +240,7 @@
                                             building, and ifrastucture</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="pendapatan_penyewaan" name="pendapatan_penyewaan"
                                             value="{{ old('pendapatan_penyewaan', $survey->pendapatan_penyewaan) }}">
                                     </td>
@@ -251,7 +251,7 @@
                                         <span class="fst-italic">&nbsp; &nbsp; Other income, i.e. goods sold</span>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm"
+                                        <input type="text" class="form-control form-control-sm mask"
                                             id="pendapatan_lainnya" name="pendapatan_lainnya"
                                             value="{{ old('pendapatan_lainnya', $survey->pendapatan_lainnya) }}">
                                     </td>
@@ -260,8 +260,8 @@
                                     <th>4. JUMLAH/<span class="fst-italic">TOTAL</span>
                                     </th>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm" id="pendapatan_jumlah"
-                                            name="pendapatan_jumlah"
+                                        <input type="text" class="form-control form-control-sm mask"
+                                            id="pendapatan_jumlah" name="pendapatan_jumlah"
                                             value="{{ old('pendapatan_jumlah', $survey->pendapatan_jumlah) }}">
                                     </td>
                                 </tr>
@@ -295,6 +295,10 @@
         .form-control:focus {
             background-color: rgba(255, 230, 7, 0.767)
         }
+
+        .mask {
+            text-align: right;
+        }
     </style>
 
     <script>
@@ -321,5 +325,10 @@
                 });
             }, false);
         })();
+        $(document).ready(function() {
+            $('.mask').mask('000.000.000.000.000', {
+                reverse: true
+            });
+        });
     </script>
 @endsection
