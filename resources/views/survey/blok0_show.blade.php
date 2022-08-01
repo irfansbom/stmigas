@@ -134,7 +134,6 @@
                                     maxlength="2" value="16"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     readonly>
-
                             </div>
                         </div>
                         <div class=" mb-4 row">

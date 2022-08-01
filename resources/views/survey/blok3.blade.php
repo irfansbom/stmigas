@@ -206,7 +206,7 @@
                             </label>
                         </div>
                         <div class=" mb-1 row  pe-0">
-                            <table class="table table-bordered border-dark align-middle table-sm mask"
+                            <table class="table table-bordered border-dark align-middle table-sm "
                                 style="font-size: 14px">
                                 <tr class="text-center">
                                     <th>Jenis Biaya <span class="fst-italic">/Kind of Expenditures</span> </th>

@@ -295,9 +295,8 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="form-floating">
+                                        <div class="form-group">
                                             <textarea class="form-control" placeholder="Catatan" id="catatan_petugas" name="catatan_petugas">{{ old('catatan_petugas', $survey->catatan_petugas) }}</textarea>
-                                            <label for="catatan_petugas">Catatan</label>
                                         </div>
                                     </td>
                                 </tr>
@@ -360,5 +359,6 @@
                 });
             }, false);
         })();
+        $("textarea").height($("textarea")[0].scrollHeight);
     </script>
 @endsection
