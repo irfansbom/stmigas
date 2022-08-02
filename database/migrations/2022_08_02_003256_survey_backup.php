@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSurveyTable extends Migration
+class SurveyBackup extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateSurveyTable extends Migration
      */
     public function up()
     {
-        Schema::create('survey', function (Blueprint $table) {
-            $table->id();
-
+        //
+        Schema::create('survey_backup', function (Blueprint $table) {
+            $table->string('id', 5);
+            $table->timestamp('time_backup');
             $table->string('id_perusahaan', 5);
             $table->string('id_user', 5);
             $table->string('tahun', 5);
@@ -25,7 +26,6 @@ class CreateSurveyTable extends Migration
             $table->string('status_lainnya', 20);
 
             $table->string('email', 100);
-            $table->timestamp('time_restore')->nullable();
 
             $table->string('kip', 20)->nullable();
             $table->string('kd_prov', 3);
@@ -222,8 +222,8 @@ class CreateSurveyTable extends Migration
             $table->string('updated_by')->nullable();
             $table->timestamps();
         });
-        Schema::table('survey', function (Blueprint $table) {
-            $table->unique(["tahun", "id_perusahaan", "id_user", "tipe_form"], 'identifikasi');
+        Schema::table('survey_backup', function (Blueprint $table) {
+            $table->unique(["id", "time_backup"], 'identifikasi');
         });
     }
 
@@ -234,6 +234,6 @@ class CreateSurveyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('survey');
+        //
     }
 }
