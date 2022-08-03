@@ -1888,18 +1888,18 @@
                                     </td>
                                     <td>
                                         <input type="text" class="form-control form-control-sm text-end mask"
-                                            id="minyak_mentah_stok_awal" name="minyak_mentah_stok_awal"
-                                            value="{{ old('minyak_mentah_stok_awal', $survey->minyak_mentah_stok_awal) }}">
+                                            id="minyak_mentah_produksi" name="minyak_mentah_produksi"
+                                            value="{{ old('minyak_mentah_produksi', $survey->minyak_mentah_produksi) }}">
                                     </td>
                                     <td>
                                         <input type="text" class="form-control form-control-sm text-end mask"
-                                            id="kondensat_stok_awal" name="kondensat_stok_awal"
-                                            value="{{ old('kondensat_stok_awal', $survey->kondensat_stok_awal) }}">
+                                            id="kondensat_produksi" name="kondensat_produksi"
+                                            value="{{ old('kondensat_produksi', $survey->kondensat_produksi) }}">
                                     </td>
                                     <td>
                                         <input type="text" class="form-control form-control-sm text-end mask"
-                                            id="gas_bumi_stok_awal" name="gas_bumi_stok_awal"
-                                            value="{{ old('gas_bumi_stok_awal', $survey->gas_bumi_stok_awal) }}">
+                                            id="gas_bumi_produksi" name="gas_bumi_produksi"
+                                            value="{{ old('gas_bumi_produksi', $survey->gas_bumi_produksi) }}">
                                     </td>
                                 </tr>
                                 <tr>

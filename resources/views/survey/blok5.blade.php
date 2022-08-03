@@ -99,18 +99,18 @@
                                     </td>
                                     <td>
                                         <input type="text" class="form-control form-control-sm mask"
-                                            id="minyak_mentah_stok_awal" name="minyak_mentah_stok_awal"
-                                            value="{{ old('minyak_mentah_stok_awal', $survey->minyak_mentah_stok_awal) }}">
+                                            id="minyak_mentah_produksi" name="minyak_mentah_produksi"
+                                            value="{{ old('minyak_mentah_produksi', $survey->minyak_mentah_produksi) }}">
                                     </td>
                                     <td>
                                         <input type="text" class="form-control form-control-sm mask"
-                                            id="kondensat_stok_awal" name="kondensat_stok_awal"
-                                            value="{{ old('kondensat_stok_awal', $survey->kondensat_stok_awal) }}">
+                                            id="kondensat_produksi" name="kondensat_produksi"
+                                            value="{{ old('kondensat_produksi', $survey->kondensat_produksi) }}">
                                     </td>
                                     <td>
                                         <input type="text" class="form-control form-control-sm mask"
-                                            id="gas_bumi_stok_awal" name="gas_bumi_stok_awal"
-                                            value="{{ old('gas_bumi_stok_awal', $survey->gas_bumi_stok_awal) }}">
+                                            id="gas_bumi_produksi" name="gas_bumi_produksi"
+                                            value="{{ old('gas_bumi_produksi', $survey->gas_bumi_produksi) }}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -279,11 +279,13 @@
         <div class="container px-1">
             <div class="container py-2 px-3 d-flex justify-content-between">
                 <a class="btn btn-danger btn-sm" href="{{ url('dashboard') }}">Keluar </a>
-                <div class="btn-group me-2" role="group" aria-label="First group">
-                    <a class="btn btn-warning btn-sm" href="{{ url('showblok4/' . \Crypt::encryptString($id)) }}"><i
-                            class="bi bi-arrow-left"></i> Sebelumnya</a>
-                    <button class="btn btn-primary btn-sm" type="submit" form="blok5_form">Simpan &
-                        Lanjutkan <i class="bi bi-arrow-right"></i> </button>
+                <button class="btn btn-primary btn-sm" type="submit" form="blok5_form">Simpan</button>
+                <div class="me-2" role="group" aria-label="First group">
+                    <a class="btn btn-warning btn-sm"
+                        href="{{ url('showblok4/' . \Crypt::encryptString($id)) }}">Kembali</a>
+                    <a class="btn btn-warning btn-sm"
+                        href="{{ url('showbloklegalitas/' . \Crypt::encryptString($id)) }}">Lanjut
+                    </a>
 
                 </div>
             </div>

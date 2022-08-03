@@ -21,8 +21,8 @@ class CreateSurveyTable extends Migration
             $table->string('tahun', 5);
             $table->string('tipe_form', 20);
 
-            $table->string('status_skk', 20);
-            $table->string('status_lainnya', 20);
+            $table->string('status_skk', 20)->nullable();
+            $table->string('status_lainnya', 20)->nullable();
 
             $table->string('email', 100);
             $table->timestamp('time_restore')->nullable();

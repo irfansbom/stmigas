@@ -70,9 +70,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/showbloklegalitas/{id}', [SurveyController::class, 'showbloklegalitas']);
     Route::post('/updatebloklegalitas/{id}', [SurveyController::class, 'updatebloklegalitas']);
 
-
     Route::get('/form-print/{id}', [SurveyController::class, 'print']);
     Route::post('/hapusform', [SurveyController::class, 'destroy']);
+    Route::post('/ubah_status_skk', [SurveyController::class, 'ubah_status_skk']);
 
     Route::get('monitoring', [MonitoringController::class, 'index']);
 

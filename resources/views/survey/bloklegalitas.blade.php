@@ -316,13 +316,12 @@
     <div class="fixed-bottom bg-dark">
         <div class="container px-1">
             <div class="container py-2 px-3 d-flex justify-content-between">
-                <a class="btn btn-danger btn-sm" href="{{ url('dashboard') }}">Keluar </a>
-                <div class="btn-group me-2" role="group" aria-label="First group">
-                    <a class="btn btn-warning btn-sm" href="{{ url('showblok5/' . \Crypt::encryptString($id)) }}"><i
-                            class="bi bi-arrow-left"></i> Sebelumnya</a>
-                    <button class="btn btn-primary btn-sm" type="submit" form="bloklegalitas_form">Simpan &
-                        Keluar <i class="bi bi-arrow-right"></i> </button>
-
+                <a class="btn btn-danger btn-sm" href="{{ url('dashboard') }}">Keluar</a>
+                <button class="btn btn-primary btn-sm" type="submit" form="bloklegalitas_form">Simpan</button>
+                <div class=" me-2" role="group" aria-label="First group">
+                    <a class="btn btn-warning btn-sm"
+                        href="{{ url('showblok5/' . \Crypt::encryptString($id)) }}">Kembali</a>
+                    <button class="btn btn-warning btn-sm" disabled>Lanjut</button>
                 </div>
             </div>
         </div>

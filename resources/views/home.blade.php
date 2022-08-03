@@ -10,42 +10,43 @@
                     {{-- <button class="btn btn-warning" type="button">ubah</button> --}}
                     @if (in_array(
                         'Tambah Form',
-                        $auth->getPermissionsViaRoles()->pluck('name')->toArray(),
-                    ))
-                        <button class="btn btn-success btn-sm" href="{{ url('form') }}" data-bs-toggle="modal"
-                            data-bs-target="#modaltambah">Tambah</button>
+                        $auth->getPermissionsViaRoles()->pluck('name')->toArray()))
+                        <button class="btn btn-primary btn-sm" href="{{ url('form') }}" data-bs-toggle="modal"
+                            data-bs-target="#modaltambah">ISI FORM</button>
                     @endif
                 </div>
                 <br>
                 <table class="table table-bordered border-dark text-center" style="font-size: 12px">
                     <thead>
                         <tr class="text-center align-middle">
-                            <th rowspan="2">No</th>
-                            <th rowspan="2">Nama Perusahaan</th>
-                            <th rowspan="2">Tahun</th>
-                            <th rowspan="2">Form</th>
-                            <th colspan="2">Dibuat</th>
-                            <th colspan="2">Diupdate</th>
-                            <th rowspan="2">Aksi</th>
+                            <th rowspan="1">No</th>
+                            <th rowspan="1">Nama Perusahaan</th>
+                            <th rowspan="1">Tahun</th>
+                            <th colspan="1">Diperbaharui</th>
+                            <th rowspan="1">Status</th>
+                            <th rowspan="1">Aksi</th>
                         </tr>
-                        <tr class="text-center">
-                            <th>Oleh</th>
-                            <th>Tanggal</th>
-                            <th>Oleh</th>
-                            <th>Tanggal</th>
-                        </tr>
+
                     </thead>
                     <tbody>
                         @foreach ($survey as $key => $sur)
-                            <tr>
+                            <tr class="align-middle">
                                 <td>{{ ++$key }}</td>
                                 <td>{{ $sur->nama_perusahaan }}</td>
                                 <td>{{ $sur->tahun }}</td>
-                                <td>{{ $sur->tipe_form }}</td>
-                                <td>{{ $sur->created_by }}</td>
-                                <td>{{ $sur->created_at }}</td>
-                                <td>{{ $sur->updated_by }}</td>
-                                <td>{{ $sur->updated_at }}</td>
+                                <td><u>{{ $sur->user->nama }}</u> <br>{{ $sur->updated_at }} </td>
+                                <td>{!! $sur->badge_status($sur->status_skk) !!}
+                                    @if (in_array(
+                                        'Status Form',
+                                        $auth->getPermissionsViaRoles()->pluck('name')->toArray()))
+                                        <button class="btn btn-outline-dark btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#modalstatus" id="status_btn"
+                                            data-id="{{ $sur->id }}"data-nm_perusahaan="{{ $sur->nama_perusahaan }}"
+                                            data-status_skk="{{ $sur->status_skk }}">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                    @endif
+                                </td>
                                 <td><a class="btn btn-warning btn-sm"
                                         href="{{ url('showblok0/' . \Crypt::encryptString($sur->id)) }}">Edit</a>
                                     @if (in_array('Super Admin', $auth->getRoleNames()->toArray()))
@@ -56,7 +57,7 @@
                                     @endif
                                     <a class="btn btn-success btn-sm"
                                         href="{{ url('form-print/' . \Crypt::encryptString($sur->id)) }}"
-                                        target="_blank"><i class="bi bi-eye"></i> </a>
+                                        target="_blank"><i class="bi bi-eye"></i> / <i class="bi bi-printer"></i> </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -121,9 +122,47 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalstatus" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1"aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Ubah Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url('ubah_status_skk') }}" id="form-status" method="post">
+                        @csrf
+                        <input type="text" name="id" id="status-id" hidden> <br>
+                        <label for="">Ubah Status Formulir dari <span id="nm_perusahaan"
+                                class="text-danger"></span> </label>
+                        <br />
+                        <br>
+                        <select name="status_skk" id="status_skk" class="form-select">
+                            {{-- <option value=""></option> --}}
+                            <option value="">Menunggu Persetujuan SKK</option>
+                            <option value="Dalam Proses">Sedang Dalam Proses Pemeriksaan</option>
+                            <option value="Disetujui">Setuju</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger" form="form-status">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $("#hapus_btn").click(function() {
             $("#hapus-id").val($(this).data("id"));
+        })
+
+        $("#status_btn").click(function() {
+            $("#modalstatus").find('#status-id').val($(this).data("id"));
+            $("#modalstatus").find('#nm_perusahaan').text($(this).data("nm_perusahaan"));
+            $('#modalstatus').find('#status_skk').val($(this).find(':selected').data('status_skk'))
         })
     </script>
 @endsection

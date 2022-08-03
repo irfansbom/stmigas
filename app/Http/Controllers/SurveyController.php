@@ -23,6 +23,7 @@ class SurveyController extends Controller
     {
         return 'ok';
     }
+
     public function create_lama(Request $request)
     {
         $tahun = date("Y");
@@ -68,7 +69,6 @@ class SurveyController extends Controller
         $survey->alamat_perusahaan = $perusahaan->alamat_kantor;
         return view('survey.blok0_create', compact('tahun', 'survey', 'auth', 'kabs'));
     }
-
     /*
     public function store(Request $request)
     {
@@ -281,7 +281,6 @@ class SurveyController extends Controller
         }
     }
     */
-
     public function storeblok0(Request $request)
     {
         $auth = Auth::user();
@@ -329,7 +328,6 @@ class SurveyController extends Controller
             return redirect('showblok1/' . Crypt::encryptString($survey->id))->with('message', 'Berhasil Disimpan');
         }
     }
-
 
     public function show(Request $request, $id)
     {
@@ -591,7 +589,7 @@ class SurveyController extends Controller
                 ]
             );
         if ($survey) {
-            return redirect('showblok1/' . $id)->with('message', 'Berhasil Disimpan');
+            return redirect('showblok0/' . $id)->with('message', 'Berhasil Disimpan');
         }
     }
 
@@ -639,7 +637,7 @@ class SurveyController extends Controller
             );
 
         if ($survey) {
-            return redirect('showblok2/' . $id)->with('message', 'Berhasil Disimpan');
+            return redirect('showblok1/' . $id)->with('message', 'Berhasil Disimpan');
         }
     }
 
@@ -678,7 +676,7 @@ class SurveyController extends Controller
             );
 
         if ($survey) {
-            return redirect('showblok3/' . $id)->with('message', 'Berhasil Disimpan');
+            return redirect('showblok2/' . $id)->with('message', 'Berhasil Disimpan');
         }
     }
 
@@ -778,7 +776,7 @@ class SurveyController extends Controller
             );
 
         if ($survey) {
-            return redirect('showblok4/' . $id)->with('message', 'Berhasil Disimpan');
+            return redirect('showblok3/' . $id)->with('message', 'Berhasil Disimpan');
         }
     }
 
@@ -811,6 +809,55 @@ class SurveyController extends Controller
                     'listrik_dibeli_nilai' => $request->listrik_dibeli_nilai,
                     'listrik_dijual_volume' => $request->listrik_dijual_volume,
                     'listrik_dijual_nilai' => $request->listrik_dijual_nilai,
+                    'updated_by' => $auth->id,
+                    'updated_at' => date("Y-m-d H:i:s"),
+                ]
+            );
+
+        if ($survey) {
+            return redirect('showblok4/' . $id)->with('message', 'Berhasil Disimpan');
+        }
+    }
+
+    public function showblok5(Request $request, $id)
+    {
+        $auth = Auth::user();
+        $id = Crypt::decryptString($id);
+        $survey = Survey::where('id', $id)->first();
+        $tahun = $survey->tahun;
+        return view('survey.blok5', compact('tahun', 'survey', 'auth', 'id'));
+    }
+    public function updateblok5(Request $request, $id)
+    {
+        $auth = Auth::user();
+        date_default_timezone_set("Asia/Jakarta");
+        $id_decrip = Crypt::decryptString($id);
+        $survey = Survey::where('id', $id_decrip)
+            ->update(
+                [
+                    'minyak_mentah_stok_awal' => $request->minyak_mentah_stok_awal,
+                    'minyak_mentah_produksi' => $request->minyak_mentah_produksi,
+                    'minyak_mentah_penjualan' => $request->minyak_mentah_penjualan,
+                    'minyak_mentah_hilang' => $request->minyak_mentah_hilang,
+                    'minyak_mentah_stok_akhir' => $request->minyak_mentah_stok_akhir,
+
+                    'kondensat_stok_awal' => $request->kondensat_stok_awal,
+                    'kondensat_produksi' => $request->kondensat_produksi,
+                    'kondensat_penjualan' => $request->kondensat_penjualan,
+                    'kondensat_hilang' => $request->kondensat_hilang,
+                    'kondensat_stok_akhir' => $request->kondensat_stok_akhir,
+
+                    'gas_bumi_stok_awal' => $request->gas_bumi_stok_awal,
+                    'gas_bumi_produksi' => $request->gas_bumi_produksi,
+                    'gas_bumi_penjualan' => $request->gas_bumi_penjualan,
+                    'gas_bumi_hilang' => $request->gas_bumi_hilang,
+                    'gas_bumi_stok_akhir' => $request->gas_bumi_stok_akhir,
+
+                    'pendapatan_jasa_penambangan' => $request->pendapatan_jasa_penambangan,
+                    'pendapatan_jasa_transportasi' => $request->pendapatan_jasa_transportasi,
+                    'pendapatan_penyewaan' => $request->pendapatan_penyewaan,
+                    'pendapatan_lainnya' => $request->pendapatan_lainnya,
+                    'pendapatan_jumlah' => $request->pendapatan_jumlah,
                     'updated_by' => $auth->id,
                     'updated_at' => date("Y-m-d H:i:s"),
                 ]
@@ -861,55 +908,6 @@ class SurveyController extends Controller
             );
 
         if ($survey) {
-            return redirect('dashboard')->with('message', 'Berhasil Disimpan');
-        }
-    }
-
-    public function showblok5(Request $request, $id)
-    {
-        $auth = Auth::user();
-        $id = Crypt::decryptString($id);
-        $survey = Survey::where('id', $id)->first();
-        $tahun = $survey->tahun;
-        return view('survey.blok5', compact('tahun', 'survey', 'auth', 'id'));
-    }
-    public function updateblok5(Request $request, $id)
-    {
-        $auth = Auth::user();
-        date_default_timezone_set("Asia/Jakarta");
-        $id_decrip = Crypt::decryptString($id);
-        $survey = Survey::where('id', $id_decrip)
-            ->update(
-                [
-                    'minyak_mentah_stok_awal' => $request->minyak_mentah_stok_awal,
-                    'minyak_mentah_produksi' => $request->minyak_mentah_produksi,
-                    'minyak_mentah_penjualan' => $request->minyak_mentah_penjualan,
-                    'minyak_mentah_hilang' => $request->minyak_mentah_hilang,
-                    'minyak_mentah_stok_akhir' => $request->minyak_mentah_stok_akhir,
-
-                    'kondensat_stok_awal' => $request->kondensat_stok_awal,
-                    'kondensat_produksi' => $request->kondensat_produksi,
-                    'kondensat_penjualan' => $request->kondensat_penjualan,
-                    'kondensat_hilang' => $request->kondensat_hilang,
-                    'kondensat_stok_akhir' => $request->kondensat_stok_akhir,
-
-                    'gas_bumi_stok_awal' => $request->gas_bumi_stok_awal,
-                    'gas_bumi_produksi' => $request->gas_bumi_produksi,
-                    'gas_bumi_penjualan' => $request->gas_bumi_penjualan,
-                    'gas_bumi_hilang' => $request->gas_bumi_hilang,
-                    'gas_bumi_stok_akhir' => $request->gas_bumi_stok_akhir,
-
-                    'pendapatan_jasa_penambangan' => $request->pendapatan_jasa_penambangan,
-                    'pendapatan_jasa_transportasi' => $request->pendapatan_jasa_transportasi,
-                    'pendapatan_penyewaan' => $request->pendapatan_penyewaan,
-                    'pendapatan_lainnya' => $request->pendapatan_lainnya,
-                    'pendapatan_jumlah' => $request->pendapatan_jumlah,
-                    'updated_by' => $auth->id,
-                    'updated_at' => date("Y-m-d H:i:s"),
-                ]
-            );
-
-        if ($survey) {
             return redirect('showbloklegalitas/' . $id)->with('message', 'Berhasil Disimpan');
         }
     }
@@ -928,6 +926,16 @@ class SurveyController extends Controller
     {
         Survey::where('id', $request->id)->delete();
         return redirect()->back()->with('message', 'Berhasil Dihapus');
+    }
+
+    public function ubah_status_skk(Request $request)
+    {
+        $survey = Survey::find($request->id);
+        $survey->status_skk = $request->status_skk;
+        $survey->save();
+        if ($survey) {
+            return redirect('dashboard')->with('message', 'Berhasil Disimpan');
+        }
     }
 
     public function listkec(Request $request)

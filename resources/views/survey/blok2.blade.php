@@ -72,7 +72,7 @@
                                         <td>a. Laki-laki/<span class="fst-italic">Male</span>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control form-control-sm mask"
+                                            <input type="text" class="form-control form-control-sm mask text-end"
                                                 id="pekerja_lakilaki" name="pekerja_lakilaki" min="1"
                                                 value="{{ old('pekerja_lakilaki', $survey->pekerja_lakilaki) }}">
                                         </td>
@@ -82,7 +82,7 @@
                                         <td>b. Perempuan/<span class="fst-italic">Female</span>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control form-control-sm mask"
+                                            <input type="text" class="form-control form-control-sm mask text-end"
                                                 id="pekerja_perempuan" name="pekerja_perempuan" min="1"
                                                 value="{{ old('pekerja_perempuan', $survey->pekerja_perempuan) }}">
                                         </td>
@@ -91,7 +91,7 @@
                                         <td> <strong> c. Jumlah/<span class="fst-italic">Total</span></strong>
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm"
+                                            <input type="text" class="form-control form-control-sm  mask text-end"
                                                 id="pekerja_jenis_kelamin_jumlah" name="pekerja_jenis_kelamin_jumlah"
                                                 min="1"
                                                 value="{{ old('pekerja_jenis_kelamin_jumlah', $survey->pekerja_jenis_kelamin_jumlah) }}">
@@ -131,8 +131,8 @@
                                                 and Equal or lower</span>
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm" id="pekerja_sltp"
-                                                min="1" name="pekerja_sltp"
+                                            <input type="text" class="form-control form-control-sm mask text-end"
+                                                id="pekerja_sltp" min="1" name="pekerja_sltp"
                                                 value="{{ old('pekerja_sltp', $survey->pekerja_sltp) }}">
                                         </td>
 
@@ -141,8 +141,8 @@
                                         <td>b. Sampai dengan SLTA/<span class="fst-italic">High School and lower</span>
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm" id="pekerja_slta"
-                                                min="1" name="pekerja_slta"
+                                            <input type="text" class="form-control form-control-sm mask text-end"
+                                                id="pekerja_slta" min="1" name="pekerja_slta"
                                                 value="{{ old('pekerja_slta', $survey->pekerja_slta) }}">
                                         </td>
                                     </tr>
@@ -150,8 +150,8 @@
                                         <td> c. Diploma I/II/III
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm" id="pekerja_diploma"
-                                                name="pekerja_diploma" min="1"
+                                            <input type="text" class="form-control form-control-sm mask text-end"
+                                                id="pekerja_diploma" name="pekerja_diploma" min="1"
                                                 value="{{ old('pekerja_diploma', $survey->pekerja_diploma) }}">
                                         </td>
                                     </tr>
@@ -159,8 +159,8 @@
                                         <td> d. Sarjana dan Diploma IV/<span class="fst-italic">Undergraduate</span>
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm" id="pekerja_sarjana"
-                                                name="pekerja_sarjana" min="1"
+                                            <input type="text" class="form-control form-control-sm mask text-end"
+                                                id="pekerja_sarjana" name="pekerja_sarjana" min="1"
                                                 value="{{ old('pekerja_sarjana', $survey->pekerja_sarjana) }}">
                                         </td>
                                     </tr>
@@ -168,7 +168,7 @@
                                         <td> e. Pasca Sarjana/<span class="fst-italic">Post Graduate</span>
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm"
+                                            <input type="text" class="form-control form-control-sm mask text-end"
                                                 id="pekerja_pascasarjana" name="pekerja_pascasarjana" min="1"
                                                 value="{{ old('pekerja_pascasarjana', $survey->pekerja_pascasarjana) }}">
                                         </td>
@@ -177,7 +177,7 @@
                                         <td> <strong> f. Jumlah/<span class="fst-italic">Total</span></strong>
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control form-control-sm"
+                                            <input type="text" class="form-control form-control-sm mask text-end"
                                                 id="pekerja_pendidikan_jumlah" name="pekerja_pendidikan_jumlah"
                                                 min="1"
                                                 value="{{ old('pekerja_pendidikan_jumlah', $survey->pekerja_pendidikan_jumlah) }}">
@@ -192,8 +192,8 @@
                                     <span class="fst-italic">Number of Foreign Workes</span></strong>
                             </label>
                             <div class="col-sm-2 d-flex align-items-center">
-                                <input type="number" class="form-control form-control-sm" id="pekerja_asing"
-                                    name="pekerja_asing" min="1"
+                                <input type="text" class="form-control form-control-sm mask text-end"
+                                    id="pekerja_asing" name="pekerja_asing" min="1"
                                     value="{{ old('pekerja_asing', $survey->pekerja_asing) }}">
                             </div>
                             <div class="col-sm-2">
@@ -206,8 +206,8 @@
                                     <span class="fst-italic">Number of Outsourcing Workers</span></strong>
                             </label>
                             <div class="col-sm-2 d-flex align-items-center">
-                                <input type="number" class="form-control form-control-sm" id="pekerja_outsourcing"
-                                    name="pekerja_outsourcing" min="1"
+                                <input type="text" class="form-control form-control-sm mask text-end"
+                                    id="pekerja_outsourcing" name="pekerja_outsourcing" min="1"
                                     value="{{ old('pekerja_outsourcing', $survey->pekerja_outsourcing) }}">
                             </div>
                             <div class="col-sm-2">
@@ -260,12 +260,12 @@
         <div class="container px-1">
             <div class="container py-2 px-3 d-flex justify-content-between">
                 <a class="btn btn-danger btn-sm" href="{{ url('dashboard') }}">Keluar </a>
-                <div class="btn-group me-2" role="group" aria-label="First group">
-                    <a class="btn btn-warning btn-sm" href="{{ url('showblok1/' . \Crypt::encryptString($id)) }}"><i
-                            class="bi bi-arrow-left"></i> Sebelumnya</a>
-                    <button class="btn btn-primary btn-sm" type="submit" form="blok2_form">Simpan &
-                        Lanjutkan <i class="bi bi-arrow-right"></i> </button>
-
+                <button class="btn btn-primary btn-sm" type="submit" form="blok2_form">Simpan</button>
+                <div class=" me-2" role="group" aria-label="First group">
+                    <a class="btn btn-warning btn-sm"
+                        href="{{ url('showblok1/' . \Crypt::encryptString($id)) }}">Kembali</a>
+                    <a class="btn btn-warning btn-sm" href="{{ url('showblok3/' . \Crypt::encryptString($id)) }}">Lanjut
+                    </a>
                 </div>
             </div>
         </div>
