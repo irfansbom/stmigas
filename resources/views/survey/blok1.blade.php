@@ -41,6 +41,7 @@
         class="needs-validation" novalidate>
         @csrf
         <fieldset>
+            <input type="text" id="lanjut" name="lanjut" value="0" hidden>
             <table class="table  table-borderless">
                 <tr>
                     <th class="border-dark border text-center">
@@ -300,9 +301,31 @@
                 <div class=" me-2" role="group" aria-label="First group">
                     <a class="btn btn-warning btn-sm" href="{{ url('showblok0/' . \Crypt::encryptString($id)) }}">
                         Kembali</a>
-                    <a class="btn btn-warning btn-sm" href="{{ url('showblok2/' . \Crypt::encryptString($id)) }}">Lanjut
-                    </a>
+                    <button type="button" class="btn btn-warning btn-sm" aria-modal="" data-bs-toggle="modal"
+                        data-bs-target="#modal_lanjut">Lanjut</button>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal_lanjut">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Lanjutkan<span></span></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="">data yang berubah bisa saja hilang, simpan isian?</label>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" class="simpanlanjutkan" id="simpanlanjutkan">Simpan
+                        dan lanjutkan</button>
+                    <a class="btn btn-danger" class="lanjutkansaja"
+                        href="{{ url('showblok2/' . \Crypt::encryptString($id)) }}">Tidak, Lanjutkan saja</a>
+                </div>
+
             </div>
         </div>
     </div>
@@ -338,5 +361,12 @@
                 });
             }, false);
         })();
+        $('#simpanlanjutkan').click(function() {
+            $('#lanjut').val(1);
+            $('#blok1_form').submit()
+        })
+        $('.btn-close').click(function() {
+            $('#lanjut').val(0);
+        })
     </script>
 @endsection

@@ -64,9 +64,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/showblok5/{id}', [SurveyController::class, 'showblok5']);
     Route::post('/updateblok5/{id}', [SurveyController::class, 'updateblok5']);
 
-    // Route::get('/showblok6/{id}', [SurveyController::class, 'showblok6']);
-    // Route::post('/updateblok6/{id}', [SurveyController::class, 'updateblok6']);
-
     Route::get('/showbloklegalitas/{id}', [SurveyController::class, 'showbloklegalitas']);
     Route::post('/updatebloklegalitas/{id}', [SurveyController::class, 'updatebloklegalitas']);
 

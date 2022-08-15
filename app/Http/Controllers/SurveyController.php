@@ -325,7 +325,11 @@ class SurveyController extends Controller
         );
         // dd($survey->id);
         if ($survey) {
-            return redirect('showblok1/' . Crypt::encryptString($survey->id))->with('message', 'Berhasil Disimpan');
+            if ($request->lanjut  == 0) {
+                return redirect('showblok0/' . Crypt::encryptString($survey->id))->with('message', 'Berhasil Disimpan');
+            } else {
+                return redirect('showblok1/' . Crypt::encryptString($survey->id))->with('message', 'Berhasil Disimpan');
+            }
         }
     }
 
@@ -555,7 +559,6 @@ class SurveyController extends Controller
     }
     public function updateblok0(Request $request, $id)
     {
-        // dd($request->all());
         $auth = Auth::user();
         date_default_timezone_set("Asia/Jakarta");
         $id_decrip = Crypt::decryptString($id);
@@ -589,7 +592,11 @@ class SurveyController extends Controller
                 ]
             );
         if ($survey) {
-            return redirect('showblok0/' . $id)->with('message', 'Berhasil Disimpan');
+            if ($request->lanjut == 0) {
+                return redirect('showblok0/' . $id)->with('message', 'Berhasil Disimpan');
+            } else {
+                return redirect('showblok1/' . $id)->with('message', 'Berhasil Disimpan');
+            }
         }
     }
 
@@ -636,8 +643,15 @@ class SurveyController extends Controller
                 ]
             );
 
+        // if ($survey) {
+        //     return redirect('showblok1/' . $id)->with('message', 'Berhasil Disimpan');
+        // }
         if ($survey) {
-            return redirect('showblok1/' . $id)->with('message', 'Berhasil Disimpan');
+            if ($request->lanjut == 0) {
+                return redirect('showblok1/' . $id)->with('message', 'Berhasil Disimpan');
+            } else {
+                return redirect('showblok2/' . $id)->with('message', 'Berhasil Disimpan');
+            }
         }
     }
 
@@ -675,8 +689,15 @@ class SurveyController extends Controller
                 ]
             );
 
+        // if ($survey) {
+        //     return redirect('showblok2/' . $id)->with('message', 'Berhasil Disimpan');
+        // }
         if ($survey) {
-            return redirect('showblok2/' . $id)->with('message', 'Berhasil Disimpan');
+            if ($request->lanjut == 0) {
+                return redirect('showblok2/' . $id)->with('message', 'Berhasil Disimpan');
+            } else {
+                return redirect('showblok3/' . $id)->with('message', 'Berhasil Disimpan');
+            }
         }
     }
 
@@ -775,8 +796,15 @@ class SurveyController extends Controller
                 ]
             );
 
+        // if ($survey) {
+        //     return redirect('showblok3/' . $id)->with('message', 'Berhasil Disimpan');
+        // }
         if ($survey) {
-            return redirect('showblok3/' . $id)->with('message', 'Berhasil Disimpan');
+            if ($request->lanjut == 0) {
+                return redirect('showblok3/' . $id)->with('message', 'Berhasil Disimpan');
+            } else {
+                return redirect('showblok4/' . $id)->with('message', 'Berhasil Disimpan');
+            }
         }
     }
 
@@ -814,8 +842,15 @@ class SurveyController extends Controller
                 ]
             );
 
+        // if ($survey) {
+        //     return redirect('showblok4/' . $id)->with('message', 'Berhasil Disimpan');
+        // }
         if ($survey) {
-            return redirect('showblok4/' . $id)->with('message', 'Berhasil Disimpan');
+            if ($request->lanjut == 0) {
+                return redirect('showblok4/' . $id)->with('message', 'Berhasil Disimpan');
+            } else {
+                return redirect('showblok5/' . $id)->with('message', 'Berhasil Disimpan');
+            }
         }
     }
 
@@ -863,8 +898,15 @@ class SurveyController extends Controller
                 ]
             );
 
+        // if ($survey) {
+        //     return redirect('showblok5/' . $id)->with('message', 'Berhasil Disimpan');
+        // }
         if ($survey) {
-            return redirect('showblok5/' . $id)->with('message', 'Berhasil Disimpan');
+            if ($request->lanjut == 0) {
+                return redirect('showblok5/' . $id)->with('message', 'Berhasil Disimpan');
+            } else {
+                return redirect('showbloklegalitas/' . $id)->with('message', 'Berhasil Disimpan');
+            }
         }
     }
 
@@ -907,8 +949,15 @@ class SurveyController extends Controller
                 ]
             );
 
+        // if ($survey) {
+        //     return redirect('showbloklegalitas/' . $id)->with('message', 'Berhasil Disimpan');
+        // }
         if ($survey) {
-            return redirect('showbloklegalitas/' . $id)->with('message', 'Berhasil Disimpan');
+            if ($request->lanjut == 0) {
+                return redirect('showbloklegalitas/' . $id)->with('message', 'Berhasil Disimpan');
+            } else {
+                return redirect('dashboard')->with('message', 'Berhasil Disimpan');
+            }
         }
     }
 

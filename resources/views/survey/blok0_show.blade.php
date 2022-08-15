@@ -41,6 +41,7 @@
         class="needs-validation" novalidate>
         @csrf
         <fieldset>
+            <input type="text" id="lanjut" name="lanjut" value="0" hidden>
             <input type="text" id="id_form" name="id_form" value="{{ old('id_form', $survey->id) }}" hidden />
             <input type="text" id="id_perusahaan" name="id_perusahaan"
                 value="{{ old('id_perusahaan', $survey->id_perusahaan) }}" hidden>
@@ -357,9 +358,32 @@
                 <button class="btn btn-primary btn-sm" type="submit" form="blok0_form">Simpan </button>
                 <div class="me-2" role="group" aria-label="First group">
                     <button class="btn btn-warning btn-sm" disabled>Kembali</button>
-                    <a class="btn btn-warning btn-sm"
-                        href="{{ url('showblok1/' . \Crypt::encryptString($id)) }}">Lanjut</a>
+                    <button type="button" class="btn btn-warning btn-sm" aria-modal="" data-bs-toggle="modal"
+                        data-bs-target="#modal_lanjut">Lanjut</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_lanjut">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Lanjutkan<span></span></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="">data yang berubah bisa saja hilang, simpan isian?</label>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" class="simpanlanjutkan" id="simpanlanjutkan">Simpan
+                        dan lanjutkan</button>
+                    <a class="btn btn-danger" class="lanjutkansaja"
+                        href="{{ url('showblok1/' . \Crypt::encryptString($id)) }}">Tidak, Lanjutkan saja</a>
+                </div>
+
             </div>
         </div>
     </div>
@@ -421,6 +445,14 @@
             })
             $("#kelurahan").change(function() {
                 $('#kd_desa').val($(this).find(':selected').data('id'))
+            })
+
+            $('#simpanlanjutkan').click(function() {
+                $('#lanjut').val(1);
+                $('#blok0_form').submit()
+            })
+            $('.btn-close').click(function() {
+                $('#lanjut').val(0);
             })
         });
 
