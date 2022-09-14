@@ -39,7 +39,7 @@
                                     @if (in_array(
                                         'Status Form',
                                         $auth->getPermissionsViaRoles()->pluck('name')->toArray()))
-                                        <button class="btn btn-outline-dark btn-sm" data-bs-toggle="modal"
+                                        <button class="btn btn-outline-dark btn-sm status_btn" data-bs-toggle="modal"
                                             data-bs-target="#modalstatus" id="status_btn"
                                             data-id="{{ $sur->id }}"data-nm_perusahaan="{{ $sur->nama_perusahaan }}"
                                             data-status_skk="{{ $sur->status_skk }}">
@@ -159,7 +159,8 @@
             $("#hapus-id").val($(this).data("id"));
         })
 
-        $("#status_btn").click(function() {
+        $(".status_btn").click(function() {
+            console.log($(this).data("id"));
             $("#modalstatus").find('#status-id').val($(this).data("id"));
             $("#modalstatus").find('#nm_perusahaan').text($(this).data("nm_perusahaan"));
             $('#modalstatus').find('#status_skk').val($(this).find(':selected').data('status_skk'))

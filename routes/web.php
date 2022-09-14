@@ -78,6 +78,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('perusahaan/store', [PerusahaanController::class, 'store']);
     Route::get('perusahaan/{id}', [PerusahaanController::class, 'show']);
     Route::post('perusahaan/update', [PerusahaanController::class, 'update']);
+    Route::post('perusahaan/delete', [PerusahaanController::class, 'destroy']);
 
     Route::get('user', [UserController::class, 'index']);
     Route::get('/user/create', [UserController::class, 'create']);

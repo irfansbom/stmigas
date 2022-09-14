@@ -39,6 +39,11 @@
                                         href="{{ url('perusahaan/' . \Crypt::encryptString($perus->id)) }}">
                                         <i class="bi bi-eye"></i>
                                     </a>
+                                    <button class="btn btn-outline-danger btn-sm btn_hapus" data-id="{{ $perus->id }}"
+                                        data-nama="{{ $perus->nama_perusahaan }}" data-bs-toggle="modal"
+                                        data-bs-target="#modal_hapus">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -48,4 +53,44 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modal_hapus">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Hapus User<span></span></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url('perusahaan/delete') }}" method="post" id="form_hapus">
+                        @csrf
+                        <div class="row ">
+                            <input type="text" name="id" id="hapus_id" hidden>
+                            <div class="mb-3 ">
+                                <label for="hapus_nama" class="form-label">Nama Perusahaan</label>
+                                <input type="text" class="form-control" id="hapus_nama" name="name" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" form="form_hapus">Submit</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('script')
+    <script>
+        $('.btn_hapus').click(function() {
+            console.log($(this).data("id"))
+            $('#modal_hapus').find('#hapus_id').val($(this).data("id"));
+            $('#modal_hapus').find('#hapus_nama').val($(this).data("nama"));
+        })
+    </script>
 @endsection

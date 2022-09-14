@@ -185,5 +185,5 @@
         </div>
     </main>
 </body>
-
+@yield('script')
 </html>

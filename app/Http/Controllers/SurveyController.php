@@ -980,6 +980,7 @@ class SurveyController extends Controller
     public function ubah_status_skk(Request $request)
     {
         $survey = Survey::find($request->id);
+        dd($request->all());
         $survey->status_skk = $request->status_skk;
         $survey->save();
         if ($survey) {
