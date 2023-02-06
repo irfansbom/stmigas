@@ -176,8 +176,18 @@
                             </div>
                         </div>
                         <div class="mb-1 row">
+                            <label for="nib" class="col-sm-3 col-form-label">
+                                <strong>6. Nomor Izin Berusaha</strong> <br>
+                                <span class="fst-italic">&nbsp; &nbsp; Number</span>
+                            </label>
+                            <div class="col-sm-9 d-flex align-items-center">
+                                <input type="text" class="form-control" id="nib" name="nib"
+                                    value="{{ old('nib', $survey->nib) }}" required>
+                            </div>
+                        </div>
+                        <div class="mb-1 row">
                             <label for="alamat_perusahaan" class="col-sm-3 col-form-label">
-                                <strong>6. Alamat perusahaan</strong><br>
+                                <strong>7. Alamat perusahaan</strong><br>
                                 <span class="fst-italic">&nbsp; &nbsp; Company Address</span>
                             </label>
                             <div class="col-sm-9 d-flex align-items-center">
@@ -218,7 +228,7 @@
 
                         <div class="mb-1 row">
                             <label for="alamat_pusat" class="col-sm-3 col-form-label">
-                                <strong>7. Alamat kantor pusat</strong><br>
+                                <strong>8. Alamat kantor pusat</strong><br>
                                 <span class="fst-italic">&nbsp; &nbsp; Head Office Address</span>
                             </label>
                             <div class="col-sm-9 d-flex align-items-center">
@@ -250,6 +260,37 @@
                             <div class="col-sm-4 d-flex align-items-center">
                                 <input type="text" class="form-control" id="fax_pusat" name="fax_pusat"
                                     value="{{ old('fax_pusat', $survey->fax_pusat) }}">
+                            </div>
+                        </div>
+                        <div class="mb-1 row">
+                            <label for="nib" class="col-sm-3 col-form-label">
+                                <strong>9. Lokasi Penambangan</strong> <br>
+                                <span class="fst-italic">&nbsp; &nbsp; Minning Site</span>
+                            </label>
+                            <div class="col-sm-5 d-flex align-items-center">
+                                <select name="lokasi_penambangan" id="lokasi_penambangan" class="form-select" required>
+                                    <option value="">Pilih Lokasi Penambangan</option>
+                                    <option value="Pesisir/Laut" @if ($survey->lokasi_penambangan == 'Pesisir/Laut') selected @endif>
+                                        Pesisir/Laut <i> [Coast/Sea] </i>
+                                    </option>
+                                    <option value="Sungai" @if ($survey->lokasi_penambangan == 'Sungai') selected @endif>
+                                        Sungai [River]
+                                    </option>
+                                    <option value="Bukit/Gunung" @if ($survey->lokasi_penambangan == 'Bukit/Gunung') selected @endif>
+                                        Bukit/Gunung [Hill/Mountain]
+                                    </option>
+                                    <option value="Hutan" @if ($survey->lokasi_penambangan == 'Hutan') selected @endif>
+                                        Hutan [Forest]
+                                    </option>
+                                    <option value="Lainnya" @if ($survey->lokasi_penambangan == 'Lainnya') selected @endif>
+                                        Lainnya [Others]
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 d-flex align-items-center">
+                                <input type="text" class="form-control" id="lokasi_lainnya" name="lokasi_lainnya"
+                                    placeholder="lainnya" value="{{ old('lokasi_lainnya', $survey->lokasi_lainnya) }}"
+                                    @if ($survey->lokasi_lainnya != 'lainnya') disabled @endif>
                             </div>
                         </div>
 
@@ -384,7 +425,31 @@
             }, false);
         })();
 
+        var kab = @json($survey->kabkot);
+        var kec = @json($survey->kecamatan);
+        var desa = @json($survey->kelurahan);
+
         $(document).ready(function() {
+
+            $('#kabkot').val(kab).change();
+            $('#kd_kab').val($('[name="kabkot"]').find(':selected ').data('id'))
+            getkec()
+
+            setTimeout(function() {
+                $('#kecamatan').val(kec).change()
+                $('#kd_kec').val($('[name="kecamatan"]').find(':selected ').data('id'))
+                getdesa()
+            }, 700);
+            setTimeout(function() {
+                $('#kelurahan').val(desa).change()
+                $('#kd_desa').val($('[name="kelurahan"]').find(':selected').data('id'))
+            }, 1700);
+
+            $("#kabkot").change(function() {
+                $('#kd_kab').val($(this).find(':selected').data('id'))
+                getkec();
+            })
+
             $("#kabkot").change(function() {
                 $('#kd_kab').val($(this).find(':selected').data('id'))
                 getkec();
@@ -398,6 +463,15 @@
                 $('#kd_desa').val($(this).find(':selected').data('id'))
             })
 
+            $("#lokasi_penambangan").change(function() {
+                if ($('#lokasi_penambangan').val() != 'Lainnya') {
+                    $('#lokasi_lainnya').prop('disabled', true);
+                    $('#lokasi_lainnya').val('');
+                } else {
+                    $('#lokasi_lainnya').prop('disabled', false);
+                }
+
+            })
 
         });
 

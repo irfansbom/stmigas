@@ -11,18 +11,17 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         $auth = Auth::user();
-        $user = Auth::user();
         if (in_array('Semua List', $auth->getPermissionsViaRoles()->pluck('name')->toArray())) {
-            $survey = Survey::all();
+            $survey = Survey::orderby('created_at', 'desc')->paginate(15);
             $perusahaan = Perusahaan::all();
         } else {
             $id_perus =  User_Perusahaan::where('id_user', $auth->id)->pluck('id_perusahaan')->toArray();
             $perusahaan = Perusahaan::whereIn('id', $id_perus)->get();
-            $survey = Survey::whereIn('id_perusahaan', $id_perus)->get();
+            $survey = Survey::whereIn('id_perusahaan', $id_perus)->orderby('created_at','desc')->paginate(15);
         }
-        return view('home', compact('user', 'survey', 'auth', 'perusahaan'));
+        return view('home', compact( 'survey', 'auth', 'perusahaan', 'request'));
     }
 }

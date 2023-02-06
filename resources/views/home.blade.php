@@ -1,20 +1,28 @@
 @extends('layout.main')
 
 @section('content')
-    <div class="container my-5">
-        <h1>List Form</h1>
-        @include('alert')
-        <div class="card">
-            <div class="mx-4 my-2">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    {{-- <button class="btn btn-warning" type="button">ubah</button> --}}
+    <div class="my-5 card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <h1>List Form</h1>
+                </div>
+                <div class="col d-flex align-items-center justify-content-end">
                     @if (in_array(
-                        'Tambah Form',
-                        $auth->getPermissionsViaRoles()->pluck('name')->toArray()))
+                            'Tambah Form',
+                            $auth->getPermissionsViaRoles()->pluck('name')->toArray()))
                         <button class="btn btn-primary btn-sm" href="{{ url('form') }}" data-bs-toggle="modal"
                             data-bs-target="#modaltambah">ISI FORM</button>
                     @endif
                 </div>
+            </div>
+
+            @include('alert')
+        </div>
+
+        <div class="card-body">
+            <div class="mx-4 my-2">
+
                 <br>
                 <table class="table table-bordered border-dark text-center" style="font-size: 12px">
                     <thead>
@@ -32,13 +40,13 @@
                         @foreach ($survey as $key => $sur)
                             <tr class="align-middle">
                                 <td>{{ ++$key }}</td>
-                                <td>{{ $sur->nama_perusahaan }}</td>
+                                <td class="text-start">{{ $sur->nama_perusahaan }}</td>
                                 <td>{{ $sur->tahun }}</td>
                                 <td><u>{{ $sur->user->nama }}</u> <br>{{ $sur->updated_at }} </td>
                                 <td>{!! $sur->badge_status($sur->status_skk) !!}
                                     @if (in_array(
-                                        'Status Form',
-                                        $auth->getPermissionsViaRoles()->pluck('name')->toArray()))
+                                            'Status Form',
+                                            $auth->getPermissionsViaRoles()->pluck('name')->toArray()))
                                         <button class="btn btn-outline-dark btn-sm status_btn" data-bs-toggle="modal"
                                             data-bs-target="#modalstatus" id="status_btn"
                                             data-id="{{ $sur->id }}"data-nm_perusahaan="{{ $sur->nama_perusahaan }}"
@@ -64,6 +72,7 @@
                     </tbody>
 
                 </table>
+                {{ $survey->links() }}
             </div>
 
         </div>

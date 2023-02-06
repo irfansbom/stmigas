@@ -14,6 +14,6 @@ class Perusahaan extends Model
 
     public function user()
     {
-        return $this->hasMany(User_Perusahaan::class, 'id', 'id_perusahaan');
+        return $this->hasMany(User_Perusahaan::class, 'id_perusahaan', 'id')->join('users', 'users.id', 'user_perusahaan.id_user');
     }
 }

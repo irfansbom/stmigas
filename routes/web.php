@@ -73,12 +73,14 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('monitoring', [MonitoringController::class, 'index']);
 
-    Route::get('perusahaan', [PerusahaanController::class, 'index']);
-    Route::get('perusahaan/create', [PerusahaanController::class, 'create']);
-    Route::post('perusahaan/store', [PerusahaanController::class, 'store']);
-    Route::get('perusahaan/{id}', [PerusahaanController::class, 'show']);
-    Route::post('perusahaan/update', [PerusahaanController::class, 'update']);
-    Route::post('perusahaan/delete', [PerusahaanController::class, 'destroy']);
+    Route::resource('perusahaan', PerusahaanController::class);
+    // Route::get('perusahaan', [PerusahaanController::class, 'index']);
+    // Route::get('perusahaan/create', [PerusahaanController::class, 'create']);
+    // Route::post('perusahaan', [PerusahaanController::class, 'store']);
+    // Route::get('perusahaan/{id}', [PerusahaanController::class, 'show']);
+    // Route::post('perusahaan/{id}', [PerusahaanController::class, 'update']);
+    // Route::post('perusahaan', [PerusahaanController::class, 'destroy']);
+    Route::get('perusahaan_export', [PerusahaanController::class, 'export']);
 
     Route::get('user', [UserController::class, 'index']);
     Route::get('/user/create', [UserController::class, 'create']);

@@ -45,6 +45,7 @@ class SurveyController extends Controller
         $survey->email = $auth->email;
         return view('survey.create', compact('tahun', 'survey', 'auth'));
     }
+
     public function create(Request $request)
     {
         $tahun = date("Y");
@@ -66,7 +67,32 @@ class SurveyController extends Controller
         $survey->tipe_form = "tunggal";
         $survey->email = $auth->email;
         $survey->nama_perusahaan = $perusahaan->nama_perusahaan;
-        $survey->alamat_perusahaan = $perusahaan->alamat_kantor;
+
+
+        $kab = Kabs::where('id_kab', $perusahaan->kd_kab)->first()->nama_kab;
+        $kec = Kecs::where('id_kab', $perusahaan->kd_kab)->where('id_kec',$perusahaan->kd_kec)->first()->nama_kec;
+        $desa = Desas::where('id_kab', $perusahaan->kd_kab)->where('id_kec', $perusahaan->kd_kec)->where('id_desa', $perusahaan->kd_desa )->first()->nama_desa;
+        // dd($kab);
+        $survey->kd_prov = $perusahaan->kd_prov;
+        $survey->kabkot = $kab;
+        $survey->kecamatan = $kec;
+        $survey->kelurahan = $desa;
+
+        $survey->nib = $perusahaan->nib;
+
+        $survey->alamat_perusahaan = $perusahaan->alamat_perusahaan;
+        $survey->kode_pos_perusahaan = $perusahaan->kode_pos_perusahaan;
+        $survey->email_perusahaan = $perusahaan->email_perusahaan;
+        $survey->phone_perusahaan = $perusahaan->telepon_perusahaan;
+        $survey->fax_perusahaan = $perusahaan->fax_perusahaan;
+
+        $survey->alamat_pusat = $perusahaan->alamat_pusat;
+        $survey->kode_pos_pusat = $perusahaan->kode_pos_pusat;
+        $survey->email_pusat = $perusahaan->email_pusat;
+        $survey->phone_pusat = $perusahaan->telepon_pusat;
+        $survey->fax_pusat = $perusahaan->fax_pusat;
+
+
         return view('survey.blok0_create', compact('tahun', 'survey', 'auth', 'kabs'));
     }
     /*
@@ -306,6 +332,7 @@ class SurveyController extends Controller
                 'kd_desa' => $request->kd_desa,
 
                 'nama_perusahaan' => $request->nama_perusahaan,
+                'nib' => $request->nib,
                 'alamat_perusahaan' => $request->alamat_perusahaan,
                 'kode_pos_perusahaan' => $request->kode_pos_perusahaan,
                 'email_perusahaan' => $request->email_perusahaan,
@@ -316,6 +343,9 @@ class SurveyController extends Controller
                 'email_pusat' => $request->email_pusat,
                 'phone_pusat' => $request->phone_pusat,
                 'fax_pusat' => $request->fax_pusat,
+
+                'lokasi_penambangan' => $request->lokasi_penambangan,
+                'lokasi_lainnya' => $request->lokasi_lainnya,
 
                 'updated_at' => date("Y-m-d H:i:s"),
                 'updated_by' => $auth->id,
@@ -562,6 +592,11 @@ class SurveyController extends Controller
         $auth = Auth::user();
         date_default_timezone_set("Asia/Jakarta");
         $id_decrip = Crypt::decryptString($id);
+        $tahun_skrng = date("Y");
+        $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
+        if($tahun_skrng != $tahun_survey){
+            return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
+        }
         $survey = Survey::where('id', $id_decrip)
             ->update(
                 [
@@ -576,17 +611,23 @@ class SurveyController extends Controller
                     'kd_desa' => $request->kd_desa,
 
                     'nama_perusahaan' => $request->nama_perusahaan,
+                    'nib' => $request->nib,
+
                     'alamat_perusahaan' => $request->alamat_perusahaan,
                     'kode_pos_perusahaan' => $request->kode_pos_perusahaan,
                     'email_perusahaan' => $request->email_perusahaan,
                     'phone_perusahaan' => $request->phone_perusahaan,
                     'fax_perusahaan' => $request->fax_perusahaan,
+
                     'alamat_pusat' => $request->alamat_pusat,
                     'kode_pos_pusat' => $request->kode_pos_pusat,
                     'email_pusat' => $request->email_pusat,
                     'phone_pusat' => $request->phone_pusat,
                     'fax_pusat' => $request->fax_pusat,
 
+
+                    'lokasi_penambangan' => $request->lokasi_penambangan,
+                    'lokasi_lainnya' => $request->lokasi_lainnya,
                     'updated_by' => $auth->id,
                     'updated_at' => date("Y-m-d H:i:s"),
                 ]
@@ -613,6 +654,11 @@ class SurveyController extends Controller
         $auth = Auth::user();
         date_default_timezone_set("Asia/Jakarta");
         $id_decrip = Crypt::decryptString($id);
+        $tahun_skrng = date("Y");
+        $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
+        if($tahun_skrng != $tahun_survey){
+            return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
+        }
         $survey = Survey::where('id', $id_decrip)
             ->update(
                 [
@@ -668,6 +714,11 @@ class SurveyController extends Controller
         $auth = Auth::user();
         date_default_timezone_set("Asia/Jakarta");
         $id_decrip = Crypt::decryptString($id);
+        $tahun_skrng = date("Y");
+        $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
+        if($tahun_skrng != $tahun_survey){
+            return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
+        }
         $survey = Survey::where('id', $id_decrip)
             ->update(
                 [
@@ -714,6 +765,11 @@ class SurveyController extends Controller
         $auth = Auth::user();
         date_default_timezone_set("Asia/Jakarta");
         $id_decrip = Crypt::decryptString($id);
+        $tahun_skrng = date("Y");
+        $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
+        if($tahun_skrng != $tahun_survey){
+            return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
+        }
         $survey = Survey::where('id', $id_decrip)
             ->update(
                 [
@@ -821,6 +877,11 @@ class SurveyController extends Controller
         $auth = Auth::user();
         date_default_timezone_set("Asia/Jakarta");
         $id_decrip = Crypt::decryptString($id);
+        $tahun_skrng = date("Y");
+        $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
+        if($tahun_skrng != $tahun_survey){
+            return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
+        }
         $survey = Survey::where('id', $id_decrip)
             ->update(
                 [
@@ -867,6 +928,11 @@ class SurveyController extends Controller
         $auth = Auth::user();
         date_default_timezone_set("Asia/Jakarta");
         $id_decrip = Crypt::decryptString($id);
+        $tahun_skrng = date("Y");
+        $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
+        if($tahun_skrng != $tahun_survey){
+            return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
+        }
         $survey = Survey::where('id', $id_decrip)
             ->update(
                 [
@@ -909,7 +975,6 @@ class SurveyController extends Controller
             }
         }
     }
-
     public function showbloklegalitas(Request $request, $id)
     {
         $auth = Auth::user();
@@ -923,6 +988,11 @@ class SurveyController extends Controller
         $auth = Auth::user();
         date_default_timezone_set("Asia/Jakarta");
         $id_decrip = Crypt::decryptString($id);
+        $tahun_skrng = date("Y");
+        $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
+        if($tahun_skrng != $tahun_survey){
+            return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
+        }
         $survey = Survey::where('id', $id_decrip)
             ->update(
                 [

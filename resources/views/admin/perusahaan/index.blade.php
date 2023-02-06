@@ -1,45 +1,72 @@
 @extends('layout.main')
 
 @section('content')
-    <div class="container my-5">
-        <div class="row">
-            <div class="col">
-                <h1>Daftar Perusahaan</h1>
+    <div class=" my-5 card">
+        <div class="card-header">
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>Daftar Perusahaan</h1>
+                </div>
+                <div class="col d-flex align-items-center justify-content-end">
+                    <div class="p-2">
+                        <a class="btn btn-success btn-sm" id="btn_export" href="{{ url('perusahaan_export') }}">Export</a>
+                    </div>
+                    <div class="p-2">
+                        <a class="btn btn-warning btn-sm " href="{{ url('perusahaan/create') }}">Tambah <i
+                                class="bi bi-plus-square"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="col d-flex align-items-center justify-content-end">
-                <a class="btn btn-warning btn-sm " href="{{ url('perusahaan/create') }}">Tambah</a>
-            </div>
+
+            <form action="">
+                <div class="row">
+                    <div class="mb-3 col-2">
+
+                        <input type="text" class="form-control" id="filter_nama" name="filter_nama"
+                            placeholder="Nama Perusahaan"
+                            @if ($request->filter_nama) value="{{ $request->filter_nama }}" @endif>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary">Cari</button>
+                    </div>
+
+                </div>
+            </form>
         </div>
         @include('alert')
-        <div class="card">
+        <div class="card-body">
             <div class="mx-4 my-2">
-                <table class="table table-sm align-middle" style="font-size: 12px">
+                <table class="table table-bordered align-middle" style="font-size: 12px">
                     <thead>
                         <tr class="text-center align-middle">
                             <th>No</th>
-                            <th style="width:30%">Nama Perusahaan</th>
-                            <th>No Telp/HP</th>
-                            <th>Email</th>
-                            <th>Kabupaten</th>
-                            <th>Alamat Kantor </th>
-                            <th>Aksi</th>
+                            <th>Nama Perusahaan</th>
+                            <th>Admin</th>
+                            <th>Alamat</th>
+                            <th style="width:15%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($perusahaan as $key => $perus)
                             <tr>
-                                <td>{{ ++$key }}</td>
+                                <td class="text-center">{{ ++$key }}</td>
                                 <td> {{ $perus->nama_perusahaan }} </td>
-                                <td class="text-center">{{ $perus->cp_no_hp }}</td>
-                                <td>{{ $perus->email_perusahaan }}</td>
-                                <td class="text-center">{{ $perus->kd_kab }}</td>
-                                <td class="">{{ $perus->alamat_kantor }}</td>
+                                <td>
+                                    <ul>
+                                        @foreach ($perus->user as $user)
+                                            <li>
+                                                {{ $user->nama }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td class="">{{ $perus->alamat_perusahaan }}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-outline-primary btn-sm "
+                                    <a class="btn btn-outline-primary"
                                         href="{{ url('perusahaan/' . \Crypt::encryptString($perus->id)) }}">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                    <button class="btn btn-outline-danger btn-sm btn_hapus" data-id="{{ $perus->id }}"
+                                    <button class="btn btn-outline-danger  btn_hapus" data-id="{{ $perus->id }}"
                                         data-nama="{{ $perus->nama_perusahaan }}" data-bs-toggle="modal"
                                         data-bs-target="#modal_hapus">
                                         <i class="bi bi-trash"></i>
@@ -62,9 +89,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('perusahaan/delete') }}" method="post" id="form_hapus">
+                    <form action="{{ url('perusahaan') }}" method="POST" id="form_hapus">
                         @csrf
-                        <div class="row ">
+                        @method('delete')
+                        <div class="row">
                             <input type="text" name="id" id="hapus_id" hidden>
                             <div class="mb-3 ">
                                 <label for="hapus_nama" class="form-label">Nama Perusahaan</label>
@@ -88,8 +116,10 @@
 @section('script')
     <script>
         $('.btn_hapus').click(function() {
-            console.log($(this).data("id"))
+            var base_url = "{{ url('/perusahaan') }}"
+            // console.log(base_url)
             $('#modal_hapus').find('#hapus_id').val($(this).data("id"));
+            $('#modal_hapus').find('#form_hapus').attr('action', base_url + '/' + $(this).data('id'));
             $('#modal_hapus').find('#hapus_nama').val($(this).data("nama"));
         })
     </script>

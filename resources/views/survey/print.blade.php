@@ -75,9 +75,7 @@
                                 <span class="fst-italic">&nbsp; &nbsp; Province</span>
                             </label>
                             <div class="col-sm-8 d-flex align-items-center">
-                                <select class="form-select " aria-label="Default select" id="provinsi" name="provinsi">
-                                    <option value="16" selected>Sumatera Selatan</option>
-                                </select>
+                                <input type="text" value="Sumatera Selatan" class="form-control">
                             </div>
                         </div>
                         <div class="mb-1 row d-flex align-items-center">
@@ -163,8 +161,18 @@
                             </div>
                         </div>
                         <div class="mb-1 row">
+                            <label for="nib" class="col-sm-3 col-form-label">
+                                <strong>6. Nomor Izin Berusaha</strong> <br>
+                                <span class="fst-italic">&nbsp; &nbsp; Number</span>
+                            </label>
+                            <div class="col-sm-9 d-flex align-items-center">
+                                <input type="text" class="form-control" id="nib" name="nib"
+                                    value="{{ old('nib', $survey->nib) }}" required>
+                            </div>
+                        </div>
+                        <div class="mb-1 row">
                             <label for="alamat_perusahaan" class="col-sm-3 col-form-label">
-                                <strong>6. Alamat perusahaan</strong><br>
+                                <strong>7. Alamat perusahaan</strong><br>
                                 <span class="fst-italic">&nbsp; &nbsp; Company Address</span>
                             </label>
                             <div class="col-sm-9 d-flex align-items-center">
@@ -207,7 +215,7 @@
 
                         <div class="mb-1 row">
                             <label for="alamat_pusat" class="col-sm-3 col-form-label">
-                                <strong>7. Alamat kantor pusat</strong><br>
+                                <strong>8. Alamat kantor pusat</strong><br>
                                 <span class="fst-italic">&nbsp; &nbsp; Head Office Address</span>
                             </label>
                             <div class="col-sm-9 d-flex align-items-center">
@@ -239,6 +247,21 @@
                             <div class="col-sm-4 d-flex align-items-center">
                                 <input type="text" class="form-control" id="fax_pusat" name="fax_pusat"
                                     value="{{ old('fax_pusat', $survey->fax_pusat) }}">
+                            </div>
+                        </div>
+                        <div class="mb-1 row">
+                            <label for="nib" class="col-sm-3 col-form-label">
+                                <strong>9. Lokasi Penambangan</strong> <br>
+                                <span class="fst-italic">&nbsp; &nbsp; Minning Site</span>
+                            </label>
+                            <div class="col-sm-5 d-flex align-items-center">
+                                <input name="lokasi_penambangan" id="lokasi_penambangan" class="form-control"
+                                    value="{{ old('lokasi_penambangan', $survey->lokasi_penambangan) }}">
+                            </div>
+                            <div class="col-sm-4 d-flex align-items-center">
+                                <input type="text" class="form-control" id="lokasi_lainnya" name="lokasi_lainnya"
+                                    placeholder="lainnya"
+                                    value="{{ old('lokasi_lainnya', $survey->lokasi_lainnya) }}">
                             </div>
                         </div>
 
@@ -2120,7 +2143,7 @@
                                         </div>
                                         <div class="mb-1 row d-flex align-items-center">
                                             <div class="col-sm-4  ">
-                                                &nbsp; &nbsp; Jabatan/<span class="fst-italic">Positionn</span>
+                                                &nbsp; &nbsp; Jabatan/<span class="fst-italic">Position</span>
                                             </div>
                                             <div class="col-sm-1  text-end">
                                                 :
@@ -2215,6 +2238,22 @@
                                                     value="{{ old('pemberi_keterangan_email', $survey->pemberi_keterangan_email) }}">
                                             </div>
                                         </div>
+                                        <br>
+                                        <div class="mb-1 row d-flex align-items-center">
+                                            <div class="col-sm-4  ">
+                                                &nbsp; &nbsp;Tanda Tangan dan Cap Perusahaan
+                                                <br>
+                                                <span class="fst-italic">&nbsp; &nbsp;Signature and Company
+                                                    Stamp</span>
+                                            </div>
+                                            <div class="col-sm-1  text-end">
+                                                :
+                                            </div>
+
+
+                                        </div>
+                                        <br>
+                                        <br>
                                     </td>
                                 </tr>
                             </table>
@@ -2222,7 +2261,6 @@
                     </td>
                 </tr>
             </table>
-            <br>
             <table class="table table-borderless">
                 <tr>
                     <td class="py-0">
@@ -2301,6 +2339,20 @@
                                         <input type="text" class="form-control form-control-sm"
                                             id="pengawas_tanggal" name="pengawas_tanggal"
                                             value="{{ old('pengawas_tanggal', $survey->pengawas_tanggal) }}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5. Tanda Tangan/<span class="fst-italic">Signature</span>
+                                        <br>
+                                        <br>
+                                    </td>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <td>
+                                    </td>
+                                    <td>
+
                                     </td>
                                 </tr>
                             </table>
