@@ -14,11 +14,11 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class PerusahaanExport implements FromQuery, WithHeadings, WithMapping, WithStyles, WithColumnWidths,WithColumnFormatting
+class PerusahaanExport implements FromQuery, WithHeadings, WithMapping, WithStyles, WithColumnWidths, WithColumnFormatting
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     // use Exportable;
 
     public function query()
@@ -39,12 +39,12 @@ class PerusahaanExport implements FromQuery, WithHeadings, WithMapping, WithStyl
     public function columnFormats(): array
     {
         return [
-            'C' =>NumberFormat::FORMAT_NUMBER
+            'C' => NumberFormat::FORMAT_NUMBER
         ];
     }
     public function headings(): array
     {
-        return ['Nama Perusahaan', 'Admin','No HP', 'Alamat'];
+        return ['Nama Perusahaan', 'Admin', 'No HP', 'Alamat'];
     }
 
     public function styles(Worksheet $sheet)
@@ -61,6 +61,4 @@ class PerusahaanExport implements FromQuery, WithHeadings, WithMapping, WithStyl
             'D' => 50,
         ];
     }
-
-
 }

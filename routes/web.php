@@ -89,10 +89,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user/update', [UserController::class, 'update']);
     Route::post('/user/delete', [UserController::class, 'delete']);
 
-    Route::post('/user/roles', [UserController::class, 'user_roles']);
-    Route::post('/user/perusahaan', [UserController::class, 'user_perusahaan']);
-    Route::post('/user/resetpassword', [UserController::class, 'resetpassword']);
-    Route::post('/user/ubahpassword', [UserController::class, 'ubahpassword']);
+    Route::post('/user_roles', [UserController::class, 'user_roles']);
+    Route::post('/user_perusahaan', [UserController::class, 'user_perusahaan']);
+    Route::post('/user_resetpassword', [UserController::class, 'resetpassword']);
+    Route::get('/user_resetallpassword', [UserController::class, 'resetallpassword']);
+    Route::post('/user_ubahpassword', [UserController::class, 'ubahpassword']);
 
     Route::get('roles', [UserController::class, 'roles']);
     Route::post('roles/add', [UserController::class, 'roles_add']);

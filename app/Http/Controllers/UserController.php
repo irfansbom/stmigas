@@ -116,6 +116,16 @@ class UserController extends Controller
         return redirect()->back()->with('message', 'Berhasil Disimpan');
     }
 
+    public function resetallpassword()
+    {
+        $user = User::all();
+        foreach ($user as $usr) {
+            $usr->password = Hash::make($usr->username);
+            $usr->save();
+        }
+        return redirect()->back()->with('message', 'Berhasil Disimpan');
+    }
+
     public function user_roles(Request $request)
     {
         $user = User::find($request->user_id);
