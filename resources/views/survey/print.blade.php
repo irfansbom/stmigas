@@ -495,8 +495,8 @@
                         </div>
                         <div class="mb-1 row ">
                             <label for="bentuk_kerjasama" class="col-sm-12 col-form-label">
-                                <strong>103. Informasi Pemegang Saham Asing Tahun 2021/
-                                    <span class="fst-italic">foreign shareholder information in 2021</span></strong>
+                                <strong>103. Informasi Pemegang Saham Asing Tahun {{ $tahun - 1 }}/
+                                    <span class="fst-italic">foreign shareholder information in {{ $tahun - 1 }}</span></strong>
                             </label>
                             <span style="font-size: 12px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Urutkan dari pemegang
                                 saham
@@ -630,8 +630,8 @@
             <table class="table table-borderless">
                 <tr>
                     <th class="border-dark border text-center">
-                        II. SUMBER DAYA MANUSIA PADA TAHUN 2021 <br>
-                        <span class="fst-italic">HUMAN RESOURCE BY THE YEAR 2021</span>
+                        II. SUMBER DAYA MANUSIA PADA TAHUN {{ $tahun - 1 }} <br>
+                        <span class="fst-italic">HUMAN RESOURCE BY THE YEAR {{ $tahun - 1 }}</span>
                     </th>
                 </tr>
                 <tr>
@@ -849,8 +849,8 @@
             <table class="table table-borderless">
                 <tr>
                     <th class="border-dark border text-center">
-                        III. PENGELUARAN SELAMA SETAHUN 2021 <br>
-                        <span class="fst-italic">EXPENDITURES IN 2021</span>
+                        III. PENGELUARAN SELAMA SETAHUN {{ $tahun - 1 }} <br>
+                        <span class="fst-italic">EXPENDITURES IN {{ $tahun - 1 }}</span>
                     </th>
                 </tr>
 
@@ -1695,8 +1695,8 @@
             <table class="table table-borderless">
                 <tr>
                     <th class="border-dark border text-center">
-                        IV. KETENAGALISTRIKAN SELAMA TAHUN 2021 <br>
-                        <span class="fst-italic">ELECTRICITY DURING 2021</span>
+                        IV. KETENAGALISTRIKAN SELAMA TAHUN {{ $tahun - 1 }} <br>
+                        <span class="fst-italic">ELECTRICITY DURING {{ $tahun - 1 }}</span>
                     </th>
                 </tr>
                 <tr>
@@ -1859,8 +1859,9 @@
                             <table class="table table-bordered border-dark align-middle">
                                 <tr>
                                     <th class="border-dark border text-center">
-                                        V. STOK, PRODUKSI, PEMAKAIAN DAN PENJUALAN PADA TAHUN 2021 <br>
-                                        <span class="fst-italic">STOCK, PRODUCTIONN, USAGE AND SALES IN 2021</span>
+                                        V. STOK, PRODUKSI, PEMAKAIAN DAN PENJUALAN PADA TAHUN {{ $tahun - 1 }} <br>
+                                        <span class="fst-italic">STOCK, PRODUCTIONN, USAGE AND SALES IN
+                                            {{ $tahun - 1 }}</span>
                                     </th>
                                 </tr>
                             </table>
@@ -1998,8 +1999,8 @@
                             <table class="table table-bordered border-dark align-middle">
                                 <tr>
                                     <th class="border-dark border text-center">
-                                        VI. PENDAPATAN LAIN SELAMA TAHUN 2021 <br>
-                                        <span class="fst-italic">OTHER REVENUE DURING 2021</span>
+                                        VI. PENDAPATAN LAIN SELAMA TAHUN {{ $tahun - 1 }} <br>
+                                        <span class="fst-italic">OTHER REVENUE DURING {{ $tahun - 1 }}</span>
                                     </th>
                                 </tr>
                             </table>

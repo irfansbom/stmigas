@@ -45,8 +45,8 @@
             <table class="table table-borderless">
                 <tr>
                     <th class="border-dark border text-center">
-                        IV. KETENAGALISTRIKAN SELAMA TAHUN 2021 <br>
-                        <span class="fst-italic">ELECTRICITY DURING 2021</span>
+                        IV. KETENAGALISTRIKAN SELAMA TAHUN {{ $tahun - 1 }} <br>
+                        <span class="fst-italic">ELECTRICITY DURING {{ $tahun - 1 }}</span>
                     </th>
                 </tr>
                 <tr>

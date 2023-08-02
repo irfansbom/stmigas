@@ -83,11 +83,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('perusahaan_export', [PerusahaanController::class, 'export']);
 
     Route::get('user', [UserController::class, 'index']);
-    Route::get('/user/create', [UserController::class, 'create']);
-    Route::post('/user/store', [UserController::class, 'store']);
+    Route::get('/user_create', [UserController::class, 'create']);
+    Route::post('/user_store', [UserController::class, 'store']);
     Route::get('/user/{id}', [UserController::class, 'show']);
-    Route::post('/user/update', [UserController::class, 'update']);
-    Route::post('/user/delete', [UserController::class, 'delete']);
+    Route::post('/user_update', [UserController::class, 'update']);
+    Route::post('/user_delete', [UserController::class, 'delete']);
 
     Route::post('/user_roles', [UserController::class, 'user_roles']);
     Route::post('/user_perusahaan', [UserController::class, 'user_perusahaan']);

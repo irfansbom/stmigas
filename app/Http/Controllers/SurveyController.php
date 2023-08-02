@@ -67,11 +67,15 @@ class SurveyController extends Controller
         $survey->tipe_form = "tunggal";
         $survey->email = $auth->email;
         $survey->nama_perusahaan = $perusahaan->nama_perusahaan;
+        // dd($perusahaan->kd_kab == null || $perusahaan->kd_kec == null || $perusahaan->kd_desa == null);
+        if ($perusahaan->kd_kab == null || $perusahaan->kd_kec == null || $perusahaan->kd_desa == null) {
+            return redirect('perusahaan')->with('error', 'Silahkan Edit Profile Perusahaan Anda Dahulu');
+        }
 
-
+        // dd($perusahaan);
         $kab = Kabs::where('id_kab', $perusahaan->kd_kab)->first()->nama_kab;
-        $kec = Kecs::where('id_kab', $perusahaan->kd_kab)->where('id_kec',$perusahaan->kd_kec)->first()->nama_kec;
-        $desa = Desas::where('id_kab', $perusahaan->kd_kab)->where('id_kec', $perusahaan->kd_kec)->where('id_desa', $perusahaan->kd_desa )->first()->nama_desa;
+        $kec = Kecs::where('id_kab', $perusahaan->kd_kab)->where('id_kec', $perusahaan->kd_kec)->first()->nama_kec;
+        $desa = Desas::where('id_kab', $perusahaan->kd_kab)->where('id_kec', $perusahaan->kd_kec)->where('id_desa', $perusahaan->kd_desa)->first()->nama_desa;
         // dd($kab);
         $survey->kd_prov = $perusahaan->kd_prov;
         $survey->kabkot = $kab;
@@ -594,7 +598,7 @@ class SurveyController extends Controller
         $id_decrip = Crypt::decryptString($id);
         $tahun_skrng = date("Y");
         $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
-        if($tahun_skrng != $tahun_survey){
+        if ($tahun_skrng != $tahun_survey) {
             return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
         }
         $survey = Survey::where('id', $id_decrip)
@@ -656,7 +660,7 @@ class SurveyController extends Controller
         $id_decrip = Crypt::decryptString($id);
         $tahun_skrng = date("Y");
         $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
-        if($tahun_skrng != $tahun_survey){
+        if ($tahun_skrng != $tahun_survey) {
             return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
         }
         $survey = Survey::where('id', $id_decrip)
@@ -716,7 +720,7 @@ class SurveyController extends Controller
         $id_decrip = Crypt::decryptString($id);
         $tahun_skrng = date("Y");
         $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
-        if($tahun_skrng != $tahun_survey){
+        if ($tahun_skrng != $tahun_survey) {
             return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
         }
         $survey = Survey::where('id', $id_decrip)
@@ -767,7 +771,7 @@ class SurveyController extends Controller
         $id_decrip = Crypt::decryptString($id);
         $tahun_skrng = date("Y");
         $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
-        if($tahun_skrng != $tahun_survey){
+        if ($tahun_skrng != $tahun_survey) {
             return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
         }
         $survey = Survey::where('id', $id_decrip)
@@ -879,7 +883,7 @@ class SurveyController extends Controller
         $id_decrip = Crypt::decryptString($id);
         $tahun_skrng = date("Y");
         $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
-        if($tahun_skrng != $tahun_survey){
+        if ($tahun_skrng != $tahun_survey) {
             return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
         }
         $survey = Survey::where('id', $id_decrip)
@@ -930,7 +934,7 @@ class SurveyController extends Controller
         $id_decrip = Crypt::decryptString($id);
         $tahun_skrng = date("Y");
         $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
-        if($tahun_skrng != $tahun_survey){
+        if ($tahun_skrng != $tahun_survey) {
             return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
         }
         $survey = Survey::where('id', $id_decrip)
@@ -990,7 +994,7 @@ class SurveyController extends Controller
         $id_decrip = Crypt::decryptString($id);
         $tahun_skrng = date("Y");
         $tahun_survey = Survey::where('id', $id_decrip)->first()->tahun;
-        if($tahun_skrng != $tahun_survey){
+        if ($tahun_skrng != $tahun_survey) {
             return redirect()->back()->with('error', 'Tidak bisa update untuk tahun yang sudah lewat');
         }
         $survey = Survey::where('id', $id_decrip)
@@ -1050,7 +1054,7 @@ class SurveyController extends Controller
     public function ubah_status_skk(Request $request)
     {
         $survey = Survey::find($request->id);
-        dd($request->all());
+        // dd($request->all());
         $survey->status_skk = $request->status_skk;
         $survey->save();
         if ($survey) {

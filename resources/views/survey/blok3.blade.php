@@ -45,8 +45,8 @@
             <table class="table table-borderless">
                 <tr>
                     <th class="border-dark border text-center">
-                        III. PENGELUARAN SELAMA SETAHUN 2021 <br>
-                        <span class="fst-italic">EXPENDITURES IN 2021</span>
+                        III. PENGELUARAN SELAMA SETAHUN {{ $tahun - 1 }} <br>
+                        <span class="fst-italic">EXPENDITURES IN {{ $tahun - 1 }}</span>
                     </th>
                 </tr>
                 <tr>

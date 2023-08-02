@@ -49,8 +49,9 @@
                             <table class="table table-bordered border-dark align-middle">
                                 <tr>
                                     <th class="border-dark border text-center">
-                                        V. STOK, PRODUKSI, PEMAKAIAN DAN PENJUALAN PADA TAHUN 2021 <br>
-                                        <span class="fst-italic">STOCK, PRODUCTIONN, USAGE AND SALES IN 2021</span>
+                                        V. STOK, PRODUKSI, PEMAKAIAN DAN PENJUALAN PADA TAHUN {{ $tahun - 1 }} <br>
+                                        <span class="fst-italic">STOCK, PRODUCTIONN, USAGE AND SALES IN
+                                            {{ $tahun - 1 }}</span>
                                     </th>
                                 </tr>
                             </table>
@@ -187,8 +188,8 @@
                             <table class="table table-bordered border-dark align-middle">
                                 <tr>
                                     <th class="border-dark border text-center">
-                                        VI. PENDAPATAN LAIN SELAMA TAHUN 2021 <br>
-                                        <span class="fst-italic">OTHER REVENUE DURING 2021</span>
+                                        VI. PENDAPATAN LAIN SELAMA TAHUN {{ $tahun - 1 }} <br>
+                                        <span class="fst-italic">OTHER REVENUE DURING {{ $tahun - 1 }}</span>
                                     </th>
                                 </tr>
                             </table>

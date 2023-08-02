@@ -45,8 +45,8 @@
             <table class="table table-borderless">
                 <tr>
                     <th class="border-dark border text-center">
-                        II. SUMBER DAYA MANUSIA PADA TAHUN 2021 <br>
-                        <span class="fst-italic">HUMAN RESOURCE BY THE YEAR 2021</span>
+                        II. SUMBER DAYA MANUSIA PADA TAHUN {{ $tahun - 1 }} <br>
+                        <span class="fst-italic">HUMAN RESOURCE BY THE YEAR {{ $tahun - 1 }}</span>
                     </th>
                 </tr>
                 <tr>

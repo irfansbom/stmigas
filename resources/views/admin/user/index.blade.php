@@ -7,10 +7,9 @@
                 <h1 class="col">Daftar User</h1>
             </div>
             <div class="col d-flex align-items-center justify-content-end">
-                <a class="btn btn-warning btn-sm " href="{{ url('user/create') }}">Tambah</a>
+                <a class="btn btn-warning btn-sm " href="{{ url('user_create') }}">Tambah</a>
             </div>
         </div>
-
 
         @include('alert')
         <div class="card">
@@ -105,7 +104,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="{{ url('user/roles') }}" method="post" id="edit_form_roles">
+                    <form action="{{ url('user_roles') }}" method="post" id="edit_form_roles">
                         @csrf
                         <div class="row ">
                             <input type="text" name="user_id" id="user_id" hidden>
@@ -149,7 +148,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="{{ url('user/perusahaan') }}" method="post" id="edit_form_perusahaan">
+                    <form action="{{ url('user_perusahaan') }}" method="post" id="edit_form_perusahaan">
                         @csrf
                         <div class="row ">
                             <input type="text" name="user_id" id="user_id" hidden>
@@ -195,7 +194,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('user/delete') }}" method="post" id="form_hapus">
+                    <form action="{{ url('user_delete') }}" method="post" id="form_hapus">
                         @csrf
                         <div class="row ">
                             <input type="text" name="user_id" id="user_id" hidden>
